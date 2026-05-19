@@ -1,0 +1,16 @@
+<svg width="420" height="96" viewBox="0 0 420 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Tech Tsu logo</title>
+  <desc id="desc">Tech Tsu wordmark with geometric TT monogram</desc>
+  <rect x="2" y="2" width="92" height="92" rx="20" fill="#0D1117"/>
+  <path d="M22 26H74" stroke="#F7F8F4" stroke-width="7" stroke-linecap="square"/>
+  <path d="M30 26V68" stroke="#F7F8F4" stroke-width="7" stroke-linecap="square"/>
+  <path d="M66 26V68" stroke="#F7F8F4" stroke-width="7" stroke-linecap="square"/>
+  <path d="M31 72L65 36" stroke="#2EC4B6" stroke-width="6" stroke-linecap="square"/>
+  <path d="M48 72H75" stroke="#F6C85F" stroke-width="6" stroke-linecap="square"/>
+  <circle cx="76" cy="72" r="4" fill="#FF6B4A"/>
+  <path d="M120 34H218V48H178V77H160V48H120V34Z" fill="#0D1117"/>
+  <path d="M225 34H309V48H243V54H300V67H243V63H309V77H225V34Z" fill="#0D1117"/>
+  <path d="M318 34H401V48H369V77H351V48H318V34Z" fill="#0D1117"/>
+  <path d="M121 19H402" stroke="#2EC4B6" stroke-width="4"/>
+  <path d="M121 86H290" stroke="#F6C85F" stroke-width="4"/>
+</svg>
