@@ -11,7 +11,7 @@ const trustPoints = [
 export function Contato() {
   return (
     <>
-      <section id="contato" style={{
+      <section id="contato" className="topology-bg" style={{
         padding: "96px 40px",
         background: "var(--bg-2)",
         position: "relative", overflow: "hidden",

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="glow1" cx="30%" cy="40%" r="50%">
+      <stop offset="0%"   stop-color="rgba(46,196,182,0.07)"/>
+      <stop offset="100%" stop-color="rgba(46,196,182,0)"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="75%" cy="65%" r="45%">
+      <stop offset="0%"   stop-color="rgba(46,196,182,0.05)"/>
+      <stop offset="100%" stop-color="rgba(46,196,182,0)"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Glows -->
+  <rect width="1440" height="900" fill="url(#glow1)"/>
+  <rect width="1440" height="900" fill="url(#glow2)"/>
+
+  <!-- Linhas topográficas — camada 1 (mais distante, menor opacidade) -->
+  <g stroke="rgba(46,196,182,0.045)" stroke-width="1" fill="none">
+    <path d="M-200,600 C100,520 250,400 500,380 S900,320 1200,280 S1500,200 1700,180"/>
+    <path d="M-200,650 C100,570 250,450 500,430 S900,370 1200,330 S1500,250 1700,230"/>
+    <path d="M-200,700 C100,620 250,500 500,480 S900,420 1200,380 S1500,300 1700,280"/>
+    <path d="M-200,750 C100,670 250,550 500,530 S900,470 1200,430 S1500,350 1700,330"/>
+    <path d="M-200,500 C50,440 200,340 420,310 S800,260 1100,230 S1400,170 1700,140"/>
+    <path d="M-200,550 C50,490 200,390 420,360 S800,310 1100,280 S1400,220 1700,190"/>
+    <path d="M-200,450 C50,390 180,290 380,260 S750,200 1050,170 S1380,110 1700,90"/>
+  </g>
+
+  <!-- Linhas topográficas — camada 2 (mais próximas, mais visíveis) -->
+  <g stroke="rgba(46,196,182,0.07)" stroke-width="0.75" fill="none">
+    <path d="M200,900 C300,800 450,680 600,620 S900,520 1100,460 S1350,380 1600,320"/>
+    <path d="M100,900 C200,800 380,700 540,650 S840,560 1050,500 S1300,410 1550,350"/>
+    <path d="M0,900   C150,820 330,720 500,670 S800,580 1020,520 S1280,430 1530,370"/>
+    <path d="M350,900 C430,810 560,710 700,660 S980,570 1180,500 S1420,400 1640,330"/>
+    <path d="M-100,900 C80,840 260,750 440,710 S740,630 960,580 S1230,500 1480,440"/>
+  </g>
+
+  <!-- Linhas na parte superior (espelho) -->
+  <g stroke="rgba(46,196,182,0.035)" stroke-width="1" fill="none">
+    <path d="M-200,200 C200,150 450,200 700,180 S1100,120 1700,160"/>
+    <path d="M-200,150 C200,100 450,150 700,130 S1100,70  1700,110"/>
+    <path d="M-200,250 C200,200 450,250 700,230 S1100,170 1700,210"/>
+    <path d="M-200,100 C200,50  450,100 700,80  S1100,20  1700,60"/>
+  </g>
+
+  <!-- Pontos de interseção (vértices da topografia) -->
+  <g fill="rgba(46,196,182,0.15)">
+    <circle cx="420"  cy="310" r="2"/>
+    <circle cx="820"  cy="260" r="1.5"/>
+    <circle cx="1100" cy="230" r="2"/>
+    <circle cx="600"  cy="620" r="2"/>
+    <circle cx="1100" cy="460" r="1.5"/>
+    <circle cx="500"  cy="480" r="1.5"/>
+    <circle cx="900"  cy="420" r="2"/>
+  </g>
+</svg>

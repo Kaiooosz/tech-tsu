@@ -38,12 +38,35 @@ body {
 a { color: inherit; text-decoration: none; }
 h1,h2,h3,h4,p { margin: 0; letter-spacing: 0; }
 
-/* Circuit grid */
+/* ── Grain global (film noise sobre tudo) ───────────────────── */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url('/bg-noise.svg');
+  background-repeat: repeat;
+  background-size: 300px 300px;
+  opacity: 0.032;
+  pointer-events: none;
+  z-index: 9998;
+  mix-blend-mode: overlay;
+}
+
+/* ── Circuit grid (Hero) ─────────────────────────────────────── */
 .circuit-grid {
   background-image:
-    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
-    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
-  background-size: 56px 56px;
+    url('/bg-circuit.svg'),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 240px 240px, 56px 56px, 56px 56px;
+  background-repeat: repeat;
+}
+
+/* ── Topology bg (seções intermediárias) ─────────────────────── */
+.topology-bg {
+  background-image: url('/bg-topology.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* Marquee */
