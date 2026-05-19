@@ -1,124 +1,360 @@
+"use client"
+import { useRef } from "react"
+import {
+  motion,
+  useScroll, useTransform,
+} from "framer-motion"
+import { E, SPRING_SOFT } from "@/lib/motion"
+
+const bars = [30, 50, 42, 70, 58, 85, 90]
+
 export function Hero() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  })
+
+  // Parallax layers
+  const gridY    = useTransform(scrollYProgress, [0, 1], [0, -90])
+  const glowY    = useTransform(scrollYProgress, [0, 1], [0,  70])
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, -50])
+  const mockX    = useTransform(scrollYProgress, [0, 1], [0,  30])
+
   return (
-    <section
-      id="inicio"
-      style={{
-        position: "relative",
-        minHeight: "78vh",
-        overflow: "hidden",
-        display: "grid",
-        alignItems: "center",
-        padding: "86px 40px 80px",
-        background: "var(--ink)",
-        color: "var(--chalk)",
-      }}
-    >
-      {/* Scene background */}
-      <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
-        {/* Grid */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px)",
-            backgroundSize: "88px 88px",
-            opacity: 0.32,
-          }}
+    <>
+      <section
+        ref={sectionRef}
+        id="inicio"
+        style={{
+          position: "relative", minHeight: "100vh",
+          display: "flex", alignItems: "center",
+          padding: "120px 40px 80px",
+          overflow: "hidden",
+        }}
+      >
+        {/* Circuit grid — parallax */}
+        <motion.div
+          className="circuit-grid"
+          style={{ position: "absolute", inset: 0, opacity: 0.6, y: gridY }}
         />
 
-        {/* Panel A — metrics */}
-        <div className="system-panel panel-a">
-          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <span style={{ width: 16, height: 16, borderRadius: "50%", background: "var(--teal)", flexShrink: 0 }} />
-            <span style={{ height: 10, width: 112, background: "rgba(255,255,255,.34)" }} />
-            <span style={{ marginLeft: "auto", color: "var(--amber)", fontFamily: "ui-monospace,monospace", fontSize: 36, fontWeight: 800 }}>42</span>
-          </div>
-          <div style={{ display: "flex", alignItems: "flex-end", gap: 12, height: 72, marginTop: 30 }}>
-            {[24, 42, 56, 34, 64].map((h, i) => (
-              <span
-                key={i}
-                style={{
-                  display: "block", width: 24, height: h,
-                  background: i === 1 ? "var(--teal)" : i === 2 ? "var(--amber)" : i === 4 ? "var(--coral)" : "rgba(255,255,255,.28)",
-                }}
-              />
-            ))}
-          </div>
-        </div>
+        {/* Radial glow — parallax + breathe */}
+        <motion.div
+          style={{
+            position: "absolute", top: "20%", left: "50%",
+            translateX: "-50%", translateY: "-50%",
+            width: 640, height: 640, borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(46,196,182,0.09) 0%, transparent 70%)",
+            pointerEvents: "none",
+            y: glowY,
+          }}
+          animate={{ scale: [1, 1.18, 1], opacity: [0.5, 1, 0.5] }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+        />
 
-        {/* Panel B — pipeline */}
-        <div className="system-panel panel-b">
-          <div style={{ marginBottom: 22, color: "rgba(255,255,255,.72)", fontSize: 13, fontWeight: 800, textTransform: "uppercase" }}>Pipeline</div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 12 }}>
-            {["var(--teal)","var(--amber)","var(--coral)","var(--steel)"].map((c, i) => (
-              <span key={i} style={{ height: 80, background: "rgba(255,255,255,.18)", borderTop: `5px solid ${c}` }} />
-            ))}
-          </div>
-        </div>
+        {/* Floating status badge */}
+        <motion.div
+          className="badge-float"
+          initial={{ opacity: 0, y: -18, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.25, ...SPRING_SOFT }}
+          style={{
+            position: "absolute", top: 100, right: 60,
+            display: "flex", alignItems: "center", gap: 8,
+            padding: "6px 12px",
+            background: "rgba(46,196,182,0.08)",
+            border: "1px solid rgba(46,196,182,0.2)",
+            borderRadius: 999, fontSize: 12, fontWeight: 500,
+            fontFamily: "var(--font-mono)",
+            color: "var(--teal)",
+          }}
+        >
+          <span className="pulse-dot" style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--teal)", display: "inline-block" }} />
+          Disponível para novos projetos
+        </motion.div>
 
-        {/* Panel C — tasks */}
-        <div className="system-panel panel-c">
-          <div style={{ marginBottom: 22, color: "rgba(255,255,255,.72)", fontSize: 13, fontWeight: 800, textTransform: "uppercase" }}>Operacao</div>
-          {["var(--teal)","var(--amber)","var(--coral)"].map((c, i) => (
-            <div key={i} style={{ display: "grid", gridTemplateColumns: "22px 1fr", alignItems: "center", gap: 12, marginTop: 18 }}>
-              <span style={{ width: 22, height: 22, background: c }} />
-              <span style={{ height: 12, background: "rgba(255,255,255,.32)" }} />
+        {/* Main content — parallax scroll */}
+        <motion.div style={{ position: "relative", zIndex: 2, maxWidth: 900, y: contentY }}>
+
+          {/* Company pill */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: E }}
+            style={{
+              display: "inline-flex", alignItems: "center", gap: 8,
+              marginBottom: 32, padding: "5px 12px",
+              border: "1px solid var(--border-m)", borderRadius: 999,
+              fontSize: 11, fontWeight: 600, letterSpacing: "0.2em",
+              textTransform: "uppercase", color: "var(--muted)",
+              fontFamily: "var(--font-mono)",
+            }}
+          >
+            <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--teal)", display: "inline-block" }} />
+            TSUNOKAWA TECH LTDA — Software House
+          </motion.div>
+
+          {/* H1 — mask reveal per line */}
+          <h1 style={{
+            fontSize: "clamp(48px, 7.5vw, 96px)",
+            fontWeight: 700, lineHeight: 0.95,
+            letterSpacing: "-0.04em", marginBottom: 28,
+          }}>
+            <div style={{ overflow: "hidden" }}>
+              <motion.span
+                initial={{ y: "105%" }}
+                animate={{ y: "0%" }}
+                transition={{ duration: 0.85, delay: 0.44, ease: E }}
+                style={{ display: "block", color: "var(--text)" }}
+              >
+                Processo real.
+              </motion.span>
             </div>
-          ))}
-        </div>
+            <div style={{ overflow: "hidden" }}>
+              <motion.span
+                initial={{ y: "105%" }}
+                animate={{ y: "0%" }}
+                transition={{ duration: 0.85, delay: 0.58, ease: E }}
+                style={{ display: "block", color: "var(--text)" }}
+              >
+                Sistema{" "}
+                <em style={{ fontStyle: "italic", fontWeight: 300, color: "rgba(255,255,255,0.42)" }}>
+                  sob medida.
+                </em>
+              </motion.span>
+            </div>
+          </h1>
 
-        {/* Signals */}
-        <div style={{ position: "absolute", width: 170, height: 170, border: "1px solid rgba(46,196,182,.45)", top: "16%", left: "54%" }} />
-        <div style={{ position: "absolute", width: 170, height: 170, border: "1px solid rgba(246,200,95,.48)", right: "7%", bottom: "8%" }} />
-      </div>
+          {/* Subhead */}
+          <motion.p
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.72, ease: E }}
+            style={{
+              fontSize: "clamp(16px, 2vw, 20px)",
+              color: "var(--muted)", maxWidth: 580,
+              lineHeight: 1.65, marginBottom: 44,
+            }}
+          >
+            Transformamos operações que vivem em planilha e WhatsApp em sistemas organizados — com CRM, tarefas, documentos, dashboards e automações.
+          </motion.p>
 
-      {/* Content */}
-      <div style={{ position: "relative", zIndex: 2, width: "min(720px,100%)", maxWidth: "calc(100vw - 80px)" }}>
-        <p style={{ margin: "0 0 16px", color: "var(--teal)", fontSize: 13, fontWeight: 900, textTransform: "uppercase" }}>
-          Software sob medida / Automação / Operação
-        </p>
-        <h1 style={{ margin: 0, fontSize: "clamp(46px,7vw,74px)", lineHeight: 0.95 }}>Tech Tsu</h1>
-        <p style={{ maxWidth: 640, margin: "26px 0 0", color: "rgba(255,255,255,.82)", fontSize: "clamp(18px,2.5vw,22px)" }}>
-          Sistemas sob medida para empresas de serviços que precisam sair da planilha, organizar o WhatsApp e transformar processo real em gestão.
-        </p>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 14, marginTop: 34 }}>
-          <a href="#contato" className="btn-primary">Marcar diagnóstico</a>
-          <a href="#case" className="btn-ghost">Ver prova comercial</a>
-        </div>
-      </div>
+          {/* CTA buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.86, ease: E }}
+            style={{ display: "flex", gap: 12, flexWrap: "wrap" }}
+          >
+            <motion.a
+              href="#contato"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ type: "spring", stiffness: 380, damping: 18 }}
+              style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                height: 48, padding: "0 24px",
+                background: "var(--teal)", color: "var(--bg)",
+                fontWeight: 700, fontSize: 14, borderRadius: 4,
+              }}
+            >
+              Marcar diagnóstico gratuito
+              <motion.svg
+                width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"
+                animate={{ x: [0, 3, 0] }}
+                transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut", repeatDelay: 1 }}
+              >
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </motion.svg>
+            </motion.a>
+
+            <motion.a
+              href="#case"
+              whileHover={{ scale: 1.04, borderColor: "var(--border-m)", color: "var(--text)" }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ type: "spring", stiffness: 380, damping: 18 }}
+              style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                height: 48, padding: "0 24px",
+                border: "1px solid var(--border-m)", color: "var(--muted)",
+                fontWeight: 500, fontSize: 14, borderRadius: 4,
+              }}
+            >
+              Ver case BBLAW
+            </motion.a>
+          </motion.div>
+
+          {/* Stats row */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.0, ease: E }}
+            style={{
+              display: "flex", gap: 40, marginTop: 64,
+              paddingTop: 40, borderTop: "1px solid var(--border)",
+              flexWrap: "wrap",
+            }}
+          >
+            {[
+              { n: "01",  label: "Cliente ativo" },
+              { n: "4+",  label: "Módulos entregues" },
+              { n: "3–6", label: "Semanas para MVP" },
+            ].map((s, i) => (
+              <motion.div
+                key={s.n}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 1.05 + i * 0.1, ease: E }}
+              >
+                <div style={{
+                  fontFamily: "var(--font-mono)", fontSize: 28,
+                  fontWeight: 500, color: "var(--text)", lineHeight: 1,
+                  letterSpacing: "-0.02em",
+                }}>
+                  {s.n}
+                </div>
+                <div style={{ fontSize: 12, color: "var(--muted-2)", marginTop: 4, fontWeight: 500 }}>
+                  {s.label}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+
+        {/* ── Right floating mock panels ─── */}
+        <motion.div
+          className="hero-mock"
+          initial={{ opacity: 0, x: 80 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, delay: 0.65, ease: E }}
+          style={{
+            position: "absolute", right: 40, top: "50%",
+            y: "-50%",
+            width: 340,
+            x: mockX,
+          }}
+        >
+          {/* Continuous float wrapper */}
+          <motion.div
+            animate={{ y: [0, -12, 0] }}
+            transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+            style={{ display: "flex", flexDirection: "column", gap: 12 }}
+          >
+            {/* KPI card */}
+            <motion.div
+              whileHover={{ scale: 1.03, borderColor: "rgba(46,196,182,0.25)" }}
+              transition={{ type: "spring", stiffness: 280, damping: 20 }}
+              style={{
+                padding: "20px",
+                background: "rgba(255,255,255,0.03)",
+                border: "1px solid var(--border)",
+                borderRadius: 8, backdropFilter: "blur(16px)",
+              }}
+            >
+              <div style={{ fontSize: 11, color: "var(--muted-2)", fontFamily: "var(--font-mono)", marginBottom: 12, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                Pipeline ativo
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 8 }}>
+                {[{n:"18",l:"Leads"},{n:"7",l:"Proposta"},{n:"3",l:"Fechado"}].map((k, i) => (
+                  <motion.div
+                    key={k.l}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4, delay: 0.9 + i * 0.1, ease: E }}
+                    style={{ textAlign: "center" }}
+                  >
+                    <div style={{ fontFamily: "var(--font-mono)", fontSize: 22, fontWeight: 500, color: "var(--text)" }}>{k.n}</div>
+                    <div style={{ fontSize: 11, color: "var(--muted-2)", marginTop: 2 }}>{k.l}</div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Task card */}
+            <motion.div
+              whileHover={{ scale: 1.03, borderColor: "rgba(46,196,182,0.25)" }}
+              transition={{ type: "spring", stiffness: 280, damping: 20 }}
+              style={{
+                padding: "20px",
+                background: "rgba(255,255,255,0.03)",
+                border: "1px solid var(--border)",
+                borderRadius: 8, backdropFilter: "blur(16px)",
+              }}
+            >
+              <div style={{ fontSize: 11, color: "var(--muted-2)", fontFamily: "var(--font-mono)", marginBottom: 14, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                Tarefas hoje
+              </div>
+              {[
+                { label: "Contrato — Dr. Marcos", done: true  },
+                { label: "Reunião — Proposta OS", done: true  },
+                { label: "Enviar docs fiscais",   done: false },
+              ].map((t, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: 12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: 1.0 + i * 0.1, ease: E }}
+                  style={{ display: "flex", alignItems: "center", gap: 10, marginTop: i === 0 ? 0 : 10 }}
+                >
+                  <div style={{
+                    width: 16, height: 16, borderRadius: 3,
+                    background: t.done ? "var(--teal)" : "transparent",
+                    border: `1px solid ${t.done ? "var(--teal)" : "var(--border-m)"}`,
+                    flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center",
+                  }}>
+                    {t.done && (
+                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                        <path d="M2 5l2 2 4-4" stroke="#070809" strokeWidth="1.5" strokeLinecap="round"/>
+                      </svg>
+                    )}
+                  </div>
+                  <span style={{ fontSize: 12, color: t.done ? "var(--muted-2)" : "var(--text)", textDecoration: t.done ? "line-through" : "none" }}>
+                    {t.label}
+                  </span>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Bar chart card */}
+            <motion.div
+              whileHover={{ scale: 1.03, borderColor: "rgba(46,196,182,0.25)" }}
+              transition={{ type: "spring", stiffness: 280, damping: 20 }}
+              style={{
+                padding: "20px",
+                background: "rgba(255,255,255,0.03)",
+                border: "1px solid var(--border)",
+                borderRadius: 8, backdropFilter: "blur(16px)",
+              }}
+            >
+              <div style={{ fontSize: 11, color: "var(--muted-2)", fontFamily: "var(--font-mono)", marginBottom: 14, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                Receita / mês
+              </div>
+              <div style={{ display: "flex", alignItems: "flex-end", gap: 6, height: 48 }}>
+                {bars.map((h, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ scaleY: 0 }}
+                    animate={{ scaleY: 1 }}
+                    transition={{ duration: 0.6, delay: 0.9 + i * 0.07, ease: E }}
+                    style={{
+                      flex: 1, height: `${h}%`,
+                      borderRadius: "2px 2px 0 0",
+                      background: i === 6 ? "var(--teal)" : "rgba(255,255,255,0.1)",
+                      transformOrigin: "bottom",
+                    }}
+                  />
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      </section>
 
       <style>{`
-        .system-panel {
-          position: absolute; width: 280px; min-height: 160px; padding: 22px;
-          border: 1px solid rgba(255,255,255,.16);
-          background: rgba(247,248,244,.1);
-          box-shadow: 0 22px 70px rgba(0,0,0,.28);
-          backdrop-filter: blur(12px);
-        }
-        .panel-a { top: 18%; right: 14%; }
-        .panel-b { right: 30%; bottom: 13%; }
-        .panel-c { top: 33%; right: -28px; }
-        .btn-primary {
-          display: inline-flex; align-items: center; justify-content: center;
-          min-height: 48px; padding: 0 20px;
-          background: var(--teal); color: var(--ink); font-weight: 800;
-        }
-        .btn-ghost {
-          display: inline-flex; align-items: center; justify-content: center;
-          min-height: 48px; padding: 0 20px;
-          border: 1px solid rgba(255,255,255,.3); color: var(--chalk); font-weight: 800;
-        }
-        @media (max-width: 980px) {
-          .panel-a { right: -70px; }
-          .panel-b { right: 18px; bottom: 24px; }
-          .panel-c { display: none; }
-        }
-        @media (max-width: 560px) {
-          .panel-a { top: 11%; right: -120px; }
-          .panel-b { right: -94px; }
-        }
+        @media (max-width: 1100px) { .hero-mock { display: none !important; } }
+        @media (max-width: 768px)  { .badge-float { display: none !important; } }
       `}</style>
-    </section>
+    </>
   )
 }

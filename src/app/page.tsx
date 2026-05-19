@@ -1,8 +1,9 @@
-import { Topbar }    from "@/components/Topbar"
+import { CursorGlow } from "@/components/CursorGlow"
+import { Topbar }     from "@/components/Topbar"
 import { Hero }       from "@/components/Hero"
-import { ProofStrip } from "@/components/ProofStrip"
-import { Oferta }     from "@/components/Oferta"
+import { Marquee }    from "@/components/Marquee"
 import { Case }       from "@/components/Case"
+import { Oferta }     from "@/components/Oferta"
 import { Processo }   from "@/components/Processo"
 import { Contato }    from "@/components/Contato"
 import { Footer }     from "@/components/Footer"
@@ -10,12 +11,13 @@ import { Footer }     from "@/components/Footer"
 export default function Home() {
   return (
     <>
+      <CursorGlow />
       <Topbar />
       <main>
         <Hero />
-        <ProofStrip />
-        <Oferta />
+        <Marquee />
         <Case />
+        <Oferta />
         <Processo />
         <Contato />
       </main>

@@ -1,41 +1,72 @@
-export function Topbar() {
-  return (
-    <header
-      style={{
-        position: "sticky",
-        top: 0,
-        zIndex: 20,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        minHeight: 72,
-        padding: "0 40px",
-        background: "rgba(247,248,244,0.92)",
-        borderBottom: "1px solid var(--line)",
-        backdropFilter: "blur(14px)",
-      }}
-    >
-      <a
-        href="#inicio"
-        style={{ display: "inline-flex", alignItems: "center", gap: 12, fontWeight: 800 }}
-        aria-label="Tech Tsu"
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/mark.svg" alt="" width={36} height={36} />
-        <span>Tech Tsu</span>
-      </a>
+"use client"
+import { useEffect, useState } from "react"
 
-      <nav style={{ display: "flex", alignItems: "center", gap: 28, color: "var(--muted)", fontSize: 14, fontWeight: 700 }}>
-        <a href="#oferta" className="nav-link">Oferta</a>
-        <a href="#case" className="nav-link">Case</a>
-        <a href="#processo" className="nav-link">Processo</a>
-        <a href="#contato" className="nav-link">Contato</a>
-      </nav>
+const links = [
+  { href: "#problema", label: "Problema" },
+  { href: "#solucao",  label: "Solução"  },
+  { href: "#case",     label: "Case"     },
+  { href: "#processo", label: "Processo" },
+]
+
+export function Topbar() {
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const fn = () => setScrolled(window.scrollY > 40)
+    window.addEventListener("scroll", fn, { passive: true })
+    return () => window.removeEventListener("scroll", fn)
+  }, [])
+
+  return (
+    <>
+      <header style={{
+        position: "fixed", top: 0, left: 0, right: 0, zIndex: 50,
+        display: "flex", alignItems: "center", justifyContent: "space-between",
+        height: 64, padding: "0 40px",
+        background: scrolled ? "rgba(7,8,9,0.88)" : "transparent",
+        borderBottom: scrolled ? "1px solid var(--border)" : "1px solid transparent",
+        backdropFilter: scrolled ? "blur(20px)" : "none",
+        transition: "all 0.3s ease",
+      }}>
+        {/* Logo */}
+        <a href="#inicio" style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <img src="/mark.svg" alt="Tech Tsu" width={28} height={28} />
+          <span style={{ fontWeight: 700, fontSize: 15, letterSpacing: "-0.01em" }}>Tech Tsu</span>
+        </a>
+
+        {/* Nav */}
+        <nav className="topbar-nav" style={{ display: "flex", gap: 32 }}>
+          {links.map(l => (
+            <a key={l.href} href={l.href} style={{
+              fontSize: 13, fontWeight: 500, color: "var(--muted)",
+              transition: "color 0.2s",
+            }}
+            onMouseEnter={e => (e.currentTarget.style.color = "var(--text)")}
+            onMouseLeave={e => (e.currentTarget.style.color = "var(--muted)")}>
+              {l.label}
+            </a>
+          ))}
+        </nav>
+
+        {/* CTA */}
+        <a href="#contato" style={{
+          display: "inline-flex", alignItems: "center", gap: 8,
+          height: 36, padding: "0 16px",
+          background: "var(--teal)", color: "var(--bg)",
+          fontSize: 13, fontWeight: 700, borderRadius: 4,
+          transition: "opacity 0.2s",
+        }}
+        onMouseEnter={e => (e.currentTarget.style.opacity = "0.85")}
+        onMouseLeave={e => (e.currentTarget.style.opacity = "1")}>
+          Marcar diagnóstico
+        </a>
+      </header>
 
       <style>{`
-        .nav-link:hover { color: var(--ink); }
-        @media (max-width: 980px) { nav { display: none; } }
+        @media (max-width: 768px) {
+          .topbar-nav { display: none !important; }
+        }
       `}</style>
-    </header>
+    </>
   )
 }
