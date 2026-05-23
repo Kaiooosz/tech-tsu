@@ -10,7 +10,6 @@ let _initDone = false
 
 export async function initDb() {
   if (_initDone) return
-  // Tabela base — campos legados continuam aceitos
   await sql`
     CREATE TABLE IF NOT EXISTS leads (
       id         SERIAL PRIMARY KEY,
@@ -22,7 +21,7 @@ export async function initDb() {
       created_at TIMESTAMPTZ DEFAULT NOW()
     )
   `
-  // Migrações aditivas — só adiciona colunas que não existem
+  // Step 2-4 (existentes)
   await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS segmento TEXT`
   await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS segmento_outro TEXT`
   await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS servicos JSONB DEFAULT '[]'::jsonb`
@@ -31,6 +30,21 @@ export async function initDb() {
   await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS ferramenta_outro TEXT`
   await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS gargalos JSONB DEFAULT '[]'::jsonb`
   await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS urgencia TEXT`
+  // Step 5-8 (novos)
+  await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS stack JSONB DEFAULT '[]'::jsonb`
+  await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS stack_outro TEXT`
+  await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS clientes_ativos TEXT`
+  await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS leads_mes TEXT`
+  await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS maturidade TEXT`
+  await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS automacoes_atuais TEXT`
+  await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS casos_ia JSONB DEFAULT '[]'::jsonb`
+  await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS casos_ia_outro TEXT`
+  await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS resultados JSONB DEFAULT '[]'::jsonb`
+  await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS investimento TEXT`
+  await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS prazo_desejado TEXT`
+  await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS modelo_contratacao TEXT`
+  await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS time_ti TEXT`
+  // Step 9 (empresa) + meta
   await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS tamanho TEXT`
   await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS faturamento TEXT`
   await sql`ALTER TABLE leads ADD COLUMN IF NOT EXISTS cargo TEXT`
