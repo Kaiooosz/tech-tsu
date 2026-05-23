@@ -1,7 +1,6 @@
 "use client"
 import { motion } from "framer-motion"
-import { staggerContainer, childFadeUp, slideRight } from "@/lib/motion"
-import { E } from "@/lib/motion"
+import { staggerContainer, childFadeUp, E } from "@/lib/motion"
 import { Quiz } from "@/components/Quiz"
 
 const trustPoints = [
@@ -30,102 +29,121 @@ export function ContatoLeads() {
           }}
         />
 
-        <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
-          <div style={{
-            display: "grid", gridTemplateColumns: "1fr 420px",
-            gap: 64, alignItems: "start",
-          }} className="contato-leads-grid">
+        <div style={{ maxWidth: 760, margin: "0 auto", position: "relative", zIndex: 1 }}>
 
-            {/* Copy */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-60px" }}
-              variants={staggerContainer(0.13)}
-            >
-              <motion.div variants={childFadeUp} style={{
-                display: "inline-flex", alignItems: "center", gap: 8,
-                marginBottom: 24, padding: "4px 12px",
-                border: "1px solid rgba(46,196,182,0.2)", borderRadius: 999,
-                fontSize: 11, fontWeight: 600, letterSpacing: "0.2em",
-                textTransform: "uppercase", color: "var(--teal)",
-                fontFamily: "var(--font-mono)",
-              }}>
-                <span className="pulse-dot" style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--teal)", display: "inline-block" }} />
-                Diagnóstico gratuito
-              </motion.div>
+          {/* Copy header */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            variants={staggerContainer(0.13)}
+            style={{ textAlign: "center", marginBottom: 36 }}
+          >
+            <motion.div variants={childFadeUp} style={{
+              display: "inline-flex", alignItems: "center", gap: 8,
+              marginBottom: 22, padding: "4px 12px",
+              border: "1px solid rgba(46,196,182,0.25)", borderRadius: 999,
+              fontSize: 11, fontWeight: 600, letterSpacing: "0.2em",
+              textTransform: "uppercase", color: "var(--teal)",
+              fontFamily: "var(--font-mono)",
+            }}>
+              <span className="pulse-dot" style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--teal)", display: "inline-block" }} />
+              Diagnóstico gratuito · 6 etapas
+            </motion.div>
 
-              <div style={{ overflow: "hidden" }}>
-                <motion.h2
-                  variants={{ hidden: { y: "100%" }, visible: { y: "0%", transition: { duration: 0.75, ease: E, delay: 0.1 } } }}
-                  style={{
-                    fontSize: "clamp(30px, 4vw, 52px)", fontWeight: 700,
-                    lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: 18,
-                  }}
-                >
-                  Qual é o gargalo que<br />
-                  <span style={{ color: "rgba(255,255,255,0.35)", fontWeight: 300, fontStyle: "italic" }}>mais custa caro hoje?</span>
-                </motion.h2>
-              </div>
-
-              <motion.p variants={childFadeUp} style={{ fontSize: 16, color: "var(--muted)", maxWidth: 520, lineHeight: 1.7, marginBottom: 36 }}>
-                30 minutos com o fluxo real aberto na mesa. Sem PowerPoint de venda, sem proposta genérica. Saímos com uma lista do que vale virar sistema — e o que não vale.
-              </motion.p>
-
-              <motion.div
-                variants={staggerContainer(0.1)}
-                style={{ display: "flex", flexDirection: "column", gap: 12 }}
+            <div style={{ overflow: "hidden" }}>
+              <motion.h2
+                variants={{ hidden: { y: "100%" }, visible: { y: "0%", transition: { duration: 0.75, ease: E, delay: 0.1 } } }}
+                style={{
+                  fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 700,
+                  lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: 16,
+                }}
               >
-                {trustPoints.map(pt => (
-                  <motion.div
-                    key={pt}
-                    variants={childFadeUp}
-                    style={{ display: "flex", alignItems: "center", gap: 10 }}
-                  >
-                    <motion.div
-                      whileHover={{ scale: 1.2 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                      style={{
-                        width: 18, height: 18, borderRadius: "50%", flexShrink: 0,
-                        background: "rgba(46,196,182,0.1)",
-                        border: "1px solid rgba(46,196,182,0.2)",
-                        display: "flex", alignItems: "center", justifyContent: "center",
-                      }}
-                    >
-                      <svg width="8" height="8" fill="none" viewBox="0 0 24 24">
-                        <path d="M5 13l4 4L19 7" stroke="var(--teal)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </motion.div>
-                    <span style={{ fontSize: 14, color: "var(--muted)" }}>{pt}</span>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </motion.div>
+                Qual é o gargalo que<br />
+                <span style={{ color: "rgba(255,255,255,0.32)", fontWeight: 300, fontStyle: "italic" }}>mais custa caro hoje?</span>
+              </motion.h2>
+            </div>
 
-            {/* Quiz card */}
+            <motion.p variants={childFadeUp} style={{ fontSize: 15, color: "var(--muted)", maxWidth: 520, margin: "0 auto 24px", lineHeight: 1.7 }}>
+              Preencha o formulário abaixo e nosso especialista entra em contato em até 24h úteis com um diagnóstico real — sem PowerPoint de venda.
+            </motion.p>
+
+            {/* Trust points inline */}
             <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-60px" }}
-              variants={slideRight}
-              style={{
-                padding: "32px 28px",
-                background: "var(--bg-3)",
-                border: "1px solid var(--border-m)",
-                borderRadius: 10,
-              }}
+              variants={staggerContainer(0.08)}
+              style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 18 }}
             >
-              <Quiz />
+              {trustPoints.map(pt => (
+                <motion.div
+                  key={pt}
+                  variants={childFadeUp}
+                  style={{ display: "flex", alignItems: "center", gap: 7 }}
+                >
+                  <div style={{
+                    width: 16, height: 16, borderRadius: "50%", flexShrink: 0,
+                    background: "rgba(46,196,182,0.1)",
+                    border: "1px solid rgba(46,196,182,0.2)",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                  }}>
+                    <svg width="8" height="8" fill="none" viewBox="0 0 24 24">
+                      <path d="M5 13l4 4L19 7" stroke="var(--teal)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                  <span style={{ fontSize: 12, color: "var(--muted)" }}>{pt}</span>
+                </motion.div>
+              ))}
             </motion.div>
-          </div>
+          </motion.div>
+
+          {/* Quiz card — full width */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6, ease: E }}
+            style={{
+              padding: "30px 28px",
+              background: "var(--bg-3)",
+              border: "1px solid var(--border-m)",
+              borderRadius: 14,
+              position: "relative",
+              overflow: "hidden",
+            }}
+          >
+            {/* Top accent line */}
+            <div style={{
+              position: "absolute", top: 0, left: 0, right: 0, height: 1,
+              background: "linear-gradient(90deg, transparent, rgba(46,196,182,0.4), transparent)",
+            }} />
+            <Quiz />
+          </motion.div>
+
+          {/* Secondary contact */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            style={{ textAlign: "center", marginTop: 24, paddingTop: 24, borderTop: "1px solid var(--border)" }}
+          >
+            <p style={{ fontSize: 12, color: "var(--muted-2)", lineHeight: 1.6 }}>
+              Ou fale diretamente:{" "}
+              <a href="mailto:contato@techtsu.com.br"
+                style={{ color: "var(--muted)", fontFamily: "var(--font-mono)", fontSize: 11, transition: "color 0.2s" }}
+                onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.color = "var(--teal)")}
+                onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.color = "var(--muted)")}
+              >
+                contato@techtsu.com.br
+              </a>
+            </p>
+          </motion.div>
         </div>
       </section>
 
       <style>{`
-        @media (max-width: 960px) {
-          .contato-leads-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+        @media (max-width: 560px) {
+          #contato { padding: 64px 16px !important; }
         }
-        @media (max-width: 560px) { #contato { padding: 64px 20px !important; } }
       `}</style>
     </>
   )
