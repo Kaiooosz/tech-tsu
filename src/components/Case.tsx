@@ -24,7 +24,7 @@ const chaosMessages = [
   { from: "Carlos",      text: "Qual planilha é a certa? tem 3 versões",    time: "10:05", alert: false },
   { from: "Você",        text: "Não sei, perguntar pra Lúcia",              time: "10:07", alert: false },
   { from: "Dr. Marcus",  text: "Quantos clientes ativos temos esse mês?",   time: "11:40", alert: false },
-  { from: "Lúcia",       text: "A planilha travou de novo 😤",              time: "12:03", alert: true  },
+  { from: "Lúcia",       text: "A planilha travou de novo",                  time: "12:03", alert: true  },
 ]
 
 const chaosSheet = [
@@ -579,7 +579,7 @@ export function Case() {
                 {/* Main content */}
                 <div style={{ padding: 16 }}>
                   <div style={{ marginBottom: 14 }}>
-                    <div style={{ fontSize: 10, fontWeight: 700, color: "var(--text)", marginBottom: 2 }}>Bom dia, Dr. Marcos 👋</div>
+                    <div style={{ fontSize: 10, fontWeight: 700, color: "var(--text)", marginBottom: 2 }}>Bom dia, Dr. Marcos</div>
                     <div style={{ fontSize: 9, color: "var(--muted-2)", fontFamily: "var(--font-mono)" }}>Seg, 19 maio 2025 · 3 tarefas urgentes</div>
                   </div>
 

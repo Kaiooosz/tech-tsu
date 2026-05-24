@@ -81,7 +81,7 @@ const L: Record<string, string> = {
 
 const lbl = (key: string | null | undefined) => key ? (L[key] ?? key) : "—"
 
-const SCORE_LABEL: Record<string, string> = { hot: "🔥 Quente", warm: "✨ Promissor", cold: "🌱 Nutrição" }
+const SCORE_LABEL: Record<string, string> = { hot: "Quente", warm: "Promissor", cold: "Nutrição" }
 const SCORE_COLOR: Record<string, string> = {
   hot: "var(--teal)", warm: "rgba(46,196,182,0.7)", cold: "rgba(255,255,255,0.35)",
 }
@@ -121,9 +121,9 @@ export default async function LeadsPage({
         <div style={{ display: "flex", gap: 6, marginBottom: 20, flexWrap: "wrap" }}>
           {[
             { id: "", label: "Todos", count: counts.total },
-            { id: "hot", label: "🔥 Quentes", count: counts.hot },
-            { id: "warm", label: "✨ Promissores", count: counts.warm },
-            { id: "cold", label: "🌱 Nutrição", count: counts.cold },
+            { id: "hot", label: "Quentes", count: counts.hot },
+            { id: "warm", label: "Promissores", count: counts.warm },
+            { id: "cold", label: "Nutrição", count: counts.cold },
           ].map(f => {
             const active = (score ?? "") === f.id
             const href = f.id ? `/admin/leads?secret=${secret}&score=${f.id}` : `/admin/leads?secret=${secret}`

@@ -445,7 +445,6 @@ export function Quiz() {
   const [data, setData] = useState<FormData>(INITIAL)
   const [sending, setSending] = useState(false)
   const [done, setDone] = useState(false)
-  const [score, setScore] = useState<{ score: string; pts: number } | null>(null)
   const [error, setError] = useState("")
 
   const set = <K extends keyof FormData>(key: K, val: FormData[K]) => setData(d => ({ ...d, [key]: val }))
@@ -484,8 +483,7 @@ export function Quiz() {
         body: JSON.stringify(data),
       })
       if (!res.ok) throw new Error("Erro")
-      const json = await res.json()
-      setScore({ score: json.score, pts: json.pts })
+      await res.json()
       setDone(true)
     } catch {
       setError("Algo deu errado. Tente novamente em alguns segundos.")
@@ -494,7 +492,7 @@ export function Quiz() {
     }
   }
 
-  if (done) return <SuccessScreen data={data} score={score} onReset={() => { setData(INITIAL); setStep(0); setDone(false); setScore(null) }} />
+  if (done) return <SuccessScreen data={data} onReset={() => { setData(INITIAL); setStep(0); setDone(false) }} />
 
   const current = STEPS[step]
 
@@ -884,13 +882,10 @@ export function Quiz() {
    Success Screen
    ════════════════════════════════════════════════════════════════ */
 function SuccessScreen({
-  data, score, onReset,
+  data, onReset,
 }: {
-  data: FormData; score: { score: string; pts: number } | null; onReset: () => void
+  data: FormData; onReset: () => void
 }) {
-  const scoreLabel = score?.score === "hot" ? "🔥 Lead Quente" : score?.score === "warm" ? "✨ Lead Promissor" : "🌱 Lead em Nutrição"
-  const scoreOpacity = score?.score === "hot" ? 1 : score?.score === "warm" ? 0.7 : 0.4
-
   const allMaps: Record<string, string> = {
     orcamento: "Solicitar Orçamento", reuniao: "Agendar Reunião", conhecer: "Conhecer Serviços", parceria: "Parceria",
     urgente: "Urgente", "1-3m": "1–3 meses", "3-6m": "3–6 meses", explorando: "Explorando", "1m": "< 1 mês", "6m+": "6+ meses",
@@ -940,23 +935,9 @@ function SuccessScreen({
         <Check size={28} strokeWidth={2.5} color="var(--teal)" />
       </div>
 
-      {score && (
-        <div style={{
-          display: "inline-flex", alignItems: "center", gap: 7,
-          padding: "6px 14px", borderRadius: 20, marginBottom: 18,
-          fontSize: 12, fontWeight: 600,
-          background: `rgba(46,196,182,${0.08 * scoreOpacity + 0.04})`,
-          border: `1px solid rgba(46,196,182,${0.25 * scoreOpacity + 0.1})`,
-          color: scoreOpacity > 0.5 ? "var(--teal)" : "var(--muted)",
-          fontFamily: "var(--font-mono)", letterSpacing: "0.05em",
-        }}>
-          {scoreLabel} · {score.pts}pts
-        </div>
-      )}
-
-      <h3 style={{ fontSize: 22, fontWeight: 700, marginBottom: 8 }}>Solicitação enviada!</h3>
-      <p style={{ fontSize: 13, color: "var(--muted)", lineHeight: 1.7, maxWidth: 420, margin: "0 auto 22px" }}>
-        Nossa equipe vai analisar seu perfil e entrar em contato em até <strong style={{ color: "var(--text)" }}>24 horas úteis</strong>.
+      <h3 style={{ fontSize: 22, fontWeight: 700, marginBottom: 10 }}>Solicitação recebida.</h3>
+      <p style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.7, maxWidth: 460, margin: "0 auto 22px" }}>
+        Nosso time vai analisar seu perfil, montar uma proposta personalizada e te enviar os <strong style={{ color: "var(--text)" }}>horários disponíveis na agenda</strong> para uma reunião. Resposta em até <strong style={{ color: "var(--text)" }}>24 horas úteis</strong> pelo WhatsApp ou e-mail informado.
       </p>
 
       <div style={{ background: "var(--bg-3)", border: "1px solid var(--border-m)", borderRadius: 12, padding: "16px 18px", textAlign: "left" }}>
