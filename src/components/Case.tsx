@@ -49,14 +49,39 @@ const recentTasks = [
 ]
 
 const bbHighlights = [
-  { to: 4,   suffix: "+", prefix: "",    label: "Módulos entregues" },
-  { to: 1,   suffix: "",  prefix: "",    label: "Escritório ativo"  },
-  { to: 100, suffix: "%", prefix: "",    label: "Processo digital"  },
+  { to: 7,  suffix: "+", prefix: "", label: "Aplicações em produção" },
+  { to: 14, suffix: "+", prefix: "", label: "Agentes IA especializados" },
+  { to: 15, suffix: "+", prefix: "", label: "Jurisdições suportadas" },
 ]
 
 const bbModules = [
-  "CRM jurídico", "Pipeline de leads", "Ordens de serviço",
-  "Controle de documentos", "Propostas comerciais", "Permissões por perfil",
+  "CRM com pipeline", "Portal de formulários", "Site institucional",
+  "3 landing pages especializadas", "Plataforma de curso", "API e backend",
+  "Atendimento por IA", "Agentes IA por jurisdição", "Disparos automatizados",
+]
+
+const outrosCases = [
+  {
+    name: "RB Moto Parts",
+    segmento: "E-commerce · Motopeças",
+    desc: "Site institucional com SEO local agressivo em Osasco SP. Mecânica, peças, borracharia e estética atendendo toda a Zona Oeste.",
+    stack: ["Next.js 16", "SEO Local", "JSON-LD", "Mobile-first"],
+    status: "Em produção",
+  },
+  {
+    name: "Pointify",
+    segmento: "Fintech · Cripto",
+    desc: "Plataforma que converte pontos de fidelidade em criptomoedas. Fluxo KYC, integração com exchange e atendimento por agente IA.",
+    stack: ["Next.js", "Prisma", "Exchange API", "Agente IA"],
+    status: "Em produção",
+  },
+  {
+    name: "Carroseller",
+    segmento: "SaaS · Automotivo",
+    desc: "Marketplace + social seller para revendedores. CRM de leads, prospecção via Instagram e follow-up automático no WhatsApp.",
+    stack: ["Node.js", "Vite", "Prisma", "Tailwind"],
+    status: "MVP em desenvolvimento",
+  },
 ]
 
 /* ── Variants ────────────────────────────────────────────────── */
@@ -450,8 +475,8 @@ export function Case() {
                   }}
                 >
                   BBLAW —<br />
-                  <span style={{ color: "var(--teal)" }}>ERP/CRM jurídico</span><br />
-                  <span style={{ color: "rgba(255,255,255,0.3)", fontWeight: 300, fontStyle: "italic" }}>sob medida.</span>
+                  <span style={{ color: "var(--teal)" }}>Ecossistema digital</span><br />
+                  <span style={{ color: "rgba(255,255,255,0.3)", fontWeight: 300, fontStyle: "italic" }}>para advocacia internacional.</span>
                 </motion.h2>
               </div>
 
@@ -460,9 +485,9 @@ export function Case() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2, ease: E }}
-                style={{ fontSize: 15, color: "var(--muted)", lineHeight: 1.7, marginBottom: 32, maxWidth: 440 }}
+                style={{ fontSize: 15, color: "var(--muted)", lineHeight: 1.7, marginBottom: 32, maxWidth: 460 }}
               >
-                Escritório que operava em planilhas e grupos de WhatsApp. Construímos uma plataforma central com CRM, OS, documentos, agenda e automações — em 6 semanas.
+                Bezerra Borges Advogados — advocacia patrimonial e internacionalização (offshore, sucessório, residências em 15+ jurisdições). Construímos um ecossistema completo: 7 aplicações em produção, 14 agentes de IA por jurisdição e plataforma de curso integrada. Tudo conversando, tudo sob medida.
               </motion.p>
 
               {/* Highlights — count up */}
@@ -543,7 +568,7 @@ export function Case() {
                   background: "rgba(255,255,255,0.04)",
                   display: "flex", alignItems: "center", padding: "0 8px",
                 }}>
-                  <span style={{ fontSize: 9, fontFamily: "var(--font-mono)", color: "rgba(255,255,255,0.2)" }}>bblaw.techtsu.com.br/dashboard</span>
+                  <span style={{ fontSize: 9, fontFamily: "var(--font-mono)", color: "rgba(255,255,255,0.2)" }}>bblaw-api.vercel.app/dashboard</span>
                 </div>
               </div>
 
@@ -654,14 +679,129 @@ export function Case() {
         </div>
       </section>
 
+      {/* ══ OUTROS CASES EM PRODUÇÃO ════════════════════════════ */}
+      <section id="outros-cases" style={{ padding: "96px 40px", background: "var(--bg)" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            variants={staggerContainer(0.1)}
+            style={{ marginBottom: 48 }}
+          >
+            <motion.div variants={childSlideUp} style={{
+              display: "inline-flex", alignItems: "center", gap: 8,
+              marginBottom: 20, padding: "4px 12px",
+              border: "1px solid var(--border-m)", borderRadius: 999,
+              fontSize: 11, fontWeight: 600, letterSpacing: "0.2em",
+              textTransform: "uppercase", color: "var(--muted)",
+              fontFamily: "var(--font-mono)",
+            }}>
+              Cases adicionais
+            </motion.div>
+            <div style={{ overflow: "hidden" }}>
+              <motion.h2
+                variants={{ hidden: { y: "100%" }, visible: { y: "0%", transition: { duration: 0.75, ease: E } } }}
+                style={{
+                  fontSize: "clamp(28px, 3.5vw, 46px)", fontWeight: 700,
+                  lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: 14,
+                }}
+              >
+                Outros sistemas em produção —<br />
+                <span style={{ color: "rgba(255,255,255,0.32)", fontWeight: 300, fontStyle: "italic" }}>diferentes segmentos, mesma régua.</span>
+              </motion.h2>
+            </div>
+            <motion.p variants={childSlideUp} style={{ fontSize: 15, color: "var(--muted)", maxWidth: 540, lineHeight: 1.65 }}>
+              Cada cliente tem sua operação. A Tech TSU entrega arquitetura sob medida — sem template, sem SaaS de prateleira.
+            </motion.p>
+          </motion.div>
+
+          <div style={{
+            display: "grid", gridTemplateColumns: "repeat(3, 1fr)",
+            gap: 1, background: "var(--border)",
+            border: "1px solid var(--border)", borderRadius: 10, overflow: "hidden",
+          }} className="outros-grid">
+            {outrosCases.map((c, idx) => (
+              <motion.div
+                key={c.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, delay: idx * 0.08, ease: E }}
+                whileHover={{ background: "rgba(46,196,182,0.03)" }}
+                style={{
+                  padding: "30px 28px",
+                  background: "var(--bg-2)",
+                  display: "flex", flexDirection: "column", gap: 14,
+                  minHeight: 320,
+                }}
+              >
+                {/* Status + Segmento */}
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10 }}>
+                  <span style={{
+                    fontSize: 10, fontFamily: "var(--font-mono)",
+                    color: "var(--teal)", letterSpacing: "0.15em",
+                    textTransform: "uppercase", fontWeight: 600,
+                  }}>
+                    {c.segmento}
+                  </span>
+                  <span style={{
+                    fontSize: 9, padding: "2px 8px", borderRadius: 999,
+                    background: c.status === "Em produção" ? "rgba(46,196,182,0.08)" : "rgba(255,255,255,0.04)",
+                    border: c.status === "Em produção" ? "1px solid rgba(46,196,182,0.2)" : "1px solid var(--border-m)",
+                    color: c.status === "Em produção" ? "var(--teal)" : "var(--muted-2)",
+                    fontFamily: "var(--font-mono)", letterSpacing: "0.05em",
+                    whiteSpace: "nowrap",
+                  }}>
+                    {c.status}
+                  </span>
+                </div>
+
+                {/* Name */}
+                <h3 style={{
+                  fontSize: 24, fontWeight: 700,
+                  letterSpacing: "-0.02em", color: "var(--text)",
+                  lineHeight: 1.1,
+                }}>
+                  {c.name}
+                </h3>
+
+                {/* Description */}
+                <p style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.65, flex: 1 }}>
+                  {c.desc}
+                </p>
+
+                {/* Stack tags */}
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 5 }}>
+                  {c.stack.map(s => (
+                    <span key={s} style={{
+                      padding: "3px 9px",
+                      background: "rgba(255,255,255,0.03)",
+                      border: "1px solid var(--border)",
+                      borderRadius: 4, fontSize: 10.5,
+                      fontFamily: "var(--font-mono)", color: "var(--muted)",
+                    }}>
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <style>{`
         @media (max-width: 900px) {
-          .case-split  { grid-template-columns: 1fr !important; }
-          .case-bblaw  { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .case-split   { grid-template-columns: 1fr !important; }
+          .case-bblaw   { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .outros-grid  { grid-template-columns: 1fr !important; }
         }
         @media (max-width: 560px) {
-          #problema { padding: 64px 20px !important; }
-          #case      { padding: 64px 20px !important; }
+          #problema      { padding: 64px 20px !important; }
+          #case          { padding: 64px 20px !important; }
+          #outros-cases  { padding: 64px 20px !important; }
         }
       `}</style>
     </>
