@@ -76,11 +76,11 @@ const outrosCases = [
     status: "Em produção",
   },
   {
-    name: "Carroseller",
-    segmento: "SaaS · Automotivo",
-    desc: "Marketplace + social seller para revendedores. CRM de leads, prospecção via Instagram e follow-up automático no WhatsApp.",
-    stack: ["Node.js", "Vite", "Prisma", "Tailwind"],
-    status: "MVP em desenvolvimento",
+    name: "Cicatribem",
+    segmento: "Cosméticos · Dérmico",
+    desc: "Agente de IA multicanal para atendimento. WhatsApp, site e Instagram num único fluxo — triagem, dúvidas sobre produtos e direcionamento de pedidos 24/7.",
+    stack: ["Agente IA", "WhatsApp Business API", "Instagram", "Multicanal"],
+    status: "Em produção",
   },
 ]
 
