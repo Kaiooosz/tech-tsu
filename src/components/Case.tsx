@@ -474,7 +474,7 @@ export function Case() {
                     lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: 16,
                   }}
                 >
-                  BBLAW —<br />
+                  Bezerra Borges —<br />
                   <span style={{ color: "var(--teal)" }}>Ecossistema digital</span><br />
                   <span style={{ color: "rgba(255,255,255,0.3)", fontWeight: 300, fontStyle: "italic" }}>para advocacia internacional.</span>
                 </motion.h2>
@@ -487,7 +487,7 @@ export function Case() {
                 transition={{ duration: 0.6, delay: 0.2, ease: E }}
                 style={{ fontSize: 15, color: "var(--muted)", lineHeight: 1.7, marginBottom: 32, maxWidth: 460 }}
               >
-                Bezerra Borges Advogados — advocacia patrimonial e internacionalização (offshore, sucessório, residências em 15+ jurisdições). Construímos um ecossistema completo: 7 aplicações em produção, 14 agentes de IA por jurisdição e plataforma de curso integrada. Tudo conversando, tudo sob medida.
+                Escritório de advocacia especializado em advocacia patrimonial e internacionalização (offshore, sucessório, residências em 15+ jurisdições). Construímos um ecossistema completo: 7 aplicações em produção, 14 agentes de IA por jurisdição e plataforma de curso integrada. Tudo conversando, tudo sob medida.
               </motion.p>
 
               {/* Highlights — count up */}

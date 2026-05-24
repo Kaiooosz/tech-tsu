@@ -181,7 +181,7 @@ export function Hero() {
                 fontWeight: 500, fontSize: 14, borderRadius: 4,
               }}
             >
-              Ver case BBLAW
+              Ver case Bezerra Borges
             </motion.a>
           </motion.div>
 

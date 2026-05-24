@@ -77,7 +77,7 @@ const segments: Segment[] = [
       { icon: "users", category: "EQUIPE", quote: "Cada advogado tem sua planilha. Ninguém sabe o que o outro está fazendo", solution: "Dashboard de OS por responsável com status, prazo e prioridade visível para toda a equipe." },
       { icon: "chart", category: "FINANCEIRO", quote: "Não sei se o escritório cresceu ou diminuiu esse trimestre", solution: "Relatório de receita, inadimplência e margem em tempo real, sem depender de Excel." },
     ],
-    entrega: "ERP jurídico com OS, documentos, agenda, CRM e alertas automáticos. Case real: BBLAW entregue em 6 semanas.",
+    entrega: "ERP jurídico com OS, documentos, agenda, CRM e alertas automáticos. Case real: escritório Bezerra Borges entregue em 6 semanas.",
     mvp: "MVP em 4–6 semanas",
   },
   {
