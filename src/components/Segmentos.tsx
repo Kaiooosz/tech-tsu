@@ -354,7 +354,7 @@ export function Segmentos() {
                 {seg.pains.map((p, i) => (
                   <motion.div
                     key={i}
-                    whileHover={{ background: "rgba(46,196,182,0.025)", transition: { duration: 0.18 } }}
+                    whileHover={{ background: "rgba(255,255,255,0.03)", transition: { duration: 0.18 } }}
                     style={{ padding: "22px 22px", background: "var(--bg-2)", position: "relative" }}
                   >
                     {/* Category label */}
