@@ -180,8 +180,8 @@ function DorTabs() {
     <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
       {/* Tab bar */}
       <div style={{
-        display: "flex", borderBottom: "1px solid rgba(255,60,60,0.1)",
-        background: "rgba(255,255,255,0.02)", flexShrink: 0,
+        display: "flex", borderBottom: "1px solid var(--border)",
+        background: "rgba(255,255,255,0.01)", flexShrink: 0,
       }}>
         {dorTabs.map((t, i) => (
           <button
@@ -190,11 +190,11 @@ function DorTabs() {
             style={{
               flex: 1, padding: "9px 4px",
               background: "transparent",
-              border: "none", borderBottom: active === i ? "2px solid rgba(255,80,80,0.7)" : "2px solid transparent",
+              border: "none", borderBottom: active === i ? "2px solid rgba(255,255,255,0.5)" : "2px solid transparent",
               cursor: "pointer",
               fontSize: 10, fontWeight: active === i ? 700 : 500,
               fontFamily: "var(--font-mono)", letterSpacing: "0.08em",
-              color: active === i ? "rgba(255,130,130,0.9)" : "rgba(255,255,255,0.28)",
+              color: active === i ? "rgba(255,255,255,0.8)" : "rgba(255,255,255,0.28)",
               transition: "color 0.15s, border-color 0.15s",
             }}
           >
@@ -216,15 +216,15 @@ function DorTabs() {
       {/* Caption */}
       <div style={{
         padding: "10px 16px", flexShrink: 0,
-        background: "rgba(255,40,40,0.05)",
-        borderTop: "1px solid rgba(255,60,60,0.1)",
+        background: "rgba(255,255,255,0.02)",
+        borderTop: "1px solid var(--border)",
         display: "flex", alignItems: "center", gap: 8,
       }}>
         <svg width="10" height="10" fill="none" viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="10" stroke="rgba(255,80,80,0.5)" strokeWidth="1.5"/>
-          <path d="M12 8v4m0 4h.01" stroke="rgba(255,80,80,0.5)" strokeWidth="2" strokeLinecap="round"/>
+          <circle cx="12" cy="12" r="10" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5"/>
+          <path d="M12 8v4m0 4h.01" stroke="rgba(255,255,255,0.2)" strokeWidth="2" strokeLinecap="round"/>
         </svg>
-        <span style={{ fontSize: 10, color: "rgba(255,110,110,0.6)", fontFamily: "var(--font-mono)", letterSpacing: "0.04em" }}>
+        <span style={{ fontSize: 10, color: "var(--muted-2)", fontFamily: "var(--font-mono)", letterSpacing: "0.04em" }}>
           {dorTabs[active].caption}
         </span>
       </div>
@@ -296,21 +296,17 @@ export function Case() {
               <div style={{
                 display: "flex", alignItems: "center", justifyContent: "space-between",
                 padding: "12px 20px",
-                background: "rgba(255,60,60,0.06)",
-                borderBottom: "1px solid rgba(255,60,60,0.12)",
+                background: "rgba(255,255,255,0.02)",
+                borderBottom: "1px solid var(--border)",
                 flexShrink: 0,
               }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <motion.span
-                    animate={{ scale: [1, 1.4, 1], opacity: [1, 0.4, 1] }}
-                    transition={{ duration: 1.8, repeat: Infinity }}
-                    style={{ width: 8, height: 8, borderRadius: "50%", background: "#ff4444", display: "inline-block" }}
-                  />
-                  <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "rgba(255,100,100,0.8)", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: "rgba(255,255,255,0.2)", border: "1px solid rgba(255,255,255,0.15)", display: "inline-block" }} />
+                  <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--muted)", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" }}>
                     Sem sistema
                   </span>
                 </div>
-                <span style={{ fontSize: 10, color: "rgba(255,255,255,0.2)", fontFamily: "var(--font-mono)" }}>WhatsApp + planilha</span>
+                <span style={{ fontSize: 10, color: "var(--muted-2)", fontFamily: "var(--font-mono)" }}>WhatsApp + planilha</span>
               </div>
 
               {/* Tabs de dor */}
