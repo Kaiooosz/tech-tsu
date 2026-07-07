@@ -6,8 +6,6 @@ import {
 } from "framer-motion"
 import { E, SPRING_SOFT } from "@/lib/motion"
 
-const bars = [30, 50, 42, 70, 58, 85, 90]
-
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({
@@ -16,10 +14,12 @@ export function Hero() {
   })
 
   // Parallax layers
-  const gridY    = useTransform(scrollYProgress, [0, 1], [0, -90])
-  const glowY    = useTransform(scrollYProgress, [0, 1], [0,  70])
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, -50])
-  const mockX    = useTransform(scrollYProgress, [0, 1], [0,  30])
+  const gridY      = useTransform(scrollYProgress, [0, 1], [0, -90])
+  const glowY      = useTransform(scrollYProgress, [0, 1], [0,  70])
+  const contentY   = useTransform(scrollYProgress, [0, 1], [0, -50])
+  const mockX      = useTransform(scrollYProgress, [0, 1], [0,  30])
+  const mockImgY   = useTransform(scrollYProgress, [0, 0.6, 1], [0, -40, -120])
+  const mockOpacity = useTransform(scrollYProgress, [0, 0.5, 0.85], [1, 0.6, 0])
 
   return (
     <>
@@ -222,131 +222,61 @@ export function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* ── Right floating mock panels ─── */}
+        {/* ── Right floating mock images ─── */}
         <motion.div
           className="hero-mock"
-          initial={{ opacity: 0, x: 80 }}
+          initial={{ opacity: 0, x: 60 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.65, ease: E }}
           style={{
             position: "absolute", right: 40, top: "50%",
-            y: "-50%",
-            width: 340,
+            translateY: "-50%",
+            width: 360,
             x: mockX,
+            y: mockImgY,
+            opacity: mockOpacity,
           }}
         >
-          {/* Continuous float wrapper */}
+          {/* Float animation wrapper */}
           <motion.div
-            animate={{ y: [0, -12, 0] }}
-            transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
-            style={{ display: "flex", flexDirection: "column", gap: 12 }}
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            style={{ position: "relative" }}
           >
-            {/* KPI card */}
-            <motion.div
-              whileHover={{ scale: 1.03, borderColor: "rgba(46,196,182,0.25)" }}
-              transition={{ type: "spring", stiffness: 280, damping: 20 }}
+            {/* Back image — pipeline, offset behind */}
+            <motion.img
+              src="/resultado-pipeline.svg"
+              alt="Pipeline CRM"
+              initial={{ opacity: 0, y: 20, rotate: 2 }}
+              animate={{ opacity: 1, y: 0, rotate: 2 }}
+              transition={{ duration: 0.8, delay: 0.9, ease: E }}
               style={{
-                padding: "20px",
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid var(--border)",
-                borderRadius: 8, backdropFilter: "blur(16px)",
+                position: "absolute",
+                top: 24, left: -20,
+                width: "90%",
+                borderRadius: 10,
+                boxShadow: "0 8px 40px rgba(0,0,0,0.45)",
+                border: "1px solid rgba(255,255,255,0.06)",
+                opacity: 0.55,
+                pointerEvents: "none",
               }}
-            >
-              <div style={{ fontSize: 11, color: "var(--muted-2)", fontFamily: "var(--font-mono)", marginBottom: 12, letterSpacing: "0.1em", textTransform: "uppercase" }}>
-                Pipeline ativo
-              </div>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 8 }}>
-                {[{n:"18",l:"Leads"},{n:"7",l:"Proposta"},{n:"3",l:"Fechado"}].map((k, i) => (
-                  <motion.div
-                    key={k.l}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: 0.9 + i * 0.1, ease: E }}
-                    style={{ textAlign: "center" }}
-                  >
-                    <div style={{ fontFamily: "var(--font-mono)", fontSize: 22, fontWeight: 500, color: "var(--text)" }}>{k.n}</div>
-                    <div style={{ fontSize: 11, color: "var(--muted-2)", marginTop: 2 }}>{k.l}</div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+            />
 
-            {/* Task card */}
-            <motion.div
-              whileHover={{ scale: 1.03, borderColor: "rgba(46,196,182,0.25)" }}
-              transition={{ type: "spring", stiffness: 280, damping: 20 }}
+            {/* Front image — dashboard */}
+            <motion.img
+              src="/resultado-dashboard.svg"
+              alt="Dashboard CRM"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.85, delay: 0.75, ease: E }}
               style={{
-                padding: "20px",
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid var(--border)",
-                borderRadius: 8, backdropFilter: "blur(16px)",
+                position: "relative", zIndex: 1,
+                width: "100%",
+                borderRadius: 12,
+                boxShadow: "0 16px 60px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.3)",
+                border: "1px solid rgba(255,255,255,0.08)",
               }}
-            >
-              <div style={{ fontSize: 11, color: "var(--muted-2)", fontFamily: "var(--font-mono)", marginBottom: 14, letterSpacing: "0.1em", textTransform: "uppercase" }}>
-                Tarefas hoje
-              </div>
-              {[
-                { label: "Contrato — Dr. Marcos", done: true  },
-                { label: "Reunião — Proposta OS", done: true  },
-                { label: "Enviar docs fiscais",   done: false },
-              ].map((t, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: 12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: 1.0 + i * 0.1, ease: E }}
-                  style={{ display: "flex", alignItems: "center", gap: 10, marginTop: i === 0 ? 0 : 10 }}
-                >
-                  <div style={{
-                    width: 16, height: 16, borderRadius: 3,
-                    background: t.done ? "var(--teal)" : "transparent",
-                    border: `1px solid ${t.done ? "var(--teal)" : "var(--border-m)"}`,
-                    flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center",
-                  }}>
-                    {t.done && (
-                      <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                        <path d="M2 5l2 2 4-4" stroke="#070809" strokeWidth="1.5" strokeLinecap="round"/>
-                      </svg>
-                    )}
-                  </div>
-                  <span style={{ fontSize: 12, color: t.done ? "var(--muted-2)" : "var(--text)", textDecoration: t.done ? "line-through" : "none" }}>
-                    {t.label}
-                  </span>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {/* Bar chart card */}
-            <motion.div
-              whileHover={{ scale: 1.03, borderColor: "rgba(46,196,182,0.25)" }}
-              transition={{ type: "spring", stiffness: 280, damping: 20 }}
-              style={{
-                padding: "20px",
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid var(--border)",
-                borderRadius: 8, backdropFilter: "blur(16px)",
-              }}
-            >
-              <div style={{ fontSize: 11, color: "var(--muted-2)", fontFamily: "var(--font-mono)", marginBottom: 14, letterSpacing: "0.1em", textTransform: "uppercase" }}>
-                Receita / mês
-              </div>
-              <div style={{ display: "flex", alignItems: "flex-end", gap: 6, height: 48 }}>
-                {bars.map((h, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ scaleY: 0 }}
-                    animate={{ scaleY: 1 }}
-                    transition={{ duration: 0.6, delay: 0.9 + i * 0.07, ease: E }}
-                    style={{
-                      flex: 1, height: `${h}%`,
-                      borderRadius: "2px 2px 0 0",
-                      background: i === 6 ? "var(--teal)" : "rgba(255,255,255,0.1)",
-                      transformOrigin: "bottom",
-                    }}
-                  />
-                ))}
-              </div>
-            </motion.div>
+            />
           </motion.div>
         </motion.div>
       </section>
