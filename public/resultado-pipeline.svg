@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="540" viewBox="0 0 720 540">
+  <defs>
+    <style>text { font-family: 'Space Grotesk', -apple-system, 'Helvetica Neue', sans-serif; }</style>
+  </defs>
+
+  <rect width="720" height="540" fill="#0d0e11"/>
+
+  <!-- Window -->
+  <rect x="20" y="20" width="680" height="500" rx="10" fill="#161b22" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <rect x="20" y="20" width="680" height="36" rx="10" fill="#1e2228"/>
+  <rect x="20" y="44" width="680" height="12" fill="#1e2228"/>
+  <circle cx="44" cy="38" r="6" fill="#ff5f57"/>
+  <circle cx="62" cy="38" r="6" fill="#ffbd2e"/>
+  <circle cx="80" cy="38" r="6" fill="#27c93f"/>
+  <text x="360" y="44" font-size="12" fill="rgba(255,255,255,0.4)" text-anchor="middle">Pipeline de Clientes — Tech Tsu CRM</text>
+
+  <!-- Page header -->
+  <rect x="20" y="56" width="680" height="44" fill="#1a1f26"/>
+  <text x="36" y="80" font-size="16" fill="rgba(255,255,255,0.85)" font-weight="700">Pipeline</text>
+  <text x="120" y="80" font-size="11" fill="rgba(255,255,255,0.25)">6 negociações abertas · R$ 87.400 em potencial</text>
+
+  <!-- Add button -->
+  <rect x="598" y="64" width="90" height="28" rx="4" fill="#2C55E8"/>
+  <text x="643" y="82" font-size="11" fill="#fff" text-anchor="middle" font-weight="600">+ Novo lead</text>
+
+  <!-- Kanban columns -->
+  <!-- Col 1: Contato -->
+  <rect x="28" y="112" width="152" height="360" rx="6" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+  <text x="40" y="132" font-size="10" fill="rgba(255,255,255,0.4)" font-weight="600" letter-spacing="1">CONTATO</text>
+  <circle cx="148" cy="126" r="9" fill="rgba(255,255,255,0.07)"/>
+  <text x="148" y="130" font-size="9" fill="rgba(255,255,255,0.4)" text-anchor="middle">2</text>
+
+  <!-- Card -->
+  <rect x="36" y="140" width="136" height="68" rx="5" fill="#1e2430" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <text x="48" y="158" font-size="10" fill="rgba(255,255,255,0.75)" font-weight="600">Clínica Odontos</text>
+  <text x="48" y="172" font-size="9" fill="rgba(255,255,255,0.3)">CRM odontológico</text>
+  <rect x="48" y="180" width="60" height="14" rx="3" fill="rgba(44,85,232,0.1)" stroke="rgba(44,85,232,0.2)" stroke-width="1"/>
+  <text x="78" y="190" font-size="8" fill="#2C55E8" text-anchor="middle">R$ 12.000</text>
+  <text x="156" y="200" font-size="8" fill="rgba(255,255,255,0.2)" text-anchor="end">há 2 dias</text>
+
+  <rect x="36" y="218" width="136" height="68" rx="5" fill="#1e2430" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <text x="48" y="236" font-size="10" fill="rgba(255,255,255,0.75)" font-weight="600">Martins Adv.</text>
+  <text x="48" y="250" font-size="9" fill="rgba(255,255,255,0.3)">Portal jurídico</text>
+  <rect x="48" y="258" width="60" height="14" rx="3" fill="rgba(44,85,232,0.1)" stroke="rgba(44,85,232,0.2)" stroke-width="1"/>
+  <text x="78" y="268" font-size="8" fill="#2C55E8" text-anchor="middle">R$ 18.000</text>
+  <text x="156" y="278" font-size="8" fill="rgba(255,255,255,0.2)" text-anchor="end">hoje</text>
+
+  <!-- Col 2: Diagnóstico -->
+  <rect x="190" y="112" width="152" height="360" rx="6" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+  <text x="202" y="132" font-size="10" fill="rgba(255,255,255,0.4)" font-weight="600" letter-spacing="1">DIAGNOSTICO</text>
+  <circle cx="314" cy="126" r="9" fill="rgba(255,255,255,0.07)"/>
+  <text x="314" y="130" font-size="9" fill="rgba(255,255,255,0.4)" text-anchor="middle">2</text>
+
+  <rect x="198" y="140" width="136" height="68" rx="5" fill="#1e2430" stroke="rgba(44,85,232,0.15)" stroke-width="1"/>
+  <text x="210" y="158" font-size="10" fill="rgba(255,255,255,0.75)" font-weight="600">RB Log</text>
+  <text x="210" y="172" font-size="9" fill="rgba(255,255,255,0.3)">ERP logística</text>
+  <rect x="210" y="180" width="60" height="14" rx="3" fill="rgba(44,85,232,0.1)" stroke="rgba(44,85,232,0.2)" stroke-width="1"/>
+  <text x="240" y="190" font-size="8" fill="#2C55E8" text-anchor="middle">R$ 22.000</text>
+  <text x="318" y="200" font-size="8" fill="rgba(255,200,95,0.6)" text-anchor="end">reunião hj 14h</text>
+
+  <rect x="198" y="218" width="136" height="68" rx="5" fill="#1e2430" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <text x="210" y="236" font-size="10" fill="rgba(255,255,255,0.75)" font-weight="600">Estúdio Forma</text>
+  <text x="210" y="250" font-size="9" fill="rgba(255,255,255,0.3)">App fitness</text>
+  <rect x="210" y="258" width="60" height="14" rx="3" fill="rgba(44,85,232,0.1)" stroke="rgba(44,85,232,0.2)" stroke-width="1"/>
+  <text x="240" y="268" font-size="8" fill="#2C55E8" text-anchor="middle">R$ 9.000</text>
+  <text x="318" y="278" font-size="8" fill="rgba(255,255,255,0.2)" text-anchor="end">há 3 dias</text>
+
+  <!-- Col 3: Proposta -->
+  <rect x="352" y="112" width="152" height="360" rx="6" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+  <text x="364" y="132" font-size="10" fill="rgba(255,255,255,0.4)" font-weight="600" letter-spacing="1">PROPOSTA</text>
+  <circle cx="476" cy="126" r="9" fill="rgba(255,255,255,0.07)"/>
+  <text x="476" y="130" font-size="9" fill="rgba(255,255,255,0.4)" text-anchor="middle">1</text>
+
+  <rect x="360" y="140" width="136" height="68" rx="5" fill="#1e2430" stroke="rgba(246,200,95,0.2)" stroke-width="1"/>
+  <text x="372" y="158" font-size="10" fill="rgba(255,255,255,0.75)" font-weight="600">Grupo Vidal</text>
+  <text x="372" y="172" font-size="9" fill="rgba(255,255,255,0.3)">CRM imobiliário</text>
+  <rect x="372" y="180" width="68" height="14" rx="3" fill="rgba(246,200,95,0.08)" stroke="rgba(246,200,95,0.2)" stroke-width="1"/>
+  <text x="406" y="190" font-size="8" fill="#f6c85f" text-anchor="middle">R$ 14.400</text>
+  <text x="480" y="200" font-size="8" fill="rgba(246,200,95,0.6)" text-anchor="end">aguardando ok</text>
+
+  <!-- Col 4: Fechado -->
+  <rect x="514" y="112" width="174" height="360" rx="6" fill="rgba(44,85,232,0.03)" stroke="rgba(44,85,232,0.1)" stroke-width="1"/>
+  <text x="526" y="132" font-size="10" fill="rgba(44,85,232,0.7)" font-weight="600" letter-spacing="1">FECHADO</text>
+  <circle cx="654" cy="126" r="9" fill="rgba(44,85,232,0.15)"/>
+  <text x="654" y="130" font-size="9" fill="#2C55E8" text-anchor="middle">1</text>
+
+  <rect x="522" y="140" width="158" height="68" rx="5" fill="rgba(44,85,232,0.06)" stroke="rgba(44,85,232,0.2)" stroke-width="1"/>
+  <text x="534" y="158" font-size="10" fill="rgba(255,255,255,0.85)" font-weight="600">Bezerra Borges</text>
+  <text x="534" y="172" font-size="9" fill="rgba(255,255,255,0.3)">Ecossistema jurídico</text>
+  <rect x="534" y="180" width="72" height="14" rx="3" fill="rgba(44,85,232,0.15)" stroke="rgba(44,85,232,0.3)" stroke-width="1"/>
+  <text x="570" y="190" font-size="8" fill="#2C55E8" text-anchor="middle">R$ 12.000/mês</text>
+  <rect x="610" y="178" width="56" height="18" rx="3" fill="rgba(39,201,63,0.12)" stroke="rgba(39,201,63,0.3)" stroke-width="1"/>
+  <text x="638" y="191" font-size="8" fill="#27c93f" text-anchor="middle" font-weight="700">Fechado</text>
+
+  <!-- Bottom stats -->
+  <rect x="20" y="482" width="680" height="38" fill="rgba(255,255,255,0.01)" stroke-top="rgba(255,255,255,0.04)"/>
+  <rect x="20" y="482" width="680" height="1" fill="rgba(255,255,255,0.05)"/>
+  <text x="36" y="505" font-size="10" fill="rgba(255,255,255,0.3)">Total pipeline:</text>
+  <text x="112" y="505" font-size="10" fill="rgba(255,255,255,0.7)" font-weight="600">R$ 87.400</text>
+  <text x="220" y="505" font-size="10" fill="rgba(255,255,255,0.2)">·</text>
+  <text x="230" y="505" font-size="10" fill="rgba(255,255,255,0.3)">Taxa de conversão:</text>
+  <text x="340" y="505" font-size="10" fill="#2C55E8" font-weight="600">68%</text>
+  <text x="400" y="505" font-size="10" fill="rgba(255,255,255,0.2)">·</text>
+  <text x="410" y="505" font-size="10" fill="rgba(255,255,255,0.3)">Ciclo médio:</text>
+  <text x="490" y="505" font-size="10" fill="rgba(255,255,255,0.7)" font-weight="600">14 dias</text>
+  <text x="580" y="505" font-size="10" fill="rgba(255,255,255,0.2)">·</text>
+  <text x="590" y="505" font-size="10" fill="rgba(255,255,255,0.3)">Atualizado agora</text>
+  <circle cx="678" cy="501" r="4" fill="#27c93f"/>
+</svg>

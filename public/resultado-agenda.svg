@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="540" viewBox="0 0 720 540">
+  <defs>
+    <style>text { font-family: 'Space Grotesk', -apple-system, 'Helvetica Neue', sans-serif; }</style>
+  </defs>
+
+  <rect width="720" height="540" fill="#0d0e11"/>
+
+  <!-- Window -->
+  <rect x="20" y="20" width="680" height="500" rx="10" fill="#161b22" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <rect x="20" y="20" width="680" height="36" rx="10" fill="#1e2228"/>
+  <rect x="20" y="44" width="680" height="12" fill="#1e2228"/>
+  <circle cx="44" cy="38" r="6" fill="#ff5f57"/>
+  <circle cx="62" cy="38" r="6" fill="#ffbd2e"/>
+  <circle cx="80" cy="38" r="6" fill="#27c93f"/>
+  <text x="360" y="44" font-size="12" fill="rgba(255,255,255,0.4)" text-anchor="middle">Agenda — Maio 2025</text>
+
+  <!-- Month header -->
+  <rect x="20" y="56" width="680" height="48" fill="#1a1f26"/>
+  <text x="36" y="80" font-size="17" fill="rgba(255,255,255,0.85)" font-weight="700">Maio 2025</text>
+  <text x="180" y="80" font-size="11" fill="rgba(255,255,255,0.25)">8 eventos confirmados esta semana</text>
+  <rect x="620" y="64" width="68" height="26" rx="4" fill="#2C55E8"/>
+  <text x="654" y="81" font-size="10" fill="#fff" text-anchor="middle" font-weight="600">+ Agendar</text>
+
+  <!-- Day headers -->
+  <rect x="20" y="104" width="680" height="30" fill="#13171d"/>
+  <g font-size="10" font-weight="600" fill="rgba(255,255,255,0.3)">
+    <text x="68"  y="123" text-anchor="middle">SEG</text>
+    <text x="165" y="123" text-anchor="middle">TER</text>
+    <text x="262" y="123" text-anchor="middle">QUA</text>
+    <text x="359" y="123" text-anchor="middle">QUI</text>
+    <text x="456" y="123" text-anchor="middle">SEX</text>
+    <text x="553" y="123" text-anchor="middle">SAB</text>
+    <text x="650" y="123" text-anchor="middle">DOM</text>
+  </g>
+
+  <!-- Calendar grid -->
+  <rect x="20" y="134" width="680" height="356" fill="#161b22"/>
+  <line x1="117" y1="134" x2="117" y2="490" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <line x1="214" y1="134" x2="214" y2="490" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <line x1="311" y1="134" x2="311" y2="490" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <line x1="408" y1="134" x2="408" y2="490" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <line x1="505" y1="134" x2="505" y2="490" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <line x1="602" y1="134" x2="602" y2="490" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <line x1="20" y1="252" x2="700" y2="252" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+  <line x1="20" y1="370" x2="700" y2="370" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+
+  <!-- Day numbers -->
+  <g font-size="12" font-weight="600">
+    <text x="68"  y="152" text-anchor="middle" fill="rgba(255,255,255,0.5)">19</text>
+    <text x="165" y="152" text-anchor="middle" fill="rgba(255,255,255,0.5)">20</text>
+    <text x="262" y="152" text-anchor="middle" fill="rgba(255,255,255,0.5)">21</text>
+    <text x="359" y="152" text-anchor="middle" fill="rgba(255,255,255,0.5)">22</text>
+    <text x="456" y="152" text-anchor="middle" fill="rgba(255,255,255,0.5)">23</text>
+    <text x="553" y="152" text-anchor="middle" fill="rgba(255,255,255,0.2)">24</text>
+    <text x="650" y="152" text-anchor="middle" fill="rgba(255,255,255,0.2)">25</text>
+
+    <!-- TODAY highlight -->
+    <circle cx="68" cy="148" r="13" fill="rgba(44,85,232,0.15)" stroke="rgba(44,85,232,0.3)" stroke-width="1"/>
+    <text x="68" y="152" text-anchor="middle" fill="#2C55E8">19</text>
+
+    <text x="68"  y="270" text-anchor="middle" fill="rgba(255,255,255,0.5)">26</text>
+    <text x="165" y="270" text-anchor="middle" fill="rgba(255,255,255,0.5)">27</text>
+    <text x="262" y="270" text-anchor="middle" fill="rgba(255,255,255,0.5)">28</text>
+    <text x="359" y="270" text-anchor="middle" fill="rgba(255,255,255,0.5)">29</text>
+    <text x="456" y="270" text-anchor="middle" fill="rgba(255,255,255,0.5)">30</text>
+    <text x="553" y="270" text-anchor="middle" fill="rgba(255,255,255,0.2)">31</text>
+  </g>
+
+  <!-- Events week 1 -->
+  <!-- Seg: Diagnóstico Clínica -->
+  <rect x="28" y="158" width="82" height="30" rx="3" fill="rgba(44,85,232,0.15)" stroke="rgba(44,85,232,0.3)" stroke-width="1"/>
+  <text x="36" y="170" font-size="8.5" fill="#8FA8FF" font-weight="600">10h Diagnóstico</text>
+  <text x="36" y="182" font-size="8" fill="rgba(143,168,255,0.6)">Clínica Odontos</text>
+
+  <!-- Seg: Reunião interna -->
+  <rect x="28" y="196" width="82" height="26" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="36" y="208" font-size="8.5" fill="rgba(255,255,255,0.5)" font-weight="600">15h Daily equipe</text>
+  <text x="36" y="218" font-size="8" fill="rgba(255,255,255,0.25)">recorrente</text>
+
+  <!-- Ter: Follow-up -->
+  <rect x="125" y="158" width="82" height="30" rx="3" fill="rgba(44,85,232,0.1)" stroke="rgba(44,85,232,0.2)" stroke-width="1"/>
+  <text x="133" y="170" font-size="8.5" fill="#8FA8FF" font-weight="600">9h Follow-up</text>
+  <text x="133" y="182" font-size="8" fill="rgba(143,168,255,0.6)">Martins Adv.</text>
+
+  <!-- Qua: Entrega OS -->
+  <rect x="222" y="158" width="82" height="30" rx="3" fill="rgba(246,200,95,0.1)" stroke="rgba(246,200,95,0.25)" stroke-width="1"/>
+  <text x="230" y="170" font-size="8.5" fill="#f6c85f" font-weight="600">14h Entrega OS</text>
+  <text x="230" y="182" font-size="8" fill="rgba(246,200,95,0.6)">#312 · Empresa Alfa</text>
+
+  <!-- Qui: Demo RB Log -->
+  <rect x="319" y="158" width="82" height="30" rx="3" fill="rgba(44,85,232,0.15)" stroke="rgba(44,85,232,0.3)" stroke-width="1"/>
+  <text x="327" y="170" font-size="8.5" fill="#8FA8FF" font-weight="600">14h Demo CRM</text>
+  <text x="327" y="182" font-size="8" fill="rgba(143,168,255,0.6)">RB Log</text>
+
+  <!-- Sex: Fechamento Grupo Vidal -->
+  <rect x="416" y="158" width="82" height="30" rx="3" fill="rgba(39,201,63,0.1)" stroke="rgba(39,201,63,0.25)" stroke-width="1"/>
+  <text x="424" y="170" font-size="8.5" fill="#27c93f" font-weight="600">10h Fechamento</text>
+  <text x="424" y="182" font-size="8" fill="rgba(39,201,63,0.6)">Grupo Vidal</text>
+
+  <!-- Week 2 events -->
+  <rect x="28" y="276" width="82" height="30" rx="3" fill="rgba(44,85,232,0.1)" stroke="rgba(44,85,232,0.2)" stroke-width="1"/>
+  <text x="36" y="288" font-size="8.5" fill="#8FA8FF" font-weight="600">11h Kickoff</text>
+  <text x="36" y="300" font-size="8" fill="rgba(143,168,255,0.6)">Bezerra Borges</text>
+
+  <rect x="125" y="276" width="82" height="30" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="133" y="288" font-size="8.5" fill="rgba(255,255,255,0.5)" font-weight="600">10h Sprint review</text>
+  <text x="133" y="300" font-size="8" fill="rgba(255,255,255,0.25)">equipe dev</text>
+
+  <rect x="222" y="276" width="82" height="30" rx="3" fill="rgba(44,85,232,0.1)" stroke="rgba(44,85,232,0.2)" stroke-width="1"/>
+  <text x="230" y="288" font-size="8.5" fill="#8FA8FF" font-weight="600">14h Proposta</text>
+  <text x="230" y="300" font-size="8" fill="rgba(143,168,255,0.6)">Estúdio Forma</text>
+
+  <!-- Bottom status -->
+  <rect x="20" y="488" width="680" height="32" fill="#13171d" rx="10"/>
+  <rect x="20" y="488" width="680" height="16" fill="#13171d"/>
+  <rect x="20" y="488" width="680" height="1" fill="rgba(255,255,255,0.05)"/>
+  <circle cx="44" cy="504" r="4" fill="#27c93f"/>
+  <text x="56" y="508" font-size="10" fill="rgba(255,255,255,0.4)">8 eventos confirmados · 0 conflitos · Lembretes automáticos ativos</text>
+  <rect x="580" y="494" width="110" height="20" rx="4" fill="rgba(44,85,232,0.1)" stroke="rgba(44,85,232,0.2)" stroke-width="1"/>
+  <text x="635" y="508" font-size="9" fill="#2C55E8" text-anchor="middle" font-weight="600">Tudo sincronizado</text>
+</svg>

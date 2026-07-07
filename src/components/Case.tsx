@@ -102,6 +102,136 @@ const rowVariant = {
   visible: { opacity: 1, x: 0, transition: { duration: 0.32, ease: E } },
 }
 
+/* ── ResultTabs ──────────────────────────────────────────────── */
+const resultTabs = [
+  { id: "dashboard", label: "Dashboard", src: "/resultado-dashboard.svg", caption: "KPIs, OS abertas e receita em tempo real" },
+  { id: "pipeline",  label: "Pipeline",  src: "/resultado-pipeline.svg",  caption: "Kanban de negociações — R$ 87k em vista" },
+  { id: "agenda",    label: "Agenda",    src: "/resultado-agenda.svg",     caption: "8 eventos confirmados, zero conflitos" },
+]
+
+function ResultTabs() {
+  const [active, setActive] = useState(0)
+  return (
+    <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
+      {/* Tab bar */}
+      <div style={{
+        display: "flex", borderBottom: "1px solid rgba(44,85,232,0.15)",
+        background: "rgba(255,255,255,0.01)", flexShrink: 0,
+      }}>
+        {resultTabs.map((t, i) => (
+          <button
+            key={t.id}
+            onClick={() => setActive(i)}
+            style={{
+              flex: 1, padding: "9px 4px",
+              background: "transparent",
+              border: "none", borderBottom: active === i ? "2px solid var(--teal)" : "2px solid transparent",
+              cursor: "pointer",
+              fontSize: 10, fontWeight: active === i ? 700 : 500,
+              fontFamily: "var(--font-mono)", letterSpacing: "0.08em",
+              color: active === i ? "var(--teal)" : "rgba(255,255,255,0.28)",
+              transition: "color 0.15s, border-color 0.15s",
+            }}
+          >
+            {t.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Image */}
+      <div style={{ flex: 1, overflow: "hidden", position: "relative", minHeight: 260 }}>
+        <img
+          key={resultTabs[active].src}
+          src={resultTabs[active].src}
+          alt={resultTabs[active].caption}
+          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block" }}
+        />
+      </div>
+
+      {/* Caption */}
+      <div style={{
+        padding: "10px 16px", flexShrink: 0,
+        background: "rgba(44,85,232,0.04)",
+        borderTop: "1px solid rgba(44,85,232,0.1)",
+        display: "flex", alignItems: "center", gap: 8,
+      }}>
+        <svg width="10" height="10" fill="none" viewBox="0 0 24 24">
+          <path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke="var(--teal)" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M22 4L12 14.01l-3-3" stroke="var(--teal)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+        <span style={{ fontSize: 10, color: "var(--teal)", fontFamily: "var(--font-mono)", letterSpacing: "0.04em" }}>
+          {resultTabs[active].caption}
+        </span>
+      </div>
+    </div>
+  )
+}
+
+/* ── DorTabs ─────────────────────────────────────────────────── */
+const dorTabs = [
+  { id: "whatsapp", label: "WhatsApp",  src: "/dor-whatsapp-caos.svg",  caption: "47 mensagens sem resposta — ninguém sabe o prazo" },
+  { id: "arquivos", label: "Arquivos",  src: "/dor-arquivos-caos.svg",  caption: '3 arquivos "FINAL" — ninguém sabe qual é o certo' },
+  { id: "agenda",   label: "Agenda",    src: "/dor-agenda-vazia.svg",   caption: "8 leads na semana — nenhum com próximo passo" },
+]
+
+function DorTabs() {
+  const [active, setActive] = useState(0)
+  return (
+    <div style={{ display: "flex", flexDirection: "column", flex: 1 }}>
+      {/* Tab bar */}
+      <div style={{
+        display: "flex", borderBottom: "1px solid rgba(255,60,60,0.1)",
+        background: "rgba(255,255,255,0.02)", flexShrink: 0,
+      }}>
+        {dorTabs.map((t, i) => (
+          <button
+            key={t.id}
+            onClick={() => setActive(i)}
+            style={{
+              flex: 1, padding: "9px 4px",
+              background: "transparent",
+              border: "none", borderBottom: active === i ? "2px solid rgba(255,80,80,0.7)" : "2px solid transparent",
+              cursor: "pointer",
+              fontSize: 10, fontWeight: active === i ? 700 : 500,
+              fontFamily: "var(--font-mono)", letterSpacing: "0.08em",
+              color: active === i ? "rgba(255,130,130,0.9)" : "rgba(255,255,255,0.28)",
+              transition: "color 0.15s, border-color 0.15s",
+            }}
+          >
+            {t.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Image */}
+      <div style={{ flex: 1, overflow: "hidden", position: "relative", minHeight: 260 }}>
+        <img
+          key={dorTabs[active].src}
+          src={dorTabs[active].src}
+          alt={dorTabs[active].caption}
+          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block" }}
+        />
+      </div>
+
+      {/* Caption */}
+      <div style={{
+        padding: "10px 16px", flexShrink: 0,
+        background: "rgba(255,40,40,0.05)",
+        borderTop: "1px solid rgba(255,60,60,0.1)",
+        display: "flex", alignItems: "center", gap: 8,
+      }}>
+        <svg width="10" height="10" fill="none" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10" stroke="rgba(255,80,80,0.5)" strokeWidth="1.5"/>
+          <path d="M12 8v4m0 4h.01" stroke="rgba(255,80,80,0.5)" strokeWidth="2" strokeLinecap="round"/>
+        </svg>
+        <span style={{ fontSize: 10, color: "rgba(255,110,110,0.6)", fontFamily: "var(--font-mono)", letterSpacing: "0.04em" }}>
+          {dorTabs[active].caption}
+        </span>
+      </div>
+    </div>
+  )
+}
+
 /* ── Component ───────────────────────────────────────────────── */
 export function Case() {
   return (
@@ -160,7 +290,7 @@ export function Case() {
               whileInView="visible"
               viewport={{ once: true, margin: "-60px" }}
               variants={beforePanel}
-              style={{ background: "#0a0a0a" }}
+              style={{ background: "#0a0a0a", display: "flex", flexDirection: "column" }}
             >
               {/* Label bar */}
               <div style={{
@@ -168,6 +298,7 @@ export function Case() {
                 padding: "12px 20px",
                 background: "rgba(255,60,60,0.06)",
                 borderBottom: "1px solid rgba(255,60,60,0.12)",
+                flexShrink: 0,
               }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                   <motion.span
@@ -182,102 +313,8 @@ export function Case() {
                 <span style={{ fontSize: 10, color: "rgba(255,255,255,0.2)", fontFamily: "var(--font-mono)" }}>WhatsApp + planilha</span>
               </div>
 
-              {/* Messages */}
-              <div style={{ padding: "20px 20px 8px" }}>
-                <p style={{ fontSize: 10, fontFamily: "var(--font-mono)", color: "rgba(255,255,255,0.2)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 12 }}>
-                  Grupo "Operação Geral" — hoje
-                </p>
-                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                  {chaosMessages.map((m, i) => (
-                    <motion.div
-                      key={i}
-                      variants={msgVariant}
-                      whileHover={{ x: 3 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                      style={{
-                        display: "flex", gap: 8, alignItems: "flex-start",
-                        padding: "8px 10px",
-                        background: m.alert ? "rgba(255,60,60,0.07)" : "rgba(255,255,255,0.03)",
-                        border: `1px solid ${m.alert ? "rgba(255,60,60,0.18)" : "rgba(255,255,255,0.06)"}`,
-                        borderRadius: 6,
-                      }}
-                    >
-                      <div style={{
-                        width: 24, height: 24, borderRadius: "50%", flexShrink: 0,
-                        background: m.alert ? "rgba(255,60,60,0.25)" : "rgba(255,255,255,0.08)",
-                        display: "flex", alignItems: "center", justifyContent: "center",
-                        fontSize: 9, fontWeight: 700,
-                        color: m.alert ? "#ff8888" : "rgba(255,255,255,0.4)",
-                      }}>
-                        {m.from.charAt(0)}
-                      </div>
-                      <div style={{ flex: 1, minWidth: 0 }}>
-                        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 2 }}>
-                          <span style={{ fontSize: 10, fontWeight: 700, color: m.alert ? "#ff8888" : "rgba(255,255,255,0.5)" }}>{m.from}</span>
-                          <span style={{ fontSize: 9, color: "rgba(255,255,255,0.2)", fontFamily: "var(--font-mono)" }}>{m.time}</span>
-                        </div>
-                        <p style={{ fontSize: 11, color: m.alert ? "rgba(255,140,140,0.9)" : "rgba(255,255,255,0.45)", lineHeight: 1.4, margin: 0 }}>
-                          {m.text}
-                        </p>
-                      </div>
-                      {m.alert && (
-                        <motion.svg
-                          width="12" height="12" fill="none" viewBox="0 0 24 24"
-                          animate={{ scale: [1, 1.2, 1] }}
-                          transition={{ duration: 1.2, repeat: Infinity }}
-                          style={{ flexShrink: 0, marginTop: 2 }}
-                        >
-                          <path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="#ff6666" strokeWidth="2" strokeLinecap="round"/>
-                        </motion.svg>
-                      )}
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Broken spreadsheet */}
-              <div style={{ padding: "8px 20px 20px" }}>
-                <p style={{ fontSize: 10, fontFamily: "var(--font-mono)", color: "rgba(255,255,255,0.2)", letterSpacing: "0.1em", textTransform: "uppercase", margin: "16px 0 10px" }}>
-                  clientes_v3_FINAL_usaressa.xlsx
-                </p>
-                <div style={{ border: "1px solid rgba(255,255,255,0.08)", borderRadius: 4, overflow: "hidden" }}>
-                  {chaosSheet.map((row, i) => (
-                    <motion.div key={i} variants={rowVariant} style={{
-                      display: "grid", gridTemplateColumns: "1.4fr 1fr 0.8fr 0.8fr",
-                      background: i === 0 ? "rgba(255,255,255,0.04)" : (row.bad ? "rgba(255,60,60,0.04)" : "transparent"),
-                      borderBottom: i < chaosSheet.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none",
-                    }}>
-                      {[row.c1, row.c2, row.c3, row.c4].map((cell, ci) => {
-                        const isBad = row.bad && (cell === "???" || cell === "—" || cell === "venceu" || cell === "ninguém" || cell === "")
-                        return (
-                          <div key={ci} style={{
-                            padding: "5px 8px", fontSize: i === 0 ? 9 : 10,
-                            fontFamily: "var(--font-mono)", fontWeight: i === 0 ? 600 : 400,
-                            color: i === 0 ? "rgba(255,255,255,0.3)" : isBad ? "rgba(255,80,80,0.7)" : "rgba(255,255,255,0.4)",
-                            whiteSpace: "nowrap", overflow: "hidden",
-                          }}>
-                            {cell || "—"}
-                          </div>
-                        )
-                      })}
-                    </motion.div>
-                  ))}
-                </div>
-                <div style={{
-                  marginTop: 12, padding: "12px 14px",
-                  background: "rgba(255,60,60,0.04)",
-                  border: "1px solid rgba(255,60,60,0.1)",
-                  borderRadius: 4, display: "flex", alignItems: "center", gap: 8,
-                }}>
-                  <svg width="14" height="14" fill="none" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="10" stroke="rgba(255,80,80,0.5)" strokeWidth="1.5"/>
-                    <path d="M12 8v4m0 4h.01" stroke="rgba(255,80,80,0.5)" strokeWidth="2" strokeLinecap="round"/>
-                  </svg>
-                  <span style={{ fontSize: 11, color: "rgba(255,100,100,0.6)", fontFamily: "var(--font-mono)" }}>
-                    Sem métricas · Sem visibilidade · Sem controle
-                  </span>
-                </div>
-              </div>
+              {/* Tabs de dor */}
+              <DorTabs />
             </motion.div>
 
             {/* ── DEPOIS ────────────────────────────────────── */}
@@ -304,134 +341,7 @@ export function Case() {
                 <span style={{ fontSize: 10, color: "rgba(255,255,255,0.2)", fontFamily: "var(--font-mono)" }}>Tech Tsu — Dashboard</span>
               </div>
 
-              <div style={{ padding: 20, display: "flex", flexDirection: "column", gap: 12 }}>
-                {/* KPIs */}
-                <motion.div
-                  variants={staggerContainer(0.1)}
-                  style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 8 }}
-                >
-                  {kpis.map(k => (
-                    <motion.div
-                      key={k.n}
-                      variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: E } } }}
-                      whileHover={{ scale: 1.05, borderColor: "rgba(46,196,182,0.3)" }}
-                      transition={{ type: "spring", stiffness: 350, damping: 22 }}
-                      style={{
-                        padding: "12px 14px",
-                        background: "rgba(255,255,255,0.03)",
-                        border: "1px solid var(--border)",
-                        borderRadius: 6,
-                      }}
-                    >
-                      <div style={{ fontFamily: "var(--font-mono)", fontSize: 18, fontWeight: 500, color: "var(--text)", lineHeight: 1 }}>{k.n}</div>
-                      <div style={{ fontSize: 10, color: "var(--muted-2)", marginTop: 4, lineHeight: 1.3 }}>{k.label}</div>
-                      <div style={{ fontSize: 9, color: "var(--teal)", marginTop: 4, fontFamily: "var(--font-mono)" }}>{k.delta}</div>
-                    </motion.div>
-                  ))}
-                </motion.div>
-
-                {/* Pipeline bar */}
-                <motion.div
-                  variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: E } } }}
-                  style={{
-                    padding: "14px 16px",
-                    background: "rgba(255,255,255,0.02)",
-                    border: "1px solid var(--border)", borderRadius: 6,
-                  }}
-                >
-                  <p style={{ fontSize: 9, fontFamily: "var(--font-mono)", color: "var(--muted-2)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 10 }}>
-                    Pipeline
-                  </p>
-                  <div style={{ display: "flex", gap: 4, height: 36, alignItems: "flex-end" }}>
-                    {[{c:6},{c:4},{c:3},{c:11}].map((s, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ scaleY: 0 }}
-                        whileInView={{ scaleY: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: i * 0.08, ease: E }}
-                        style={{
-                          flex: 1, height: `${18 + s.c * 3}px`, borderRadius: "2px 2px 0 0",
-                          background: i === 2 ? "var(--teal)" : "rgba(255,255,255,0.1)",
-                          transformOrigin: "bottom",
-                        }}
-                      />
-                    ))}
-                  </div>
-                </motion.div>
-
-                {/* Tasks */}
-                <motion.div
-                  variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: E } } }}
-                  style={{
-                    padding: "14px 16px",
-                    background: "rgba(255,255,255,0.02)",
-                    border: "1px solid var(--border)", borderRadius: 6,
-                  }}
-                >
-                  <p style={{ fontSize: 9, fontFamily: "var(--font-mono)", color: "var(--muted-2)", letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 10 }}>
-                    Tarefas do dia
-                  </p>
-                  {recentTasks.map((t, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, x: 10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.35, delay: i * 0.08, ease: E }}
-                      style={{
-                        display: "flex", alignItems: "center", gap: 8,
-                        marginTop: i > 0 ? 8 : 0,
-                        padding: t.prio ? "5px 7px" : "0",
-                        background: t.prio ? "rgba(246,200,95,0.04)" : "transparent",
-                        border: t.prio ? "1px solid rgba(246,200,95,0.1)" : "none",
-                        borderRadius: t.prio ? 4 : 0,
-                      }}
-                    >
-                      <div style={{
-                        width: 14, height: 14, borderRadius: 3, flexShrink: 0,
-                        background: t.done ? "var(--teal)" : "transparent",
-                        border: `1px solid ${t.done ? "var(--teal)" : t.prio ? "rgba(246,200,95,0.4)" : "var(--border-m)"}`,
-                        display: "flex", alignItems: "center", justifyContent: "center",
-                      }}>
-                        {t.done && (
-                          <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
-                            <path d="M1.5 4l2 2 3-3" stroke="#070809" strokeWidth="1.5" strokeLinecap="round"/>
-                          </svg>
-                        )}
-                      </div>
-                      <span style={{
-                        fontSize: 10, lineHeight: 1.4,
-                        color: t.done ? "var(--muted-2)" : t.prio ? "var(--amber)" : "var(--text)",
-                        textDecoration: t.done ? "line-through" : "none",
-                      }}>{t.label}</span>
-                      {t.prio && !t.done && (
-                        <span style={{ fontSize: 9, fontFamily: "var(--font-mono)", color: "var(--amber)", marginLeft: "auto", flexShrink: 0 }}>urgente</span>
-                      )}
-                    </motion.div>
-                  ))}
-                </motion.div>
-
-                {/* All clear */}
-                <motion.div
-                  variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 0.6, ease: E } } }}
-                  style={{
-                    display: "flex", alignItems: "center", gap: 8,
-                    padding: "10px 14px",
-                    background: "rgba(46,196,182,0.04)",
-                    border: "1px solid rgba(46,196,182,0.12)",
-                    borderRadius: 4,
-                  }}
-                >
-                  <svg width="12" height="12" fill="none" viewBox="0 0 24 24">
-                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke="var(--teal)" strokeWidth="2" strokeLinecap="round"/>
-                    <path d="M22 4L12 14.01l-3-3" stroke="var(--teal)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                  <span style={{ fontSize: 10, color: "var(--teal)", fontFamily: "var(--font-mono)" }}>
-                    Visibilidade total · Equipe alinhada · Nada perdido
-                  </span>
-                </motion.div>
-              </div>
+              <ResultTabs />
             </motion.div>
           </div>
         </div>

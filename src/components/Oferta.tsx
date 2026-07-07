@@ -41,7 +41,7 @@ const cardVariant = {
 export function Oferta() {
   return (
     <>
-      <section id="solucao" style={{ padding: "96px 40px", background: "var(--bg-2)" }}>
+      <section id="solucao" style={{ padding: "96px 40px", background: "var(--paper)" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto" }}>
 
           {/* Header */}
@@ -55,10 +55,11 @@ export function Oferta() {
             <motion.div variants={childFadeUp} style={{
               display: "inline-flex", alignItems: "center", gap: 8,
               marginBottom: 20, padding: "4px 12px",
-              border: "1px solid var(--border-m)", borderRadius: 999,
+              border: "1px solid rgba(44,85,232,0.25)", borderRadius: 999,
               fontSize: 11, fontWeight: 600, letterSpacing: "0.2em",
               textTransform: "uppercase", color: "var(--teal)",
               fontFamily: "var(--font-mono)",
+              background: "rgba(44,85,232,0.06)",
             }}>
               Como entregamos
             </motion.div>
@@ -68,13 +69,14 @@ export function Oferta() {
                 style={{
                   fontSize: "clamp(32px, 4vw, 52px)", fontWeight: 700,
                   lineHeight: 1.05, letterSpacing: "-0.03em", marginBottom: 16,
+                  color: "var(--ink)",
                 }}
               >
                 Um sistema funcional antes<br />
-                <span style={{ color: "rgba(255,255,255,0.35)", fontWeight: 300, fontStyle: "italic" }}>de prometer o mundo.</span>
+                <span style={{ color: "var(--muted-ink)", fontWeight: 300, fontStyle: "italic" }}>de prometer o mundo.</span>
               </motion.h2>
             </div>
-            <motion.p variants={childFadeUp} style={{ fontSize: 17, color: "var(--muted)", maxWidth: 520, lineHeight: 1.65 }}>
+            <motion.p variants={childFadeUp} style={{ fontSize: 17, color: "var(--muted-ink)", maxWidth: 520, lineHeight: 1.65 }}>
               Começamos pelo diagnóstico, entregamos um MVP real, depois evoluímos. Sem contrato de 12 meses pela fé.
             </motion.p>
           </motion.div>
@@ -82,9 +84,7 @@ export function Oferta() {
           {/* Cards */}
           <div style={{
             display: "grid", gridTemplateColumns: "repeat(3, 1fr)",
-            gap: 1, background: "var(--border)",
-            border: "1px solid var(--border)", borderRadius: 8, overflow: "hidden",
-            marginBottom: 64,
+            gap: 16, marginBottom: 64,
           }} className="oferta-grid">
             {cards.map((c, idx) => (
               <motion.div
@@ -94,12 +94,16 @@ export function Oferta() {
                 whileInView="visible"
                 viewport={{ once: true, margin: "-60px" }}
                 variants={cardVariant}
-                whileHover={{ background: "rgba(46,196,182,0.03)", transition: { duration: 0.2 } }}
                 style={{
                   padding: "36px 32px",
-                  background: "var(--bg-2)",
+                  background: "#fff",
+                  borderRadius: 12,
+                  boxShadow: "var(--shadow-sm)",
+                  border: "1px solid var(--border-light)",
                   position: "relative",
+                  transition: "box-shadow 0.2s ease, transform 0.2s ease",
                 }}
+                whileHover={{ y: -3, boxShadow: "var(--shadow-md)" } as never}
               >
                 {/* Step number */}
                 <div style={{
@@ -111,55 +115,29 @@ export function Oferta() {
                   {c.step}
                 </div>
 
-                {/* Title */}
                 <h3 style={{
                   fontSize: 22, fontWeight: 700,
                   letterSpacing: "-0.02em", marginBottom: 14,
-                  color: "var(--text)",
+                  color: "var(--ink)",
                 }}>
                   {c.title}
                 </h3>
 
-                {/* Desc */}
-                <p style={{ fontSize: 14, color: "var(--muted)", lineHeight: 1.7, marginBottom: 28 }}>
+                <p style={{ fontSize: 14, color: "var(--muted-ink)", lineHeight: 1.7, marginBottom: 28 }}>
                   {c.desc}
                 </p>
 
-                {/* Detail */}
                 <div style={{
                   display: "inline-flex", alignItems: "center", gap: 6,
                   padding: "4px 10px",
-                  background: "rgba(46,196,182,0.06)",
-                  border: "1px solid rgba(46,196,182,0.15)",
+                  background: "rgba(44,85,232,0.06)",
+                  border: "1px solid rgba(44,85,232,0.15)",
                   borderRadius: 4,
                   fontSize: 11, fontFamily: "var(--font-mono)",
                   color: "var(--teal)", fontWeight: 500,
                 }}>
                   {c.detail}
                 </div>
-
-                {/* Connector */}
-                {idx < cards.length - 1 && (
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ type: "spring", stiffness: 300, damping: 18, delay: idx * 0.15 + 0.3 }}
-                    style={{
-                      position: "absolute", right: -13, top: "50%",
-                      translateY: "-50%", zIndex: 2,
-                      width: 26, height: 26, borderRadius: "50%",
-                      background: "var(--bg-3)",
-                      border: "1px solid var(--border-m)",
-                      display: "flex", alignItems: "center", justifyContent: "center",
-                    }}
-                    className="oferta-arrow"
-                  >
-                    <svg width="10" height="10" fill="none" stroke="var(--teal)" strokeWidth="2" viewBox="0 0 24 24">
-                      <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                  </motion.div>
-                )}
               </motion.div>
             ))}
           </div>
@@ -170,11 +148,11 @@ export function Oferta() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.6, ease: E }}
-            style={{ borderTop: "1px solid var(--border)", paddingTop: 40 }}
+            style={{ borderTop: "1px solid var(--border-light)", paddingTop: 40 }}
           >
             <p style={{
               fontSize: 11, fontFamily: "var(--font-mono)",
-              color: "var(--muted-2)", letterSpacing: "0.15em",
+              color: "var(--muted-ink-2)", letterSpacing: "0.15em",
               textTransform: "uppercase", marginBottom: 20,
             }}>
               Módulos disponíveis
@@ -190,16 +168,17 @@ export function Oferta() {
                 <motion.span
                   key={m}
                   variants={tagPop}
-                  whileHover={{ scale: 1.07, borderColor: "rgba(255,255,255,0.25)", color: "var(--text)" }}
+                  whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 400, damping: 18 }}
                   style={{
                     padding: "6px 14px",
-                    border: "1px solid var(--border)",
-                    borderRadius: 4,
+                    border: "1px solid var(--border-light-m)",
+                    borderRadius: 6,
                     fontSize: 12, fontFamily: "var(--font-mono)",
-                    color: "var(--muted)",
-                    background: "rgba(255,255,255,0.02)",
+                    color: "var(--muted-ink)",
+                    background: "transparent",
                     display: "inline-block",
+                    cursor: "default",
                   }}
                 >
                   {m}
@@ -212,7 +191,6 @@ export function Oferta() {
 
       <style>{`
         @media (max-width: 900px) { .oferta-grid { grid-template-columns: 1fr !important; } }
-        @media (max-width: 900px) { .oferta-arrow { display: none !important; } }
         @media (max-width: 560px) { #solucao { padding: 64px 20px !important; } }
       `}</style>
     </>

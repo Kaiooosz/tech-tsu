@@ -1,18 +1,37 @@
 @import "tailwindcss";
 
 :root {
-  --bg:      #070809;
-  --bg-2:    #0b0d10;
-  --bg-3:    #111417;
-  --border:  rgba(255,255,255,0.08);
-  --border-m:rgba(255,255,255,0.14);
-  --text:    #e7eaee;
-  --muted:   rgba(255,255,255,0.50);
-  --muted-2: rgba(255,255,255,0.30);
-  --teal:    #2ec4b6;
-  --teal-dim: rgba(46,196,182,0.15);
-  --amber:   #f6c85f;
-  --ink:     #070809;
+  /* ── Dark palette (base) ─────────────────────────── */
+  --bg:      #191B21;
+  --bg-2:    #1e2028;
+  --bg-3:    #252830;
+  --border:  rgba(255,255,255,0.07);
+  --border-m:rgba(255,255,255,0.12);
+  --text:    #F5F2EB;
+  --muted:   rgba(245,242,235,0.50);
+  --muted-2: rgba(245,242,235,0.30);
+
+  /* ── Light palette ───────────────────────────────── */
+  --paper:   #F8F7F4;
+  --paper-2: #EFECEA;
+  --ink:     #191B21;
+  --muted-ink:   rgba(25,27,33,0.50);
+  --muted-ink-2: rgba(25,27,33,0.30);
+  --border-light:   rgba(25,27,33,0.07);
+  --border-light-m: rgba(25,27,33,0.12);
+
+  /* ── Brand ───────────────────────────────────────── */
+  --teal:     #2C55E8;
+  --teal-dim: rgba(44,85,232,0.12);
+  --sky:      #8FA8FF;
+  --amber:    #f6c85f;
+  --clay:     #C8B49A;
+
+  /* ── Shadows ─────────────────────────────────────── */
+  --shadow-xs: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.05);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -89,8 +108,38 @@ body::after {
 
 /* Glow */
 .glow-teal {
-  box-shadow: 0 0 80px rgba(46,196,182,0.18), 0 0 160px rgba(46,196,182,0.06);
+  box-shadow: 0 0 80px rgba(44,85,232,0.18), 0 0 160px rgba(44,85,232,0.06);
 }
+
+/* ── Light section ───────────────────────────────────────────── */
+.section-light {
+  background: var(--paper);
+  color: var(--ink);
+}
+.section-light-2 {
+  background: var(--paper-2);
+  color: var(--ink);
+}
+
+/* ── Blue gradient section ───────────────────────────────────── */
+.bg-blue-grad {
+  background: linear-gradient(145deg, #1238C4 0%, #2C55E8 55%, #4B74FF 100%);
+  color: #fff;
+}
+
+/* ── Card shadows (light context) ───────────────────────────── */
+.card-lift {
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.card-lift:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* ── Thin divider ────────────────────────────────────────────── */
+.divider-light { border-top: 1px solid var(--border-light); }
+.divider-dark  { border-top: 1px solid var(--border); }
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }

@@ -30,8 +30,10 @@ export function Topbar() {
       }}>
         {/* Logo */}
         <a href="#inicio" style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <img src="/mark.svg" alt="Tech Tsu" width={28} height={28} />
-          <span style={{ fontWeight: 700, fontSize: 15, letterSpacing: "-0.01em" }}>Tech Tsu</span>
+          <img src="/mark-white.svg" alt="" width={28} height={28} />
+          <span style={{ fontFamily: "'Space Grotesk', sans-serif", fontWeight: 600, fontSize: 16, letterSpacing: "-0.04em", lineHeight: 1 }}>
+            <span style={{ color: "var(--text)" }}>tech</span><span style={{ color: "var(--sky)" }}>tsu</span>
+          </span>
         </a>
 
         {/* Nav */}
