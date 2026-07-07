@@ -1,0 +1,339 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0b0d12;--surf:#13151c;--surf2:#1a1d26;
+  --border:#1f2230;--border2:#2a2f44;
+  --text:#eef0f8;--muted:#6b7390;--hint:#3d4260;
+  --red:#ff4d4d;--amber:#f5a623;--green:#00e5a0;--blue:#3d9eff;
+  --pink:#e040fb;--teal:#00e5c0;
+}
+body{background:var(--bg);color:var(--text);font-family:'Syne',system-ui,sans-serif}
+
+.seg-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.seg-btn{padding:9px 14px;border:1px solid var(--border);border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;background:var(--surf);color:var(--muted);transition:all .18s;display:flex;align-items:center;gap:6px;letter-spacing:.2px}
+.seg-btn:hover{border-color:var(--border2);color:var(--text)}
+.seg-btn.active{border-color:var(--teal);color:var(--teal);background:rgba(0,229,192,.07)}
+.seg-btn i{font-size:15px}
+
+.seg-panel{display:none}
+.seg-panel.active{display:block}
+
+.seg-header{margin-bottom:24px}
+.seg-eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--teal);margin-bottom:6px;font-weight:600}
+.seg-title{font-size:21px;font-weight:700;line-height:1.3;color:var(--text);margin-bottom:8px}
+.seg-sub{font-size:13px;color:var(--muted);line-height:1.6;max-width:540px}
+
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.pain-card{background:var(--surf);border:1px solid var(--border);border-radius:11px;padding:16px;transition:border-color .2s;position:relative;overflow:hidden}
+.pain-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.pain-card.c-red::before{background:var(--red)}
+.pain-card.c-amber::before{background:var(--amber)}
+.pain-card.c-blue::before{background:var(--blue)}
+.pain-card.c-pink::before{background:var(--pink)}
+.pain-card:hover{border-color:var(--border2)}
+.pain-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;margin-bottom:8px;display:inline-flex;align-items:center;gap:4px}
+.pain-tag.c-red{color:var(--red)}
+.pain-tag.c-amber{color:var(--amber)}
+.pain-tag.c-blue{color:var(--blue)}
+.pain-tag.c-pink{color:var(--pink)}
+.pain-quote{font-size:13.5px;font-weight:500;color:var(--text);line-height:1.5;margin-bottom:8px;font-style:italic}
+.pain-quote::before{content:'"';color:var(--muted);font-size:20px;line-height:0;vertical-align:-4px;margin-right:2px}
+.pain-quote::after{content:'"';color:var(--muted);font-size:20px;line-height:0;vertical-align:-4px;margin-left:2px}
+.pain-impact{font-size:11.5px;color:var(--muted);line-height:1.5;padding-top:8px;border-top:1px solid var(--border)}
+.pain-impact strong{color:var(--text)}
+
+.solution-bar{background:var(--surf2);border:1px solid var(--border2);border-radius:11px;padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:24px}
+.sol-icon{width:38px;height:38px;border-radius:9px;background:rgba(0,229,192,.1);border:1px solid rgba(0,229,192,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sol-icon i{font-size:18px;color:var(--teal)}
+.sol-text{font-size:13px;color:var(--muted);line-height:1.6}
+.sol-text strong{color:var(--teal)}
+
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+.stat-box{background:var(--surf);border:1px solid var(--border);border-radius:9px;padding:12px;text-align:center}
+.stat-num{font-size:22px;font-weight:700;line-height:1;margin-bottom:4px}
+.stat-num.red{color:var(--red)}
+.stat-num.amber{color:var(--amber)}
+.stat-num.green{color:var(--green)}
+.stat-label{font-size:10.5px;color:var(--muted);line-height:1.4}
+
+.cta-strip{background:linear-gradient(135deg,rgba(0,229,192,.08),rgba(61,158,255,.08));border:1px solid rgba(0,229,192,.2);border-radius:11px;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:8px;flex-wrap:wrap}
+.cta-text{font-size:13.5px;font-weight:500;color:var(--text);line-height:1.5}
+.cta-text span{color:var(--teal)}
+.cta-btn{padding:10px 18px;background:var(--teal);color:#000;font-size:12px;font-weight:700;border:none;border-radius:8px;cursor:pointer;letter-spacing:.3px;white-space:nowrap;transition:opacity .2s}
+.cta-btn:hover{opacity:.85}
+
+@media(max-width:520px){.pain-grid{grid-template-columns:1fr}.stat-row{grid-template-columns:1fr 1fr}.seg-title{font-size:17px}}
+</style>
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+
+<h2 class="sr-only">Dores do mercado por segmento — Tech TSU</h2>
+
+<div style="max-width:680px;margin:0 auto;padding:16px 0">
+
+  <div style="margin-bottom:24px">
+    <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--teal);margin-bottom:6px;font-weight:600">Tech TSU · Inteligência comercial</div>
+    <div style="font-size:20px;font-weight:800;line-height:1.3;margin-bottom:6px">Cada segmento tem sua dor.<br>Nós temos a solução.</div>
+    <div style="font-size:13px;color:var(--muted)">Selecione o perfil do seu lead e veja as dores que a Tech TSU resolve.</div>
+  </div>
+
+  <div class="seg-bar">
+    <button class="seg-btn active" onclick="showSeg('clinica',this)"><i class="ti ti-stethoscope" aria-hidden="true"></i> Clínicas</button>
+    <button class="seg-btn" onclick="showSeg('juridico',this)"><i class="ti ti-gavel" aria-hidden="true"></i> Jurídico</button>
+    <button class="seg-btn" onclick="showSeg('b2b',this)"><i class="ti ti-briefcase" aria-hidden="true"></i> Serviços B2B</button>
+    <button class="seg-btn" onclick="showSeg('agencia',this)"><i class="ti ti-rocket" aria-hidden="true"></i> Agências</button>
+    <button class="seg-btn" onclick="showSeg('varejo',this)"><i class="ti ti-shopping-bag" aria-hidden="true"></i> Varejo / E-com</button>
+    <button class="seg-btn" onclick="showSeg('gestor',this)"><i class="ti ti-chart-line" aria-hidden="true"></i> CEO / Gestor</button>
+  </div>
+
+  <div id="seg-clinica" class="seg-panel active">
+    <div class="seg-header">
+      <div class="seg-eyebrow">Clínicas · Saúde · Odontologia · Psicologia</div>
+      <div class="seg-title">A clínica cresce, a operação desmorona.</div>
+      <div class="seg-sub">Agenda no papel, retorno esquecido, prontuário perdido no grupo do WhatsApp. Crescer sem sistema é crescer contra você mesmo.</div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num red">38%</div><div class="stat-label">dos pacientes não retornam por falta de follow-up</div></div>
+      <div class="stat-box"><div class="stat-num amber">4h</div><div class="stat-label">por dia perdidas em tarefas administrativas manuais</div></div>
+      <div class="stat-box"><div class="stat-num green">3×</div><div class="stat-label">mais receita com agenda e CRM automatizados</div></div>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card c-red">
+        <div class="pain-tag c-red"><i class="ti ti-alert-circle" aria-hidden="true"></i> Tempo perdido</div>
+        <div class="pain-quote">A recepcionista passa o dia no WhatsApp confirmando consulta manualmente</div>
+        <div class="pain-impact">Com automação de confirmação, <strong>70% das confirmações viram automáticas</strong> e a equipe foca no que importa.</div>
+      </div>
+      <div class="pain-card c-amber">
+        <div class="pain-tag c-amber"><i class="ti ti-x" aria-hidden="true"></i> Receita perdida</div>
+        <div class="pain-quote">Paciente sumiu depois da 1ª consulta e ninguém foi atrás</div>
+        <div class="pain-impact">Pipeline de retorno com <strong>lembrete automático e régua de relacionamento</strong> recupera pacientes inativos.</div>
+      </div>
+      <div class="pain-card c-blue">
+        <div class="pain-tag c-blue"><i class="ti ti-folders" aria-hidden="true"></i> Desorganização</div>
+        <div class="pain-quote">O prontuário está em três lugares e nenhum deles é confiável</div>
+        <div class="pain-impact"><strong>Gestão centralizada de documentos</strong> com histórico, versão e acesso por perfil.</div>
+      </div>
+      <div class="pain-card c-pink">
+        <div class="pain-tag c-pink"><i class="ti ti-eye-off" aria-hidden="true"></i> Sem visibilidade</div>
+        <div class="pain-quote">Não sei quantos pacientes novos entram por mês nem de onde vêm</div>
+        <div class="pain-impact"><strong>Dashboard com origem, conversão e LTV</strong> de cada canal em tempo real.</div>
+      </div>
+    </div>
+    <div class="solution-bar">
+      <div class="sol-icon"><i class="ti ti-bolt" aria-hidden="true"></i></div>
+      <div class="sol-text"><strong>O que a Tech TSU entrega:</strong> CRM de pacientes + automação de WhatsApp + agenda integrada + dashboard de receita. MVP em 4 semanas.</div>
+    </div>
+  </div>
+
+  <div id="seg-juridico" class="seg-panel">
+    <div class="seg-header">
+      <div class="seg-eyebrow">Escritórios de Advocacia · Contabilidade · Consultoria</div>
+      <div class="seg-title">Prazo vencido. Processo sumiu. Cliente ligando.</div>
+      <div class="seg-sub">O escritório que opera no improviso perde cliente, perde processo e perde reputação. Controle real não é luxo — é sobrevivência.</div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num red">1 em 3</div><div class="stat-label">escritórios perde prazo por controle manual</div></div>
+      <div class="stat-box"><div class="stat-num amber">60%</div><div class="stat-label">do tempo do sócio vai para gestão, não para advocacia</div></div>
+      <div class="stat-box"><div class="stat-num green">2×</div><div class="stat-label">mais processos atendidos com OS e agenda integrados</div></div>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card c-red">
+        <div class="pain-tag c-red"><i class="ti ti-clock-exclamation" aria-hidden="true"></i> Prazo crítico</div>
+        <div class="pain-quote">Soube do prazo pelo cliente, não pelo sistema</div>
+        <div class="pain-impact">Alerta automático de prazos com <strong>notificação no WhatsApp e e-mail</strong> 72h, 24h e no dia.</div>
+      </div>
+      <div class="pain-card c-amber">
+        <div class="pain-tag c-amber"><i class="ti ti-files" aria-hidden="true"></i> Documentos</div>
+        <div class="pain-quote">O cliente pediu o contrato e a gente ficou 40 minutos procurando</div>
+        <div class="pain-impact"><strong>Repositório com busca, tags e versão</strong> — qualquer documento em 10 segundos.</div>
+      </div>
+      <div class="pain-card c-blue">
+        <div class="pain-tag c-blue"><i class="ti ti-users-group" aria-hidden="true"></i> Equipe</div>
+        <div class="pain-quote">Cada advogado tem sua planilha. Ninguém sabe o que o outro está fazendo</div>
+        <div class="pain-impact">Dashboard de OS por responsável com <strong>status, prazo e prioridade</strong> visível para todos.</div>
+      </div>
+      <div class="pain-card c-pink">
+        <div class="pain-tag c-pink"><i class="ti ti-currency-dollar" aria-hidden="true"></i> Financeiro</div>
+        <div class="pain-quote">Não sei se o escritório cresceu ou diminuiu esse trimestre</div>
+        <div class="pain-impact"><strong>Relatório de receita, inadimplência e margem</strong> em tempo real, sem Excel.</div>
+      </div>
+    </div>
+    <div class="solution-bar">
+      <div class="sol-icon"><i class="ti ti-bolt" aria-hidden="true"></i></div>
+      <div class="sol-text"><strong>O que a Tech TSU entrega:</strong> ERP jurídico com OS, documentos, agenda, CRM e alertas automáticos. Case real: BBLAW em 6 semanas.</div>
+    </div>
+  </div>
+
+  <div id="seg-b2b" class="seg-panel">
+    <div class="seg-header">
+      <div class="seg-eyebrow">Prestadores de Serviço · Construtoras · Técnicos · Facilities</div>
+      <div class="seg-title">A operação escala. O caos escala junto.</div>
+      <div class="seg-sub">Ordens de serviço no caderno, técnico sem roteiro, cliente sem atualização. Quando não há sistema, quem paga é a sua margem.</div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num red">47%</div><div class="stat-label">das OS têm retrabalho por falta de histórico</div></div>
+      <div class="stat-box"><div class="stat-num amber">3h</div><div class="stat-label">por dia perdidas em alinhamento via WhatsApp</div></div>
+      <div class="stat-box"><div class="stat-num green">40%</div><div class="stat-label">de redução de retrabalho com sistema de OS</div></div>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card c-red">
+        <div class="pain-tag c-red"><i class="ti ti-tool" aria-hidden="true"></i> Operação</div>
+        <div class="pain-quote">O técnico chegou no cliente sem saber o histórico do equipamento</div>
+        <div class="pain-impact">OS com histórico completo, checklist e <strong>acesso mobile pelo técnico</strong> no campo.</div>
+      </div>
+      <div class="pain-card c-amber">
+        <div class="pain-tag c-amber"><i class="ti ti-map-pin-off" aria-hidden="true"></i> Rastreio</div>
+        <div class="pain-quote">Cliente liga perguntando status e ninguém sabe onde está a OS</div>
+        <div class="pain-impact"><strong>Atualização automática por WhatsApp</strong> para o cliente a cada mudança de status.</div>
+      </div>
+      <div class="pain-card c-blue">
+        <div class="pain-tag c-blue"><i class="ti ti-chart-pie" aria-hidden="true"></i> Margem</div>
+        <div class="pain-quote">Terminei o mês sem saber se lucrei ou se trabalhei de graça</div>
+        <div class="pain-impact"><strong>Dashboard de custo por OS e margem real</strong> por serviço, cliente e técnico.</div>
+      </div>
+      <div class="pain-card c-pink">
+        <div class="pain-tag c-pink"><i class="ti ti-robot" aria-hidden="true"></i> Atendimento IA</div>
+        <div class="pain-quote">Perco lead porque demoro a responder fora do horário comercial</div>
+        <div class="pain-impact"><strong>Agente de IA no WhatsApp</strong> que responde, qualifica e agenda 24/7.</div>
+      </div>
+    </div>
+    <div class="solution-bar">
+      <div class="sol-icon"><i class="ti ti-bolt" aria-hidden="true"></i></div>
+      <div class="sol-text"><strong>O que a Tech TSU entrega:</strong> Sistema de OS + CRM + agente de IA no WhatsApp + dashboard de margem. MVP em 3–5 semanas.</div>
+    </div>
+  </div>
+
+  <div id="seg-agencia" class="seg-panel">
+    <div class="seg-header">
+      <div class="seg-eyebrow">Agências · Marketing · Design · Desenvolvimento · Consultoria</div>
+      <div class="seg-title">Entregando para o cliente o que não faz por você mesmo.</div>
+      <div class="seg-sub">Agências que vendem transformação digital e gerenciam seus próprios projetos no Notion, WhatsApp e intuição. A ironia é real — e cara.</div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num red">52%</div><div class="stat-label">das agências perdem prazo por falta de visibilidade centralizada</div></div>
+      <div class="stat-box"><div class="stat-num amber">R$8k</div><div class="stat-label">perdidos por mês em retrabalho e horas não cobradas</div></div>
+      <div class="stat-box"><div class="stat-num green">35%</div><div class="stat-label">de aumento de margem com timesheet e OS integrados</div></div>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card c-red">
+        <div class="pain-tag c-red"><i class="ti ti-clock" aria-hidden="true"></i> Tempo</div>
+        <div class="pain-quote">Não sei quantas horas foram gastas no cliente e se o projeto pagou</div>
+        <div class="pain-impact"><strong>Timesheet automático por projeto e cliente</strong> com rentabilidade em tempo real.</div>
+      </div>
+      <div class="pain-card c-amber">
+        <div class="pain-tag c-amber"><i class="ti ti-send" aria-hidden="true"></i> Proposta</div>
+        <div class="pain-quote">Monto cada proposta do zero no Word e levo 3 horas</div>
+        <div class="pain-impact"><strong>Gerador de propostas</strong> com templates, variáveis e envio direto pelo sistema.</div>
+      </div>
+      <div class="pain-card c-blue">
+        <div class="pain-tag c-blue"><i class="ti ti-refresh" aria-hidden="true"></i> Retrabalho</div>
+        <div class="pain-quote">O cliente mudou o briefing e ninguém avisou o time de produção</div>
+        <div class="pain-impact">Histórico de versões e <strong>notificação automática de alterações</strong> para toda a equipe.</div>
+      </div>
+      <div class="pain-card c-pink">
+        <div class="pain-tag c-pink"><i class="ti ti-plug-connected" aria-hidden="true"></i> Integração MCP</div>
+        <div class="pain-quote">Tenho 7 ferramentas e nenhuma conversa com a outra</div>
+        <div class="pain-impact"><strong>Integrações MCP</strong> conectando Slack, Drive, Notion, CRM e WhatsApp num único fluxo.</div>
+      </div>
+    </div>
+    <div class="solution-bar">
+      <div class="sol-icon"><i class="ti ti-bolt" aria-hidden="true"></i></div>
+      <div class="sol-text"><strong>O que a Tech TSU entrega:</strong> Gestão de projetos + timesheet + propostas + integrações MCP + IA para briefing automático.</div>
+    </div>
+  </div>
+
+  <div id="seg-varejo" class="seg-panel">
+    <div class="seg-header">
+      <div class="seg-eyebrow">Varejo · E-commerce · Distribuidoras · Franquias</div>
+      <div class="seg-title">Estoque no achismo, venda perdida na demora.</div>
+      <div class="seg-sub">Ruptura de estoque, pedido duplicado, cliente sem resposta no WhatsApp. Em varejo, cada minuto de desorganização é receita no bolso do concorrente.</div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num red">23%</div><div class="stat-label">das vendas perdidas por ruptura ou erro de estoque</div></div>
+      <div class="stat-box"><div class="stat-num amber">8min</div><div class="stat-label">tempo médio de resposta que o cliente tolera antes de ir embora</div></div>
+      <div class="stat-box"><div class="stat-num green">5×</div><div class="stat-label">mais conversão com atendimento automatizado rápido</div></div>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card c-red">
+        <div class="pain-tag c-red"><i class="ti ti-package" aria-hidden="true"></i> Estoque</div>
+        <div class="pain-quote">Vendi no WhatsApp, mas o produto já tinha acabado ontem</div>
+        <div class="pain-impact"><strong>Estoque em tempo real</strong> integrado ao canal de vendas com alerta de ruptura automático.</div>
+      </div>
+      <div class="pain-card c-amber">
+        <div class="pain-tag c-amber"><i class="ti ti-messages" aria-hidden="true"></i> Atendimento</div>
+        <div class="pain-quote">Tenho 3 atendentes respondendo no WhatsApp e ainda perco venda</div>
+        <div class="pain-impact"><strong>Agente de IA</strong> que atende, consulta estoque e fecha pedido automaticamente.</div>
+      </div>
+      <div class="pain-card c-blue">
+        <div class="pain-tag c-blue"><i class="ti ti-repeat" aria-hidden="true"></i> Recompra</div>
+        <div class="pain-quote">O cliente comprou uma vez e sumiu. Não sei nem quem é ele</div>
+        <div class="pain-impact">CRM de clientes com <strong>régua de recompra, NPS e cashback automatizados</strong>.</div>
+      </div>
+      <div class="pain-card c-pink">
+        <div class="pain-tag c-pink"><i class="ti ti-link" aria-hidden="true"></i> Integração</div>
+        <div class="pain-quote">Loja, marketplace, estoque e financeiro são 4 sistemas separados</div>
+        <div class="pain-impact"><strong>Integrações via API e MCP</strong> unificando todos os canais em um painel único.</div>
+      </div>
+    </div>
+    <div class="solution-bar">
+      <div class="sol-icon"><i class="ti ti-bolt" aria-hidden="true"></i></div>
+      <div class="sol-text"><strong>O que a Tech TSU entrega:</strong> Agente IA no WhatsApp + CRM + integrações de estoque + dashboard de canais. MVP em 4–5 semanas.</div>
+    </div>
+  </div>
+
+  <div id="seg-gestor" class="seg-panel">
+    <div class="seg-header">
+      <div class="seg-eyebrow">CEO · Diretor · Sócio · Gestor de Operações</div>
+      <div class="seg-title">Você gerencia o negócio ou apaga incêndio todos os dias?</div>
+      <div class="seg-sub">Sem dado confiável em tempo real, todo gestor vira bombeiro. A empresa depende de você para funcionar — e isso é o maior risco do negócio.</div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-num red">70%</div><div class="stat-label">dos gestores tomam decisão com dados desatualizados</div></div>
+      <div class="stat-box"><div class="stat-num amber">6h</div><div class="stat-label">semanais perdidas em reuniões de alinhamento que evitariam com sistema</div></div>
+      <div class="stat-box"><div class="stat-num green">10×</div><div class="stat-label">mais velocidade de decisão com dashboard executivo em tempo real</div></div>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card c-red">
+        <div class="pain-tag c-red"><i class="ti ti-eye-off" aria-hidden="true"></i> Cegueira</div>
+        <div class="pain-quote">Só sei o resultado do mês quando o financeiro fecha — no dia 15 do mês seguinte</div>
+        <div class="pain-impact"><strong>Dashboard executivo em tempo real</strong> com receita, pipeline, margem e inadimplência.</div>
+      </div>
+      <div class="pain-card c-amber">
+        <div class="pain-tag c-amber"><i class="ti ti-hierarchy" aria-hidden="true"></i> Dependência</div>
+        <div class="pain-quote">Se eu sair de férias, a empresa trava</div>
+        <div class="pain-impact">Processos em sistema com <strong>permissões por perfil e automações</strong> que rodam sem você.</div>
+      </div>
+      <div class="pain-card c-blue">
+        <div class="pain-tag c-blue"><i class="ti ti-brain" aria-hidden="true"></i> Agente IA</div>
+        <div class="pain-quote">Quero saber o status da operação sem precisar perguntar para 5 pessoas</div>
+        <div class="pain-impact"><strong>Agente de IA interno</strong> que responde perguntas sobre o negócio com dados reais.</div>
+      </div>
+      <div class="pain-card c-pink">
+        <div class="pain-tag c-pink"><i class="ti ti-trending-up" aria-hidden="true"></i> Crescimento</div>
+        <div class="pain-quote">Não consigo escalar porque cada novo cliente aumenta o caos proporcionalmente</div>
+        <div class="pain-impact">Sistema que <strong>absorve crescimento sem aumentar headcount</strong> na mesma proporção.</div>
+      </div>
+    </div>
+    <div class="solution-bar">
+      <div class="sol-icon"><i class="ti ti-bolt" aria-hidden="true"></i></div>
+      <div class="sol-text"><strong>O que a Tech TSU entrega:</strong> Dashboard executivo + automações + agente IA interno + sistema que escala. Diagnóstico gratuito de 30 min.</div>
+    </div>
+  </div>
+
+  <div class="cta-strip">
+    <div class="cta-text">Reconheceu alguma dessas dores?<br><span>A Tech TSU transforma isso em sistema em 3 a 6 semanas.</span></div>
+    <button class="cta-btn" onclick="sendPrompt('Quero solicitar um diagnóstico gratuito com a Tech TSU')">Solicitar diagnóstico gratuito ↗</button>
+  </div>
+
+</div>
+
+<script>
+function showSeg(id,btn){
+  document.querySelectorAll('.seg-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.seg-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('seg-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>

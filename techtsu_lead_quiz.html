@@ -1,0 +1,452 @@
+
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --ts-bg:#0d0f14;--ts-surface:#151820;--ts-border:#1e2230;
+    --ts-accent:#00e5c0;--ts-accent2:#0099ff;
+    --ts-text:#f0f2f8;--ts-muted:#7a8199;--ts-subtle:#3a3f52;
+  }
+  body{background:var(--ts-bg);color:var(--ts-text);font-family:'IBM Plex Sans',system-ui,sans-serif}
+
+  .tab-bar{display:flex;gap:0;border-bottom:1px solid var(--ts-border);margin-bottom:0;background:var(--ts-surface);border-radius:12px 12px 0 0;overflow:hidden}
+  .tab-btn{flex:1;padding:13px 8px;font-size:12px;font-weight:500;background:none;border:none;color:var(--ts-muted);cursor:pointer;letter-spacing:.4px;text-transform:uppercase;transition:all .2s;border-bottom:2px solid transparent}
+  .tab-btn.active{color:var(--ts-accent);border-bottom-color:var(--ts-accent);background:rgba(0,229,192,.04)}
+  .tab-btn:hover:not(.active){color:var(--ts-text);background:rgba(255,255,255,.03)}
+
+  .tab-content{display:none;padding:28px 24px;background:var(--ts-bg);border:1px solid var(--ts-border);border-top:none;border-radius:0 0 12px 12px;min-height:420px}
+  .tab-content.active{display:block}
+
+  .quiz-wrap{max-width:560px;margin:0 auto}
+  .quiz-progress{display:flex;gap:6px;margin-bottom:28px}
+  .prog-dot{flex:1;height:3px;border-radius:4px;background:var(--ts-subtle);transition:background .3s}
+  .prog-dot.done{background:var(--ts-accent)}
+  .prog-dot.active{background:var(--ts-accent2)}
+
+  .step-label{font-size:11px;color:var(--ts-muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px}
+  .step-title{font-size:22px;font-weight:600;line-height:1.3;margin-bottom:6px;color:var(--ts-text)}
+  .step-sub{font-size:14px;color:var(--ts-muted);margin-bottom:28px;line-height:1.6}
+
+  .option-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+  .option-grid.single{grid-template-columns:1fr 1fr}
+  .option-card{padding:16px 14px;border:1px solid var(--ts-border);border-radius:10px;cursor:pointer;transition:all .18s;background:var(--ts-surface);text-align:left;display:flex;align-items:flex-start;gap:10px}
+  .option-card:hover{border-color:var(--ts-accent2);background:rgba(0,153,255,.06)}
+  .option-card.selected{border-color:var(--ts-accent);background:rgba(0,229,192,.07)}
+  .option-card i{font-size:18px;color:var(--ts-muted);margin-top:1px;flex-shrink:0}
+  .option-card.selected i{color:var(--ts-accent)}
+  .option-card .oc-title{font-size:13px;font-weight:500;color:var(--ts-text);line-height:1.3}
+  .option-card .oc-desc{font-size:11px;color:var(--ts-muted);margin-top:3px;line-height:1.4}
+  .option-card.selected .oc-title{color:var(--ts-accent)}
+
+  .multi-hint{font-size:11px;color:var(--ts-muted);margin-bottom:16px;display:flex;align-items:center;gap:6px}
+  .multi-hint i{font-size:14px;color:var(--ts-accent2)}
+
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
+  .form-grid.full{grid-template-columns:1fr}
+  .form-group{display:flex;flex-direction:column;gap:5px}
+  .form-group label{font-size:11px;text-transform:uppercase;letter-spacing:.6px;color:var(--ts-muted)}
+  .form-group input,.form-group textarea,.form-group select{
+    background:var(--ts-surface);border:1px solid var(--ts-border);
+    border-radius:8px;padding:10px 12px;font-size:13px;color:var(--ts-text);
+    font-family:inherit;transition:border-color .2s;outline:none
+  }
+  .form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--ts-accent2)}
+  .form-group textarea{resize:vertical;min-height:80px}
+  .form-group select option{background:#1a1d28}
+
+  .size-row{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+  .size-chip{padding:8px 14px;border:1px solid var(--ts-border);border-radius:20px;cursor:pointer;font-size:12px;color:var(--ts-muted);background:var(--ts-surface);transition:all .18s}
+  .size-chip:hover{border-color:var(--ts-accent2);color:var(--ts-text)}
+  .size-chip.selected{border-color:var(--ts-accent);color:var(--ts-accent);background:rgba(0,229,192,.06)}
+
+  .btn-primary{width:100%;padding:13px;background:var(--ts-accent);color:#000;font-size:14px;font-weight:600;border:none;border-radius:9px;cursor:pointer;transition:opacity .2s;letter-spacing:.2px}
+  .btn-primary:hover{opacity:.88}
+  .btn-primary:disabled{opacity:.4;cursor:not-allowed}
+  .btn-secondary{padding:11px 18px;background:none;border:1px solid var(--ts-border);color:var(--ts-muted);font-size:13px;border-radius:9px;cursor:pointer;transition:all .18s}
+  .btn-secondary:hover{border-color:var(--ts-muted);color:var(--ts-text)}
+  .btn-row{display:flex;gap:10px;align-items:center;margin-top:4px}
+  .btn-row .btn-primary{flex:1}
+
+  .success-wrap{text-align:center;padding:32px 0}
+  .success-icon{width:60px;height:60px;border-radius:50%;background:rgba(0,229,192,.12);border:2px solid var(--ts-accent);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:26px;color:var(--ts-accent)}
+  .success-title{font-size:22px;font-weight:600;margin-bottom:10px}
+  .success-sub{font-size:14px;color:var(--ts-muted);line-height:1.6;max-width:380px;margin:0 auto 28px}
+  .lead-summary{background:var(--ts-surface);border:1px solid var(--ts-border);border-radius:10px;padding:16px;text-align:left;font-size:12px;color:var(--ts-muted);line-height:1.8;max-width:400px;margin:0 auto 24px}
+  .lead-summary strong{color:var(--ts-text);font-weight:500}
+
+  .seo-section{margin-bottom:32px}
+  .seo-section h3{font-size:14px;font-weight:600;color:var(--ts-accent);text-transform:uppercase;letter-spacing:.6px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .seo-section h3 i{font-size:16px}
+  .tag-list{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:6px}
+  .kw-tag{padding:5px 11px;border:1px solid var(--ts-border);border-radius:16px;font-size:12px;color:var(--ts-text);background:var(--ts-surface)}
+  .kw-tag.hi{border-color:var(--ts-accent);color:var(--ts-accent);background:rgba(0,229,192,.06)}
+  .kw-tag.med{border-color:var(--ts-accent2);color:var(--ts-accent2);background:rgba(0,153,255,.06)}
+  .meta-box{background:var(--ts-surface);border:1px solid var(--ts-border);border-radius:10px;padding:16px;margin-bottom:12px;font-size:13px;line-height:1.7}
+  .meta-box .meta-label{font-size:10px;text-transform:uppercase;letter-spacing:.7px;color:var(--ts-muted);margin-bottom:4px}
+  .meta-box .meta-val{color:var(--ts-text)}
+  .meta-box .meta-val .hl{color:var(--ts-accent)}
+  .copy-btn{float:right;padding:4px 10px;font-size:11px;border:1px solid var(--ts-border);border-radius:6px;background:none;color:var(--ts-muted);cursor:pointer;transition:all .15s}
+  .copy-btn:hover{border-color:var(--ts-accent);color:var(--ts-accent)}
+
+  .prompt-box{background:var(--ts-surface);border:1px solid var(--ts-border);border-radius:10px;padding:20px;font-size:12.5px;line-height:1.8;color:#c8d0e8;white-space:pre-wrap;word-break:break-word;position:relative;font-family:'IBM Plex Mono',monospace}
+  .prompt-box .copy-btn{position:absolute;top:14px;right:14px}
+  .svc-table{width:100%;border-collapse:collapse;font-size:13px}
+  .svc-table th{text-align:left;color:var(--ts-muted);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.5px;padding:8px 10px;border-bottom:1px solid var(--ts-border)}
+  .svc-table td{padding:10px 10px;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:top;color:var(--ts-text)}
+  .svc-table td:first-child{color:var(--ts-accent);font-weight:500;white-space:nowrap}
+  .badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:500;margin-right:4px}
+  .badge.hot{background:rgba(0,229,192,.12);color:var(--ts-accent);border:1px solid rgba(0,229,192,.3)}
+  .badge.warm{background:rgba(0,153,255,.12);color:var(--ts-accent2);border:1px solid rgba(0,153,255,.3)}
+
+  @media(max-width:480px){
+    .option-grid{grid-template-columns:1fr}
+    .form-grid{grid-template-columns:1fr}
+  }
+</style>
+
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+
+<h2 class="sr-only">Tech TSU — Quiz de captação de leads, SEO e prompt de atendimento</h2>
+
+<div style="max-width:680px;margin:0 auto;padding:16px 0">
+
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px;padding:0 2px">
+    <div style="width:32px;height:32px;background:var(--ts-accent);border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+      <i class="ti ti-bolt" style="font-size:17px;color:#000" aria-hidden="true"></i>
+    </div>
+    <div>
+      <div style="font-size:15px;font-weight:600;color:var(--ts-text)">Tech TSU — Central de Leads</div>
+      <div style="font-size:11px;color:var(--ts-muted)">Quiz de captação · SEO · Prompt de atendimento</div>
+    </div>
+  </div>
+
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab('quiz')"><i class="ti ti-adjustments-horizontal" aria-hidden="true"></i> Quiz</button>
+    <button class="tab-btn" onclick="switchTab('seo')"><i class="ti ti-world" aria-hidden="true"></i> SEO</button>
+    <button class="tab-btn" onclick="switchTab('prompt')"><i class="ti ti-robot" aria-hidden="true"></i> Prompt IA</button>
+    <button class="tab-btn" onclick="switchTab('servicos')"><i class="ti ti-list" aria-hidden="true"></i> Serviços</button>
+  </div>
+
+  <div id="tab-quiz" class="tab-content active">
+    <div class="quiz-wrap" id="quizWrap"></div>
+  </div>
+
+  <div id="tab-seo" class="tab-content">
+    <div class="seo-section">
+      <h3><i class="ti ti-search" aria-hidden="true"></i> Palavras-chave prioritárias</h3>
+      <div style="font-size:12px;color:var(--ts-muted);margin-bottom:10px">Verde = alta intenção de compra · Azul = volume informacional</div>
+      <div class="tag-list">
+        <span class="kw-tag hi">software sob medida SP</span>
+        <span class="kw-tag hi">sistema personalizado empresa</span>
+        <span class="kw-tag hi">desenvolvimento sistema CRM</span>
+        <span class="kw-tag hi">automação WhatsApp empresas</span>
+        <span class="kw-tag hi">agente de IA para negócios</span>
+        <span class="kw-tag med">o que é CRM personalizado</span>
+        <span class="kw-tag med">como sair das planilhas</span>
+        <span class="kw-tag med">software house Brasil</span>
+        <span class="kw-tag med">MVP sistema web</span>
+        <span class="kw-tag hi">ERP jurídico sob medida</span>
+        <span class="kw-tag hi">automação de processos IA</span>
+        <span class="kw-tag med">quanto custa sistema personalizado</span>
+      </div>
+    </div>
+
+    <div class="seo-section">
+      <h3><i class="ti ti-tag" aria-hidden="true"></i> Meta tags recomendadas</h3>
+
+      <div class="meta-box">
+        <button class="copy-btn" onclick="copyText('Sistemas sob medida para empresas que precisam sair da planilha — CRM, automações, agentes de IA e dashboards. MVP em 3–6 semanas.')">copiar</button>
+        <div class="meta-label">Title tag (60 chars)</div>
+        <div class="meta-val"><span class="hl">Tech TSU</span> | Sistemas e Automações sob Medida</div>
+      </div>
+
+      <div class="meta-box">
+        <button class="copy-btn" onclick="copyText('Transformamos operações em planilhas em sistemas inteligentes — CRM, automações, agentes de IA e dashboards. MVP entregue em 3 a 6 semanas. Diagnóstico gratuito.')">copiar</button>
+        <div class="meta-label">Meta description (155 chars)</div>
+        <div class="meta-val">Transformamos operações em planilhas em sistemas inteligentes — CRM, automações, <span class="hl">agentes de IA</span> e dashboards. MVP em 3–6 semanas. <span class="hl">Diagnóstico gratuito.</span></div>
+      </div>
+
+      <div class="meta-box">
+        <button class="copy-btn" onclick="copyText('software sob medida, sistemas personalizados, CRM, automação WhatsApp, agentes de IA, software house, MVP, dashboard executivo')">copiar</button>
+        <div class="meta-label">Keywords sugeridas</div>
+        <div class="meta-val" style="font-size:12px;color:var(--ts-muted)">software sob medida · sistemas personalizados · CRM · automação WhatsApp · agentes de IA · software house · MVP · dashboard executivo</div>
+      </div>
+    </div>
+
+    <div class="seo-section">
+      <h3><i class="ti ti-file-code" aria-hidden="true"></i> Schema JSON-LD (adicionar no &lt;head&gt;)</h3>
+      <div style="position:relative">
+        <button class="copy-btn" style="position:absolute;top:12px;right:12px;z-index:1" onclick="copySchema()">copiar</button>
+        <pre id="schemaCode" style="background:var(--ts-surface);border:1px solid var(--ts-border);border-radius:10px;padding:16px;font-size:11.5px;color:#7ec8a0;overflow-x:auto;line-height:1.7;font-family:'IBM Plex Mono',monospace">{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Tech TSU",
+  "description": "Sistemas sob medida, CRM, automações e agentes de IA para empresas",
+  "url": "https://techtsu.com.br",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "BRL",
+    "description": "Diagnóstico gratuito"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "Tsunokawa Tech LTDA",
+    "address": {"@type": "PostalAddress","addressCountry": "BR"}
+  }
+}</pre>
+      </div>
+    </div>
+
+    <div class="seo-section">
+      <h3><i class="ti ti-bulb" aria-hidden="true"></i> Dicas de conteúdo para ranquear</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div class="meta-box" style="font-size:12px">
+          <div class="meta-label" style="color:var(--ts-accent)">Blog posts</div>
+          "Quando sua empresa precisa sair da planilha"<br>"CRM personalizado vs off-the-shelf"<br>"Como automação de WhatsApp reduz custos"
+        </div>
+        <div class="meta-box" style="font-size:12px">
+          <div class="meta-label" style="color:var(--ts-accent2)">Landing pages</div>
+          /crm-personalizado<br>/automacao-whatsapp<br>/agente-ia-empresas<br>/erp-juridico
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-prompt" class="tab-content">
+    <div style="margin-bottom:16px">
+      <div style="font-size:13px;color:var(--ts-muted);line-height:1.6;margin-bottom:16px">Prompt de atendimento para agente de IA da Tech TSU — use no WhatsApp Business API, chatbot do site ou assistant da OpenAI/Anthropic.</div>
+    </div>
+    <div class="prompt-box" id="promptBox">
+      <button class="copy-btn" onclick="copyPrompt()">copiar</button>
+Você é o assistente virtual da Tech TSU, uma software house especializada em sistemas sob medida, automações, CRM e agentes de IA para empresas.
+
+Seu papel é:
+- Recepcionar leads com simpatia e objetividade
+- Entender o problema ou necessidade do potencial cliente
+- Qualificar se o perfil faz sentido para os serviços da Tech TSU
+- Oferecer agendamento de diagnóstico gratuito (30 min) ou envio de proposta
+- Nunca prometer prazos ou valores sem falar com o time técnico
+
+Serviços que você pode apresentar:
+• Sistema personalizado / ERP sob medida
+• CRM com pipeline de leads e gestão de clientes
+• Automação de WhatsApp e processos operacionais
+• Agentes de IA para atendimento, triagem ou análise
+• Dashboard executivo e relatórios em tempo real
+• Gestão de tarefas, OS e documentos
+
+Tom de voz: direto, técnico sem ser rebuscado, confiante. Sem floreios excessivos.
+
+Ao identificar a necessidade do lead, pergunte:
+1. Qual é o maior gargalo operacional hoje?
+2. Quantas pessoas usariam o sistema?
+3. Já usam alguma ferramenta (planilha, outro sistema)?
+
+Ao final, ofereça:
+→ "Posso agendar um diagnóstico gratuito de 30 minutos com nosso time."
+→ Link: https://techtsu.com.br/#contato
+
+Nunca invente funcionalidades. Se não souber, diga: "Deixa eu verificar com o time e te retorno em breve."
+    </div>
+
+    <div style="margin-top:20px;padding:14px;background:rgba(0,229,192,.05);border:1px solid rgba(0,229,192,.2);border-radius:9px;font-size:12px;color:var(--ts-muted);line-height:1.7">
+      <strong style="color:var(--ts-accent)">Onde usar este prompt:</strong><br>
+      OpenAI Assistants · Anthropic Claude API · WhatsApp via Z-API ou Twilio · Chatbot do site (Landbot, Typebot) · n8n com nó de IA
+    </div>
+  </div>
+
+  <div id="tab-servicos" class="tab-content">
+    <div style="font-size:13px;color:var(--ts-muted);margin-bottom:18px;line-height:1.6">Lista completa de atendimentos que a Tech TSU pode oferecer — use como base para landing pages, proposta comercial e FAQ.</div>
+    <table class="svc-table">
+      <thead>
+        <tr>
+          <th>Serviço</th>
+          <th>Para quem</th>
+          <th>Destaque</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>CRM Personalizado</td><td>Vendas, escritórios, clínicas com pipeline de clientes</td><td><span class="badge hot">top</span></td></tr>
+        <tr><td>ERP / Sistema Operacional</td><td>Empresas que vivem em planilha e WhatsApp</td><td><span class="badge hot">top</span></td></tr>
+        <tr><td>Automação de WhatsApp</td><td>Negócios com alto volume de mensagens e follow-ups</td><td><span class="badge hot">top</span></td></tr>
+        <tr><td>Agente de IA</td><td>Atendimento, triagem de leads, suporte interno</td><td><span class="badge hot">top</span></td></tr>
+        <tr><td>Dashboard Executivo</td><td>Gestores que precisam de visibilidade em tempo real</td><td><span class="badge warm">destaque</span></td></tr>
+        <tr><td>Gestão de Tarefas / OS</td><td>Equipes de campo, projetos, ordens de serviço</td><td><span class="badge warm">destaque</span></td></tr>
+        <tr><td>Controle de Documentos</td><td>Escritórios jurídicos, contabilidade, RH</td><td></td></tr>
+        <tr><td>Propostas Comerciais</td><td>Times de vendas que criam propostas manualmente</td><td></td></tr>
+        <tr><td>Integrações via API</td><td>Conectar sistemas existentes (ERP, planilhas, etc.)</td><td></td></tr>
+        <tr><td>MVP em 3–6 semanas</td><td>Startups e negócios que precisam validar rápido</td><td><span class="badge hot">top</span></td></tr>
+        <tr><td>Permissões e Multi-perfil</td><td>Empresas com diferentes níveis de acesso</td><td></td></tr>
+        <tr><td>Relatórios e Analytics</td><td>Gestores e donos de negócio</td><td><span class="badge warm">destaque</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<script>
+const STEPS=[
+  {id:'objetivo',label:'Passo 1 de 4',title:'O que você busca?',sub:'Escolha a melhor opção para começarmos.',type:'single',
+   options:[
+     {icon:'ti-file-invoice',title:'Solicitar Orçamento',desc:'Quero saber valores e escopo do projeto'},
+     {icon:'ti-calendar-event',title:'Agendar Reunião',desc:'Quero conversar com um especialista Tech TSU'}
+   ]
+  },
+  {id:'servico',label:'Passo 2 de 4',title:'Qual é a sua necessidade?',sub:'Selecione um ou mais serviços de interesse.',type:'multi',
+   options:[
+     {icon:'ti-users',title:'CRM / Pipeline',desc:'Gestão de clientes e vendas'},
+     {icon:'ti-device-desktop',title:'Sistema Personalizado',desc:'ERP, plataforma operacional'},
+     {icon:'ti-brand-whatsapp',title:'Automação WhatsApp',desc:'Fluxos automáticos e follow-up'},
+     {icon:'ti-robot',title:'Agente de IA',desc:'Atendimento e triagem inteligente'},
+     {icon:'ti-chart-bar',title:'Dashboard / Relatórios',desc:'Visibilidade em tempo real'},
+     {icon:'ti-api',title:'Integração / API',desc:'Conectar ferramentas existentes'}
+   ]
+  },
+  {id:'negocio',label:'Passo 3 de 4',title:'Sobre o seu negócio',sub:'Nos ajude a entender sua operação.',type:'negocio'},
+  {id:'dados',label:'Passo 4 de 4',title:'Seus dados de contato',sub:'Nossa equipe entra em contato em até 24h.',type:'form'}
+];
+
+let state={step:0,objetivo:null,servico:[],tamanho:null,setor:'',nome:'',email:'',telefone:'',empresa:'',mensagem:''};
+
+function switchTab(t){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+  event.target.closest('.tab-btn').classList.add('active');
+  document.getElementById('tab-'+t).classList.add('active');
+}
+
+function renderQuiz(){
+  const wrap=document.getElementById('quizWrap');
+  if(state.step>=STEPS.length){renderSuccess();return;}
+  const s=STEPS[state.step];
+  const dots=STEPS.map((_,i)=>`<div class="prog-dot ${i<state.step?'done':i===state.step?'active':''}"></div>`).join('');
+  let body='';
+  if(s.type==='single'){
+    body=`<div class="option-grid single">${s.options.map((o,i)=>`
+      <div class="option-card ${state[s.id]===i?'selected':''}" onclick="selectSingle(${i})">
+        <i class="ti ${o.icon}" aria-hidden="true"></i>
+        <div><div class="oc-title">${o.title}</div><div class="oc-desc">${o.desc}</div></div>
+      </div>`).join('')}</div>
+    <div class="btn-row"><button class="btn-primary" onclick="nextStep()" ${state[s.id]===null?'disabled':''}>Continuar <i class="ti ti-arrow-right" aria-hidden="true"></i></button></div>`;
+  } else if(s.type==='multi'){
+    body=`<div class="multi-hint"><i class="ti ti-info-circle" aria-hidden="true"></i> Pode selecionar mais de um</div>
+    <div class="option-grid">${s.options.map((o,i)=>`
+      <div class="option-card ${state.servico.includes(i)?'selected':''}" onclick="toggleMulti(${i})">
+        <i class="ti ${o.icon}" aria-hidden="true"></i>
+        <div><div class="oc-title">${o.title}</div><div class="oc-desc">${o.desc}</div></div>
+      </div>`).join('')}</div>
+    <div class="btn-row"><button class="btn-primary" onclick="nextStep()" ${state.servico.length===0?'disabled':''}>Continuar <i class="ti ti-arrow-right" aria-hidden="true"></i></button></div>`;
+  } else if(s.type==='negocio'){
+    const sizes=['1–5 pessoas','6–20 pessoas','21–50 pessoas','50+ pessoas'];
+    const setores=['Jurídico','Saúde','Educação','Varejo','Serviços B2B','Tecnologia','Imobiliário','Outro'];
+    body=`
+    <div style="margin-bottom:18px">
+      <div style="font-size:11px;text-transform:uppercase;letter-spacing:.6px;color:var(--ts-muted);margin-bottom:10px">Tamanho da equipe</div>
+      <div class="size-row">${sizes.map((s2,i)=>`<div class="size-chip ${state.tamanho===i?'selected':''}" onclick="selectTamanho(${i})">${s2}</div>`).join('')}</div>
+    </div>
+    <div class="form-grid full" style="margin-bottom:20px">
+      <div class="form-group">
+        <label>Setor / Segmento</label>
+        <select onchange="state.setor=this.value">
+          <option value="">Selecione...</option>
+          ${setores.map(s2=>`<option value="${s2}" ${state.setor===s2?'selected':''}>${s2}</option>`).join('')}
+        </select>
+      </div>
+    </div>
+    <div class="btn-row">
+      <button class="btn-secondary" onclick="prevStep()"><i class="ti ti-arrow-left" aria-hidden="true"></i></button>
+      <button class="btn-primary" onclick="nextStep()" ${state.tamanho===null||!state.setor?'disabled':''}>Continuar <i class="ti ti-arrow-right" aria-hidden="true"></i></button>
+    </div>`;
+  } else if(s.type==='form'){
+    body=`
+    <div class="form-grid">
+      <div class="form-group"><label>Nome completo *</label><input type="text" placeholder="João Silva" value="${state.nome}" oninput="state.nome=this.value;checkForm()"></div>
+      <div class="form-group"><label>Empresa</label><input type="text" placeholder="Sua empresa" value="${state.empresa}" oninput="state.empresa=this.value"></div>
+    </div>
+    <div class="form-grid">
+      <div class="form-group"><label>E-mail *</label><input type="email" placeholder="joao@empresa.com" value="${state.email}" oninput="state.email=this.value;checkForm()"></div>
+      <div class="form-group"><label>WhatsApp *</label><input type="tel" placeholder="(11) 99999-9999" value="${state.telefone}" oninput="state.telefone=this.value;checkForm()"></div>
+    </div>
+    <div class="form-grid full">
+      <div class="form-group"><label>Mensagem (opcional)</label><textarea placeholder="Descreva brevemente o que você precisa..." oninput="state.mensagem=this.value">${state.mensagem}</textarea></div>
+    </div>
+    <div class="btn-row">
+      <button class="btn-secondary" onclick="prevStep()"><i class="ti ti-arrow-left" aria-hidden="true"></i></button>
+      <button class="btn-primary" id="submitBtn" onclick="submitLead()" ${!state.nome||!state.email||!state.telefone?'disabled':''}>Enviar solicitação <i class="ti ti-send" aria-hidden="true"></i></button>
+    </div>`;
+  }
+  wrap.innerHTML=`
+    <div class="quiz-progress">${dots}</div>
+    <div class="step-label">${s.label}</div>
+    <div class="step-title">${s.title}</div>
+    <div class="step-sub">${s.sub}</div>
+    ${body}`;
+}
+
+function selectSingle(i){state[STEPS[state.step].id]=i;renderQuiz()}
+function toggleMulti(i){
+  const idx=state.servico.indexOf(i);
+  if(idx>-1)state.servico.splice(idx,1);else state.servico.push(i);
+  renderQuiz();
+}
+function selectTamanho(i){state.tamanho=i;renderQuiz()}
+function nextStep(){if(state.step<STEPS.length-1){state.step++;renderQuiz()}}
+function prevStep(){if(state.step>0){state.step--;renderQuiz()}}
+function checkForm(){
+  const btn=document.getElementById('submitBtn');
+  if(btn)btn.disabled=!state.nome||!state.email||!state.telefone;
+}
+
+async function submitLead(){
+  const btn=document.getElementById('submitBtn');
+  btn.disabled=true;btn.textContent='Salvando...';
+  const lead={
+    id:Date.now().toString(),
+    ts:new Date().toISOString(),
+    objetivo:['Orçamento','Reunião'][state.objetivo]||'—',
+    servicos:state.servico.map(i=>STEPS[1].options[i].title).join(', '),
+    tamanho:['1–5','6–20','21–50','50+'][state.tamanho]||'—',
+    setor:state.setor,
+    nome:state.nome,email:state.email,
+    telefone:state.telefone,empresa:state.empresa,
+    mensagem:state.mensagem,status:'novo'
+  };
+  try{await window.storage.set('lead:'+lead.id,JSON.stringify(lead));}catch(e){}
+  state.step=STEPS.length;
+  state._lead=lead;
+  renderQuiz();
+}
+
+function renderSuccess(){
+  const l=state._lead||{};
+  const svcNames=STEPS[1].options;
+  document.getElementById('quizWrap').innerHTML=`
+    <div class="success-wrap">
+      <div class="success-icon"><i class="ti ti-check" aria-hidden="true"></i></div>
+      <div class="success-title">Solicitação enviada!</div>
+      <div class="success-sub">A equipe Tech TSU vai analisar seu perfil e entrar em contato em até <strong>24 horas úteis</strong> pelo WhatsApp ou e-mail informado.</div>
+      <div class="lead-summary">
+        <strong>Resumo da solicitação</strong><br>
+        Nome: <strong>${l.nome||'—'}</strong><br>
+        Interesse: <strong>${l.objetivo||'—'}</strong><br>
+        Serviços: <strong>${l.servicos||'—'}</strong><br>
+        Empresa: <strong>${l.empresa||'—'} · ${l.setor||'—'}</strong>
+      </div>
+      <button class="btn-primary" style="max-width:260px;margin:0 auto" onclick="resetQuiz()">Fazer nova solicitação</button>
+    </div>`;
+}
+
+function resetQuiz(){
+  state={step:0,objetivo:null,servico:[],tamanho:null,setor:'',nome:'',email:'',telefone:'',empresa:'',mensagem:''};
+  renderQuiz();
+}
+
+function copyText(t){navigator.clipboard.writeText(t).catch(()=>{});alert('Copiado!')}
+function copySchema(){navigator.clipboard.writeText(document.getElementById('schemaCode').textContent.trim()).catch(()=>{});alert('Schema copiado!')}
+function copyPrompt(){navigator.clipboard.writeText(document.getElementById('promptBox').innerText.replace('copiar','').trim()).catch(()=>{});alert('Prompt copiado!')}
+
+renderQuiz();
+</script>
