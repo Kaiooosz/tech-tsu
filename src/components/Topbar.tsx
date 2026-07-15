@@ -6,6 +6,7 @@ const links = [
   { href: "#solucao",  label: "Solução"  },
   { href: "#case",     label: "Case"     },
   { href: "#processo", label: "Processo" },
+  { href: "#disparos", label: "Disparos" },
 ]
 
 export function Topbar() {

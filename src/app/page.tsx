@@ -7,6 +7,7 @@ import { Oferta }        from "@/components/Oferta"
 import { Segmentos }     from "@/components/Segmentos"
 import { Processo }      from "@/components/Processo"
 import { Ferramentas }   from "@/components/Ferramentas"
+import { Disparos }      from "@/components/Disparos"
 import { ContatoLeads }  from "@/components/ContatoLeads"
 import { Footer }        from "@/components/Footer"
 
@@ -23,6 +24,7 @@ export default function Home() {
         <Segmentos />
         <Processo />
         <Ferramentas />
+        <Disparos />
         <ContatoLeads />
       </main>
       <Footer />
