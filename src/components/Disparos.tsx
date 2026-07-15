@@ -214,11 +214,10 @@ export function Disparos() {
               }}>
                 <div style={{
                   width: 30, height: 30, borderRadius: "50%",
-                  background: "var(--ink)", color: "var(--paper)",
+                  background: "var(--ink)",
                   display: "flex", alignItems: "center", justifyContent: "center",
-                  fontSize: 11, fontWeight: 700, fontFamily: "var(--font-mono)",
                 }}>
-                  TT
+                  <img src="/mark-white.svg" alt="" width={18} height={18} />
                 </div>
                 <div style={{ display: "flex", flexDirection: "column" }}>
                   <span style={{ fontSize: 13, fontWeight: 700, color: "var(--ink)", lineHeight: 1.2 }}>Tech Tsu</span>
@@ -228,33 +227,100 @@ export function Disparos() {
 
               {/* Chat body */}
               <div style={{ padding: "18px", display: "flex", flexDirection: "column", gap: 8, background: "var(--paper-2)" }}>
+
+                {/* Template de oferta com imagem + CTA */}
                 <div style={{
-                  maxWidth: "82%", padding: "10px 12px",
+                  maxWidth: "86%",
                   background: "#fff", border: "1px solid var(--border-light)",
                   borderRadius: "10px 10px 10px 2px",
-                  fontSize: 12.5, color: "var(--ink)", lineHeight: 1.55,
+                  overflow: "hidden",
                 }}>
-                  Sua marca, no canal mais usado do Brasil. Campanhas via API Oficial
-                  com segurança, escala e acompanhamento em tempo real.
-                  <div style={{ fontSize: 9, color: "var(--muted-ink-2)", marginTop: 4, textAlign: "right", fontFamily: "var(--font-mono)" }}>11:30</div>
+                  {/* Imagem da oferta */}
+                  <div style={{
+                    background: "linear-gradient(145deg, #1238C4 0%, #2C55E8 55%, #4B74FF 100%)",
+                    padding: "18px 16px",
+                    display: "flex", flexDirection: "column", gap: 4,
+                    position: "relative",
+                  }}>
+                    <img src="/mark-white.svg" alt="" width={20} height={20} style={{ position: "absolute", top: 12, right: 12, opacity: 0.85 }} />
+                    <span style={{ fontSize: 9, fontFamily: "var(--font-mono)", color: "rgba(255,255,255,0.75)", letterSpacing: "0.2em", textTransform: "uppercase" }}>
+                      Oferta relâmpago
+                    </span>
+                    <span style={{ fontSize: 30, fontWeight: 700, color: "#fff", letterSpacing: "-0.03em", lineHeight: 1 }}>
+                      40% OFF
+                    </span>
+                    <span style={{ fontSize: 10.5, color: "rgba(255,255,255,0.75)" }}>
+                      válida só até hoje, 23h59
+                    </span>
+                  </div>
+                  {/* Texto do template */}
+                  <div style={{ padding: "10px 12px", fontSize: 12.5, color: "var(--ink)", lineHeight: 1.55 }}>
+                    Olá, Maria! Liberamos 40% OFF exclusivo para você.
+                    Toque no botão abaixo e garanta antes que acabe.
+                    <div style={{
+                      display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 3,
+                      fontSize: 9, color: "var(--muted-ink-2)", marginTop: 4, fontFamily: "var(--font-mono)",
+                    }}>
+                      11:30
+                      <svg width="12" height="8" viewBox="0 0 16 10" fill="none">
+                        <path d="M1 5l3 3 6-7M6 8l1 1 6-7" stroke="var(--teal)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+                  </div>
+                  {/* Botao CTA do template */}
+                  <div style={{
+                    borderTop: "1px solid var(--border-light)",
+                    padding: "9px 12px", textAlign: "center",
+                    fontSize: 12, fontWeight: 600, color: "var(--teal)",
+                  }}>
+                    Quero aproveitar a oferta
+                  </div>
                 </div>
+
+                {/* Cliente clica no botao */}
                 <div style={{
                   maxWidth: "60%", alignSelf: "flex-end", padding: "10px 12px",
                   background: "rgba(44,85,232,0.10)", border: "1px solid rgba(44,85,232,0.18)",
                   borderRadius: "10px 10px 2px 10px",
                   fontSize: 12.5, color: "var(--ink)", lineHeight: 1.55,
                 }}>
-                  Quero saber mais!
-                  <div style={{ fontSize: 9, color: "var(--muted-ink-2)", marginTop: 4, textAlign: "right", fontFamily: "var(--font-mono)" }}>11:30</div>
+                  Quero aproveitar a oferta
+                  <div style={{ fontSize: 9, color: "var(--muted-ink-2)", marginTop: 4, textAlign: "right", fontFamily: "var(--font-mono)" }}>11:31</div>
                 </div>
+
+                {/* Link de pagamento */}
                 <div style={{
                   maxWidth: "82%", padding: "10px 12px",
                   background: "#fff", border: "1px solid var(--border-light)",
                   borderRadius: "10px 10px 10px 2px",
                   fontSize: 12.5, color: "var(--ink)", lineHeight: 1.55,
                 }}>
-                  Perfeito! Em instantes nosso time entra em contato com você.
-                  <div style={{ fontSize: 9, color: "var(--muted-ink-2)", marginTop: 4, textAlign: "right", fontFamily: "var(--font-mono)" }}>11:30</div>
+                  Pedido confirmado, Maria. Finalize com segurança no link:{" "}
+                  <span style={{ color: "var(--teal)", fontFamily: "var(--font-mono)", fontSize: 11.5 }}>pay.suamarca.com.br/oferta40</span>
+                  <div style={{
+                    display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 3,
+                    fontSize: 9, color: "var(--muted-ink-2)", marginTop: 4, fontFamily: "var(--font-mono)",
+                  }}>
+                    11:31
+                    <svg width="12" height="8" viewBox="0 0 16 10" fill="none">
+                      <path d="M1 5l3 3 6-7M6 8l1 1 6-7" stroke="var(--teal)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Conversao registrada */}
+                <div style={{
+                  alignSelf: "center", marginTop: 6,
+                  display: "inline-flex", alignItems: "center", gap: 7,
+                  padding: "5px 12px", borderRadius: 999,
+                  background: "rgba(44,85,232,0.08)", border: "1px solid rgba(44,85,232,0.2)",
+                }}>
+                  <svg width="10" height="10" fill="none" viewBox="0 0 24 24">
+                    <path d="M5 13l4 4L19 7" stroke="var(--teal)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  <span style={{ fontSize: 10, fontFamily: "var(--font-mono)", color: "var(--teal)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                    Compra confirmada · R$ 297,00 · Conversão registrada
+                  </span>
                 </div>
               </div>
 
