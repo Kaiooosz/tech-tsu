@@ -135,11 +135,23 @@ export default function Privacidade() {
       </p>
 
       <h2>11. Cookies</h2>
+      <p>O site utiliza as seguintes categorias:</p>
+      <ul>
+        <li>
+          <strong>Essenciais:</strong> armazenamento técnico necessário ao funcionamento e à
+          segurança do site, incluindo o registro da sua própria preferência de cookies.
+          Dispensam consentimento (art. 7º, II e IX da LGPD);
+        </li>
+        <li>
+          <strong>Estatísticas e marketing:</strong> medição de audiência e personalização de
+          campanhas. Só são ativados com o seu consentimento, informado no banner exibido no
+          primeiro acesso.
+        </li>
+      </ul>
       <p>
-        Atualmente o site da Tech Tsu não utiliza cookies de publicidade nem rastreadores de
-        marketing. Utilizamos apenas armazenamento técnico essencial ao funcionamento e à
-        segurança do site. Caso ferramentas de medição ou marketing venham a ser adotadas, este
-        aviso será atualizado e, quando exigido, o consentimento será solicitado.
+        Você pode revisar ou revogar suas escolhas a qualquer momento pelo link{" "}
+        <strong>Gerenciar cookies</strong>, no rodapé do site. Recusar as categorias opcionais
+        não compromete o funcionamento básico do site.
       </p>
 
       <h2>12. Transferência internacional</h2>

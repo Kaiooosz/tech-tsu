@@ -95,6 +95,17 @@ export function Footer() {
               onMouseLeave={e => (e.currentTarget.style.color = "var(--muted-2)")}>
               Aviso de Privacidade
             </a>
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent("tt:cookie-preferences"))}
+              style={{
+                fontSize: 11, color: "var(--muted-2)", fontFamily: "var(--font-mono)",
+                background: "transparent", border: "none", padding: 0,
+                cursor: "pointer", transition: "color 0.2s",
+              }}
+              onMouseEnter={e => (e.currentTarget.style.color = "var(--text)")}
+              onMouseLeave={e => (e.currentTarget.style.color = "var(--muted-2)")}>
+              Gerenciar cookies
+            </button>
           </span>
           <span style={{ fontSize: 11, color: "var(--muted-2)", fontFamily: "var(--font-mono)" }}>
             © {new Date().getFullYear()} Tech Tsu
