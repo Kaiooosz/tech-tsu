@@ -84,6 +84,18 @@ export function Footer() {
           <span style={{ fontSize: 11, color: "var(--muted-2)", fontFamily: "var(--font-mono)" }}>
             TSUNOKAWA TECH LTDA · CNPJ 66.720.724/0001-18
           </span>
+          <span style={{ display: "flex", gap: 20 }}>
+            <a href="/termos" style={{ fontSize: 11, color: "var(--muted-2)", fontFamily: "var(--font-mono)", transition: "color 0.2s" }}
+              onMouseEnter={e => (e.currentTarget.style.color = "var(--text)")}
+              onMouseLeave={e => (e.currentTarget.style.color = "var(--muted-2)")}>
+              Termos de Uso
+            </a>
+            <a href="/privacidade" style={{ fontSize: 11, color: "var(--muted-2)", fontFamily: "var(--font-mono)", transition: "color 0.2s" }}
+              onMouseEnter={e => (e.currentTarget.style.color = "var(--text)")}
+              onMouseLeave={e => (e.currentTarget.style.color = "var(--muted-2)")}>
+              Aviso de Privacidade
+            </a>
+          </span>
           <span style={{ fontSize: 11, color: "var(--muted-2)", fontFamily: "var(--font-mono)" }}>
             © {new Date().getFullYear()} Tech Tsu
           </span>
