@@ -141,6 +141,17 @@ body::after {
 .divider-light { border-top: 1px solid var(--border-light); }
 .divider-dark  { border-top: 1px solid var(--border); }
 
+/* ── Acessibilidade de movimento ─────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-track, .pulse-dot { animation: none !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg-2); }

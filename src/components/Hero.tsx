@@ -5,6 +5,7 @@ import {
   useScroll, useTransform,
 } from "framer-motion"
 import { E, SPRING_SOFT } from "@/lib/motion"
+import { WA } from "@/lib/site"
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -45,7 +46,7 @@ export function Hero() {
             position: "absolute", top: "20%", left: "50%",
             translateX: "-50%", translateY: "-50%",
             width: 640, height: 640, borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(46,196,182,0.09) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(44,85,232,0.14) 0%, transparent 70%)",
             pointerEvents: "none",
             y: glowY,
           }}
@@ -63,8 +64,8 @@ export function Hero() {
             position: "absolute", top: 100, right: 60,
             display: "flex", alignItems: "center", gap: 8,
             padding: "6px 12px",
-            background: "rgba(46,196,182,0.08)",
-            border: "1px solid rgba(46,196,182,0.2)",
+            background: "rgba(44,85,232,0.10)",
+            border: "1px solid rgba(44,85,232,0.28)",
             borderRadius: 999, fontSize: 12, fontWeight: 500,
             fontFamily: "var(--font-mono)",
             color: "var(--teal)",
@@ -155,7 +156,7 @@ export function Hero() {
               style={{
                 display: "inline-flex", alignItems: "center", gap: 8,
                 height: 48, padding: "0 24px",
-                background: "var(--teal)", color: "var(--bg)",
+                background: "var(--teal)", color: "#fff",
                 fontWeight: 700, fontSize: 14, borderRadius: 4,
               }}
             >
@@ -170,8 +171,31 @@ export function Hero() {
             </motion.a>
 
             <motion.a
-              href="#case"
-              whileHover={{ scale: 1.04, borderColor: "var(--border-m)", color: "var(--text)" }}
+              href={WA.geral}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ type: "spring", stiffness: 380, damping: 18 }}
+              style={{
+                display: "inline-flex", alignItems: "center", gap: 9,
+                height: 48, padding: "0 22px",
+                border: "1px solid rgba(31,168,85,0.45)",
+                background: "rgba(31,168,85,0.10)",
+                color: "var(--text)",
+                fontWeight: 600, fontSize: 14, borderRadius: 4,
+              }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#4ED37F">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.95-1.418A9.96 9.96 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.96 7.96 0 01-4.07-1.115l-.292-.174-3.027.869.852-3.11-.19-.312A7.96 7.96 0 014 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z"/>
+              </svg>
+              Chamar no WhatsApp
+            </motion.a>
+
+            <motion.a
+              href="#vitrine"
+              whileHover={{ scale: 1.04, color: "var(--text)" }}
               whileTap={{ scale: 0.97 }}
               transition={{ type: "spring", stiffness: 380, damping: 18 }}
               style={{
@@ -181,7 +205,7 @@ export function Hero() {
                 fontWeight: 500, fontSize: 14, borderRadius: 4,
               }}
             >
-              Ver case Bezerra Borges
+              Ver sistemas entregues
             </motion.a>
           </motion.div>
 
@@ -197,9 +221,9 @@ export function Hero() {
             }}
           >
             {[
-              { n: "01",  label: "Cliente ativo" },
-              { n: "4+",  label: "Módulos entregues" },
-              { n: "3–6", label: "Semanas para MVP" },
+              { n: "7+",  label: "Aplicações em produção" },
+              { n: "14+", label: "Agentes de IA em operação" },
+              { n: "3–6", label: "Semanas para o MVP" },
             ].map((s, i) => (
               <motion.div
                 key={s.n}

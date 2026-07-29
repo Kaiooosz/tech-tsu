@@ -17,7 +17,7 @@ export default function Termos() {
       <p>
         Estes Termos e Condições Gerais de Uso (&quot;Termos&quot;) regulam o acesso ao site e a
         contratação dos serviços da <strong>TSUNOKAWA TECH LTDA</strong>, inscrita no CNPJ sob o
-        nº 66.720.724/0001-18, com sede em Barueri/SP, doravante denominada
+        nº 66.720.724/0001-80, com sede em Barueri/SP, doravante denominada
         <strong> Tech Tsu</strong>. Canal de contato: <a href="mailto:contato@techtsu.com.br">contato@techtsu.com.br</a>.
       </p>
 

@@ -2,20 +2,26 @@
 
 ## Vault
 
-Vault Obsidian: `~/Downloads/Tech Tsu/`
+Vault Obsidian: `~/Downloads/Obsidian/`
 
 Ao iniciar sessão:
-1. Ler `~/Downloads/Tech Tsu/01-Projetos/Tech-Tsu.md`
-2. Ler `~/Downloads/Tech Tsu/08-Marca/Brand-Kit.md`
-3. Ler `~/Downloads/Tech Tsu/02-Contexto/Guia-Contexto-IA.md`
+1. `~/Downloads/Obsidian/Guia/Guia-Contexto-IA.md` — regras globais
+2. `~/Downloads/Obsidian/Tech-Tsu/Tech-Tsu.md` — negócio, ICP, linhas de receita
+3. `~/Downloads/Obsidian/Guia/Brand-Kit.md` — identidade visual e tom de voz
+   e `~/Downloads/Obsidian/Guia/Assets-Logos-Icones.md` — specs de logo, ícone e favicon
+4. `~/Downloads/Obsidian/Tech-Tsu/Tech-Tsu-Site.md` — arquitetura deste site
+5. `~/Downloads/Obsidian/Tech-Tsu/Materiais-Midias.md` — criativos prontos
+
+Ao concluir tarefa significativa, atualizar `Tech-Tsu-Site.md` (seção Log).
 
 ## Projeto
 
-Site institucional da Tech Tsu — landing page de captação de clientes para a software house.
+Landing page B2B de captação. Duas ofertas na mesma página: sistema sob medida (ciclo longo) e disparos via API Oficial do WhatsApp (ciclo curto).
 
 ## Stack
 
-- Next.js 14+ App Router, TypeScript, Tailwind CSS
+- Next.js App Router, TypeScript, Tailwind v4, Framer Motion v12
+- Leads em Neon serverless (`DATABASE_URL`), tabela `leads` com migração idempotente em `src/lib/db.ts`
 - Deploy: Vercel (`main` = produção)
 
 ## Estrutura
@@ -23,35 +29,49 @@ Site institucional da Tech Tsu — landing page de captação de clientes para a
 ```
 src/
   app/
-    layout.tsx      → metadata, font Inter
-    page.tsx        → monta todos os componentes
-    globals.css     → CSS variables do brand (--ink, --teal, --amber…)
+    layout.tsx            → metadata, Space Grotesk + JetBrains Mono, CookieConsent
+    page.tsx              → ordem das seções
+    globals.css           → tokens do brand
+    opengraph-image.tsx   → OG dinâmica com a marca
+    api/leads/route.ts    → POST de lead + lead scoring (hot/warm/cold)
+    admin/leads/page.tsx  → central de leads com filtros
+    termos/ privacidade/  → páginas legais (LGPD)
   components/
-    Topbar.tsx      → nav sticky com blur
-    Hero.tsx        → seção dark com painéis flutuantes animados
-    ProofStrip.tsx  → faixa CRM / ERP / Dashboards…
-    Oferta.tsx      → 3 cards: Diagnóstico, MVP, Evolução
-    Case.tsx        → case BBLAW com mock de dashboard
-    Processo.tsx    → 4 etapas em grid
-    Contato.tsx     → CTA final com email
-    Footer.tsx      → rodapé com CNPJ
+    Topbar · Hero · Marquee · Clientes · Case · Oferta · Solucoes
+    Segmentos · Comparativo · Processo · Vitrine · Ferramentas
+    Empresa · Disparos · Seguranca · ContatoLeads (Quiz) · Footer
+    ScrollProgress · WhatsAppFab · MediaFrame
+    CookieConsent · CursorGlow · LegalPage
+  lib/
+    site.ts   → dados da empresa + links de WhatsApp por contexto
+    db.ts     → Neon + initDb
+    motion.ts → variantes e easing padrão
 public/
-  mark.svg          → ícone/monograma TT
-  logo.svg          → wordmark completo
+  mark-* logo-* appicon-* favicon-256.png
+  bg-noise.svg bg-circuit.svg bg-topology.svg
+  dor-*.svg resultado-*.svg
+  logo-bblaw · logo-rbmotos · logo-zap · logo-cicatribem · logo-pointify · logo-social-seller
+  midia/  → imagens e vídeos das seções novas (nomes esperados no README da pasta)
 ```
 
-## Cores (Brand Kit)
+## Cores
 
-- Ink:   `#0d1117` — fundo dark, texto principal
-- Paper: `#f7f8f4` — fundo light
-- Teal:  `#2ec4b6` — cor primária / CTA
-- Amber: `#f6c85f` — destaque / números
-- Coral: `#ff6b4a` — status / ação
-- Steel: `#3a6ea5` — secundário
+Fonte da verdade: `src/app/globals.css`. Detalhe completo no [Brand-Kit](~/Downloads/Obsidian/Guia/Brand-Kit.md).
+
+- Ink Black `#191B21` — `--bg` / `--ink`
+- Signal Blue `#2C55E8` — `--teal` (a variável se chama teal por herança, mas o valor é AZUL; não voltar para `#2ec4b6`)
+- Warm Paper `#F5F2EB` — `--text` · Paper `#F8F7F4` / `#EFECEA`
+- Sky Tint `#8FA8FF` — `--sky` · Clay `#C8B49A` · Amber `#f6c85f`
+- Gradiente de destaque: `linear-gradient(145deg, #1238C4, #2C55E8 55%, #4B74FF)`
+
+Fontes: Space Grotesk (UI) + JetBrains Mono (label, número, badge).
 
 ## Regras
 
 - Mobile-first — breakpoints 980px e 560px
-- Sem dark mode — site é light only
-- Email: contato@techtsu.com.br
+- Seções alternam dark e paper; não há dark mode alternável
+- Nunca usar emoji em código, UI, copy ou commit — ícone SVG quando precisar de elemento visual
+- Lead score é interno: nunca aparece para o lead, só em `/admin/leads`
+- Contato e CNPJ vêm de `src/lib/site.ts` — nunca escrever direto no componente
+- Link de WhatsApp com mensagem pré-preenchida só funciona no formato `wa.me/<numero>?text=`; o link curto `wa.me/message/...` ignora `?text=`
 - `main` = produção no Vercel

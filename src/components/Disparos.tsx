@@ -2,9 +2,9 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { E, staggerContainer, childFadeUp, tagPop } from "@/lib/motion"
+import { WA } from "@/lib/site"
 
-const WA_LINK =
-  "https://wa.me/5511952364424?text=Ol%C3%A1%2C%20quero%20um%20or%C3%A7amento%20para%20disparos%20via%20API%20Oficial"
+const WA_LINK = WA.disparos
 
 const entregas = [
   "Disparos únicos",

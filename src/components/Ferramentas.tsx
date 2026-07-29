@@ -2,6 +2,33 @@
 import { motion } from "framer-motion"
 import { E, staggerContainer, childSlideUp } from "@/lib/motion"
 
+const produtos = [
+  {
+    nome: "Social Seller",
+    logo: "/logo-social-seller.png",
+    status: "Em produção",
+    ativo: true,
+    desc: "Ferramenta de criação de conteúdo para social media. Gera modelos de posts, legendas e roteiros para Instagram, LinkedIn e TikTok — com contexto de marca, tom de voz e objetivo de cada peça. Usado por gestores de conteúdo e agências para acelerar produção sem perder identidade.",
+    tags: ["Geração de copy", "Modelos de post", "Tom de voz por marca", "Instagram · LinkedIn · TikTok", "Agente IA"],
+  },
+  {
+    nome: "Pointify",
+    logo: "/logo-pointify.jpg",
+    status: "Em desenvolvimento",
+    ativo: false,
+    desc: "Plataforma de fidelidade em que ponto vira ativo digital. Programa de pontos, carteira, KYC, marketplace de resgate e agente de IA no atendimento — a base técnica que usamos para projetos de fintech e recorrência.",
+    tags: ["Fidelidade", "Carteira e KYC", "Marketplace", "Fintech"],
+  },
+  {
+    nome: "Cria-Criativos",
+    logo: "/mark-white.svg",
+    status: "Operação interna",
+    ativo: true,
+    desc: "Studio de conteúdo multi-agente que roda a comunicação da própria Tech Tsu e de clientes: pauta, copy por nicho, roteiro de carrossel e stories. É de onde sai o material de prospecção que você vê nos nossos canais.",
+    tags: ["Multi-agente", "Copy por nicho", "Carrossel e stories", "Prospecção"],
+  },
+]
+
 export function Ferramentas() {
   return (
     <section
@@ -44,82 +71,94 @@ export function Ferramentas() {
               </span>
             </motion.h2>
           </div>
-          <motion.p variants={childSlideUp} style={{ fontSize: 16, color: "rgba(255,255,255,0.65)", maxWidth: 520, lineHeight: 1.65 }}>
+          <motion.p variants={childSlideUp} style={{ fontSize: 16, color: "rgba(255,255,255,0.65)", maxWidth: 560, lineHeight: 1.65 }}>
             Software que nasceu da necessidade real dos clientes e hoje roda como produto independente.
+            É também onde testamos primeiro o que depois entra nos projetos sob medida.
           </motion.p>
         </motion.div>
 
-        {/* Social Seller card */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6, ease: E }}
-          style={{
-            display: "grid", gridTemplateColumns: "auto 1fr",
-            gap: 0,
-            border: "1px solid rgba(255,255,255,0.12)",
-            borderRadius: 14, overflow: "hidden", alignItems: "stretch",
-            background: "rgba(255,255,255,0.08)",
-            backdropFilter: "blur(12px)",
-          }}
-          className="ferramentas-card"
-        >
-          {/* Logo column */}
-          <div style={{
-            width: 120,
-            borderRight: "1px solid rgba(255,255,255,0.10)",
-            background: "rgba(0,0,0,0.2)",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            padding: 24,
-          }}>
-            <img
-              src="/logo-social-seller.png"
-              alt="Social Seller"
+        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          {produtos.map((p, i) => (
+            <motion.div
+              key={p.nome}
+              initial={{ opacity: 0, y: 26 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.6, delay: i * 0.1, ease: E }}
+              whileHover={{ y: -3 }}
               style={{
-                width: 72, height: 72,
-                objectFit: "contain", borderRadius: 14,
-                boxShadow: "0 4px 16px rgba(0,0,0,0.3)",
+                display: "grid", gridTemplateColumns: "auto 1fr",
+                border: "1px solid rgba(255,255,255,0.12)",
+                borderRadius: 14, overflow: "hidden", alignItems: "stretch",
+                background: "rgba(255,255,255,0.08)",
+                backdropFilter: "blur(12px)",
               }}
-            />
-          </div>
-
-          {/* Info column */}
-          <div style={{ padding: "28px 32px", display: "flex", flexDirection: "column", gap: 14 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
-              <h3 style={{ fontSize: 22, fontWeight: 700, letterSpacing: "-0.03em", lineHeight: 1, color: "#fff" }}>
-                Social Seller
-              </h3>
+              className="ferramentas-card"
+            >
+              {/* Coluna do logo */}
               <div style={{
-                display: "inline-flex", alignItems: "center", gap: 5,
-                padding: "2px 9px", borderRadius: 999,
-                background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)",
+                width: 120,
+                borderRight: "1px solid rgba(255,255,255,0.10)",
+                background: "rgba(0,0,0,0.2)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                padding: 24,
               }}>
-                <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#7FE8A2", display: "inline-block" }} />
-                <span style={{ fontSize: 9, fontFamily: "var(--font-mono)", color: "rgba(255,255,255,0.7)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-                  Em produção
-                </span>
+                <img
+                  src={p.logo}
+                  alt={p.nome}
+                  style={{
+                    width: 72, height: 72,
+                    objectFit: "contain", borderRadius: 14,
+                    boxShadow: "0 4px 16px rgba(0,0,0,0.3)",
+                  }}
+                />
               </div>
-            </div>
 
-            <p style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", lineHeight: 1.7, maxWidth: 640 }}>
-              Ferramenta de criação de conteúdo para social media. Gera modelos de posts, legendas e roteiros para Instagram, LinkedIn e TikTok — com contexto de marca, tom de voz e objetivo de cada peça. Usado por gestores de conteúdo e agências para acelerar produção sem perder identidade.
-            </p>
+              {/* Coluna de informação */}
+              <div style={{ padding: "28px 32px", display: "flex", flexDirection: "column", gap: 14 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+                  <h3 style={{ fontSize: 22, fontWeight: 700, letterSpacing: "-0.03em", lineHeight: 1, color: "#fff" }}>
+                    {p.nome}
+                  </h3>
+                  <div style={{
+                    display: "inline-flex", alignItems: "center", gap: 5,
+                    padding: "2px 9px", borderRadius: 999,
+                    background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)",
+                  }}>
+                    <span
+                      className={p.ativo ? "pulse-dot" : undefined}
+                      style={{
+                        width: 5, height: 5, borderRadius: "50%",
+                        background: p.ativo ? "#7FE8A2" : "#f6c85f",
+                        display: "inline-block",
+                      }}
+                    />
+                    <span style={{ fontSize: 9, fontFamily: "var(--font-mono)", color: "rgba(255,255,255,0.7)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                      {p.status}
+                    </span>
+                  </div>
+                </div>
 
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-              {["Geração de copy", "Modelos de post", "Tom de voz por marca", "Instagram · LinkedIn · TikTok", "Agente IA"].map(t => (
-                <span key={t} style={{
-                  padding: "3px 9px", fontSize: 10,
-                  fontFamily: "var(--font-mono)", color: "rgba(255,255,255,0.55)",
-                  border: "1px solid rgba(255,255,255,0.15)", borderRadius: 4,
-                  background: "rgba(255,255,255,0.05)",
-                }}>
-                  {t}
-                </span>
-              ))}
-            </div>
-          </div>
-        </motion.div>
+                <p style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", lineHeight: 1.7, maxWidth: 680 }}>
+                  {p.desc}
+                </p>
+
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                  {p.tags.map(t => (
+                    <span key={t} style={{
+                      padding: "3px 9px", fontSize: 10,
+                      fontFamily: "var(--font-mono)", color: "rgba(255,255,255,0.55)",
+                      border: "1px solid rgba(255,255,255,0.15)", borderRadius: 4,
+                      background: "rgba(255,255,255,0.05)",
+                    }}>
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
       </div>
 

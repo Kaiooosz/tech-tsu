@@ -73,7 +73,7 @@ export function LegalPage({ title, subtitle, updated, children }: {
           flexWrap: "wrap", gap: 12,
         }}>
           <span style={{ fontSize: 11, color: "var(--muted-2)", fontFamily: "var(--font-mono)" }}>
-            TSUNOKAWA TECH LTDA · CNPJ 66.720.724/0001-18 · Barueri/SP
+            TSUNOKAWA TECH LTDA · CNPJ 66.720.724/0001-80 · Barueri/SP
           </span>
           <span style={{ fontSize: 11, color: "var(--muted-2)", fontFamily: "var(--font-mono)" }}>
             © {new Date().getFullYear()} Tech Tsu

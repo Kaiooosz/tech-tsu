@@ -16,7 +16,7 @@ export default function Privacidade() {
       <h2>1. Quem somos</h2>
       <p>
         Este Aviso de Privacidade descreve como a <strong>TSUNOKAWA TECH LTDA</strong>, CNPJ
-        66.720.724/0001-18, com sede em Barueri/SP (&quot;<strong>Tech Tsu</strong>&quot;), trata
+        66.720.724/0001-80, com sede em Barueri/SP (&quot;<strong>Tech Tsu</strong>&quot;), trata
         dados pessoais, em conformidade com a Lei Geral de Proteção de Dados — LGPD
         (Lei nº 13.709/2018).
       </p>

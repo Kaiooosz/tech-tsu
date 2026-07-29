@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google"
 import { CookieConsent } from "@/components/CookieConsent"
+import { ScrollProgress } from "@/components/ScrollProgress"
+import { WhatsAppFab } from "@/components/WhatsAppFab"
 import "./globals.css"
 
 const spaceGrotesk = Space_Grotesk({
@@ -44,7 +46,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="pt-BR" className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
       style={{ fontFamily: "var(--font-sans)" }}>
       <body>
+        <ScrollProgress />
         {children}
+        <WhatsAppFab />
         <CookieConsent />
       </body>
     </html>
