@@ -13,6 +13,7 @@ type Peca = {
   logoInvert?: boolean
   client: string
   segment: string
+  status: "producao" | "dev"
   title: string
   desc: string
   metric: { n: string; label: string }
@@ -27,6 +28,7 @@ const pecas: Peca[] = [
     logo: "/logo-bblaw.svg",
     logoInvert: true,
     client: "Bezerra Borges",
+    status: "producao",
     segment: "Advocacia internacional",
     title: "ERP/CRM jurídico",
     desc: "Processos, clientes, prazos e documentos de 15+ jurisdições em um sistema só, com um agente de IA especializado para cada área do escritório.",
@@ -40,6 +42,7 @@ const pecas: Peca[] = [
     logo: "/logo-bblaw.svg",
     logoInvert: true,
     client: "Bezerra Borges",
+    status: "producao",
     segment: "Onboarding de cliente",
     title: "Portal de formulários",
     desc: "Coleta de documento e dado do cliente com validação, status por etapa e trilha de auditoria. O onboarding parou de circular por e-mail e grupo de WhatsApp.",
@@ -53,6 +56,7 @@ const pecas: Peca[] = [
     logo: "/logo-bblaw.svg",
     logoInvert: true,
     client: "Bezerra Borges",
+    status: "producao",
     segment: "Captação por vertical",
     title: "3 landing pages especializadas",
     desc: "Holding, offshore e Paraguai com domínio próprio, copy e funil separados. Cada vertical capta sozinha, com a mensagem certa para o público certo.",
@@ -65,6 +69,7 @@ const pecas: Peca[] = [
     src: "/midia/case-rbmotos.png",
     logo: "/logo-rbmotos.jpg",
     client: "RB Moto Parts",
+    status: "producao",
     segment: "E-commerce · Motopeças",
     title: "Site com SEO local",
     desc: "Institucional rápido e indexável, desenhado para dominar a busca por motopeças em Osasco e na Zona Oeste de São Paulo — onde a disputa é por bairro.",
@@ -78,6 +83,7 @@ const pecas: Peca[] = [
     logo: "/logo-cicatribem.png",
     logoInvert: true,
     client: "Cicatribem",
+    status: "producao",
     segment: "E-commerce · Cosmético dérmico",
     title: "Painel da operação",
     desc: "Faturamento, funil, estoque e rastreio de pedido na mesma tela, com agente de IA atendendo em WhatsApp, site e Instagram. A gestão parou de esperar o fechamento do mês para saber onde está a margem.",
@@ -90,6 +96,7 @@ const pecas: Peca[] = [
     src: "/midia/case-pointify.png",
     logo: "/logo-pointify.jpg",
     client: "Pointify",
+    status: "dev",
     segment: "Fintech · Fidelidade",
     title: "Pontos que viram ativo",
     desc: "Produto próprio: programa de fidelidade em que ponto vira cripto, com carteira, KYC, marketplace de resgate e agente de IA no atendimento.",
@@ -101,6 +108,7 @@ const pecas: Peca[] = [
   {
     src: "/midia/disparos-notificacoes.jpg",
     client: "Operação Tech Tsu",
+    status: "producao",
     segment: "API Oficial do WhatsApp",
     title: "Campanhas multicanal",
     desc: "WhatsApp, SMS e e-mail disparados pela API Oficial, com entregues, lidas, respostas, opt-outs e conversão acompanhados em tempo real.",
@@ -174,7 +182,7 @@ export function Vitrine() {
               <span style={{ color: "rgba(245,242,235,0.42)", fontWeight: 300, fontStyle: "italic" }}>não protótipo de portfólio.</span>
             </h2>
             <p style={{ fontSize: 17, color: "var(--muted)", lineHeight: 1.65 }}>
-              Sete entregas que rodam com cliente dentro, todo dia.
+              Sete entregas — seis com cliente dentro todo dia, uma em desenvolvimento.
               {pinned && " Role para percorrer."}
             </p>
           </motion.div>
@@ -302,11 +310,33 @@ function Card({ peca, compact = false }: { peca: Peca; compact?: boolean }) {
       {/* Conteúdo */}
       <div style={{ padding: "22px 22px 24px", display: "flex", flexDirection: "column", gap: 12, flex: 1 }}>
         <div>
-          <div style={{
-            fontSize: 10, fontFamily: "var(--font-mono)", color: "var(--sky)",
-            letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: 7,
-          }}>
-            {peca.client}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, marginBottom: 7 }}>
+            <span style={{
+              fontSize: 10, fontFamily: "var(--font-mono)", color: "var(--sky)",
+              letterSpacing: "0.16em", textTransform: "uppercase",
+            }}>
+              {peca.client}
+            </span>
+            <span style={{
+              display: "inline-flex", alignItems: "center", gap: 5,
+              padding: "2px 8px", borderRadius: 999, flexShrink: 0,
+              background: peca.status === "producao" ? "rgba(44,85,232,0.14)" : "rgba(246,200,95,0.12)",
+              border: peca.status === "producao" ? "1px solid rgba(143,168,255,0.28)" : "1px solid rgba(246,200,95,0.28)",
+            }}>
+              <span
+                className={peca.status === "producao" ? "pulse-dot" : undefined}
+                style={{
+                  width: 4, height: 4, borderRadius: "50%", display: "inline-block",
+                  background: peca.status === "producao" ? "var(--sky)" : "var(--amber)",
+                }}
+              />
+              <span style={{
+                fontSize: 8.5, fontFamily: "var(--font-mono)", letterSpacing: "0.1em", textTransform: "uppercase",
+                color: peca.status === "producao" ? "var(--sky)" : "var(--amber)",
+              }}>
+                {peca.status === "producao" ? "Em produção" : "Em desenvolvimento"}
+              </span>
+            </span>
           </div>
           <h3 style={{ fontSize: 20, fontWeight: 700, letterSpacing: "-0.02em", color: "var(--text)" }}>
             {peca.title}

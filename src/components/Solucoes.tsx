@@ -115,7 +115,7 @@ export function Solucoes() {
 
   return (
     <>
-      <section id="solucoes" style={{ padding: "96px 40px", background: "var(--paper)", position: "relative", overflow: "hidden" }}>
+      <section id="solucoes" style={{ padding: "96px 40px", background: "var(--paper-2)", position: "relative", overflow: "hidden" }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative" }}>
 
           {/* Header */}
