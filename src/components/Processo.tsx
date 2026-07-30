@@ -70,7 +70,7 @@ export function Processo() {
               textTransform: "uppercase", color: "var(--muted-ink)",
               fontFamily: "var(--font-mono)",
             }}>
-              Como trabalhamos
+              Nosso processo
             </motion.div>
             <div style={{ overflow: "hidden" }}>
               <motion.h2

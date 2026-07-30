@@ -142,14 +142,11 @@ body::after {
 .divider-dark  { border-top: 1px solid var(--border); }
 
 /* ── Acessibilidade de movimento ─────────────────────────────── */
+/* As esteiras contínuas seguem rodando: paradas no meio do ciclo elas
+   ficam com o primeiro item cortado, o que é pior que o movimento. */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .marquee-track, .pulse-dot { animation: none !important; }
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
+  .pulse-dot { animation: none !important; }
 }
 
 /* Scrollbar */

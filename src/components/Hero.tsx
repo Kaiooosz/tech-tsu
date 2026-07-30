@@ -61,11 +61,12 @@ export function Hero() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.25, ...SPRING_SOFT }}
           style={{
-            position: "absolute", top: 100, right: 60,
+            position: "absolute", top: 100, right: 60, zIndex: 3,
             display: "flex", alignItems: "center", gap: 8,
             padding: "6px 12px",
-            background: "rgba(44,85,232,0.10)",
-            border: "1px solid rgba(44,85,232,0.28)",
+            background: "rgba(25,27,33,0.72)",
+            border: "1px solid rgba(143,168,255,0.35)",
+            backdropFilter: "blur(8px)",
             borderRadius: 999, fontSize: 12, fontWeight: 500,
             fontFamily: "var(--font-mono)",
             color: "var(--sky)",
@@ -246,67 +247,44 @@ export function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* ── Right floating mock images ─── */}
+        {/* ── Foto lateral com degradê ─── */}
         <motion.div
           className="hero-mock"
           initial={{ opacity: 0, x: 60 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.65, ease: E }}
+          transition={{ duration: 1.2, delay: 0.6, ease: E }}
           style={{
-            position: "absolute", right: 40, top: "50%",
-            translateY: "-50%",
-            width: 360,
+            position: "absolute", right: 0, top: 0, bottom: 0,
+            width: "52%",
+            overflow: "hidden",
+            pointerEvents: "none",
             x: mockX,
-            y: mockImgY,
             opacity: mockOpacity,
           }}
         >
-          {/* Float animation wrapper */}
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            style={{ position: "relative" }}
-          >
-            {/* Back image — pipeline, offset behind */}
-            <motion.img
-              src="/resultado-pipeline.svg"
-              alt="Pipeline CRM"
-              initial={{ opacity: 0, y: 20, rotate: 2 }}
-              animate={{ opacity: 1, y: 0, rotate: 2 }}
-              transition={{ duration: 0.8, delay: 0.9, ease: E }}
-              style={{
-                position: "absolute",
-                top: 24, left: -20,
-                width: "90%",
-                borderRadius: 10,
-                boxShadow: "0 8px 40px rgba(0,0,0,0.45)",
-                border: "1px solid rgba(255,255,255,0.06)",
-                opacity: 0.55,
-                pointerEvents: "none",
-              }}
-            />
-
-            {/* Front image — dashboard */}
-            <motion.img
-              src="/resultado-dashboard.svg"
-              alt="Dashboard CRM"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.85, delay: 0.75, ease: E }}
-              style={{
-                position: "relative", zIndex: 1,
-                width: "100%",
-                borderRadius: 12,
-                boxShadow: "0 16px 60px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.3)",
-                border: "1px solid rgba(255,255,255,0.08)",
-              }}
-            />
-          </motion.div>
+          <motion.img
+            src="/midia/equipe-vidro.jpg"
+            alt=""
+            style={{
+              position: "absolute", top: -60, left: 0,
+              width: "100%", height: "calc(100% + 120px)",
+              objectFit: "cover", objectPosition: "60% 50%",
+              opacity: 0.34,
+              maskImage: "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.3) 66%, rgba(0,0,0,0) 96%)",
+              WebkitMaskImage: "linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 30%, rgba(0,0,0,0.3) 66%, rgba(0,0,0,0) 96%)",
+              y: mockImgY,
+            }}
+          />
+          <div style={{
+            position: "absolute", inset: 0,
+            background: "linear-gradient(to bottom, var(--bg) 0%, rgba(25,27,33,0.6) 14%, transparent 34%, transparent 72%, var(--bg) 100%)",
+          }} />
         </motion.div>
+
       </section>
 
       <style>{`
-        @media (max-width: 1100px) { .hero-mock { display: none !important; } }
+        @media (max-width: 980px) { .hero-mock { display: none !important; } }
         @media (max-width: 768px)  { .badge-float { display: none !important; } }
       `}</style>
     </>

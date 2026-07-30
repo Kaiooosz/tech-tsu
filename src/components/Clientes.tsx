@@ -16,8 +16,6 @@ export function Clientes() {
   return (
     <section className="clientes" style={{
       background: "var(--paper-2)",
-      borderTop: "1px solid var(--border-light)",
-      borderBottom: "1px solid var(--border-light)",
       padding: "56px 0",
       overflow: "hidden",
     }}>
@@ -89,9 +87,6 @@ export function Clientes() {
           .clientes { padding: 44px 0 !important; }
           .logos-track { animation-duration: 13s; gap: 48px !important; }
           .logo-item { height: 32px !important; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .logos-track { animation: none !important; }
         }
       `}</style>
     </section>

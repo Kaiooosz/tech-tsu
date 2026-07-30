@@ -41,8 +41,9 @@ const cardVariant = {
 export function Oferta() {
   return (
     <>
-      <section id="solucao" style={{ padding: "96px 40px", background: "var(--paper)" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+      <section id="solucao" style={{ padding: "96px 40px", background: "var(--paper-2)" }}>
+
+        <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
 
           {/* Header */}
           <motion.div
