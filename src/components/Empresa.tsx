@@ -5,12 +5,6 @@ import { E, staggerContainer, childFadeUp, tagPop } from "@/lib/motion"
 import { EMPRESA, WA } from "@/lib/site"
 import { MediaFrame } from "./MediaFrame"
 
-const numeros = [
-  { n: "7+",   label: "Aplicações em produção" },
-  { n: "14+",  label: "Agentes de IA especializados" },
-  { n: "15+",  label: "Jurisdições suportadas" },
-  { n: "3–6",  label: "Semanas até o primeiro MVP" },
-]
 
 const principios = [
   {
@@ -153,42 +147,6 @@ export function Empresa() {
               parallax={40}
             />
           </div>
-
-          {/* Números */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            variants={staggerContainer(0.08)}
-            style={{
-              display: "grid", gridTemplateColumns: "repeat(4, 1fr)",
-              gap: 16, marginBottom: 72,
-            }}
-            className="empresa-numeros"
-          >
-            {numeros.map(item => (
-              <motion.div
-                key={item.label}
-                variants={childFadeUp}
-                style={{
-                  padding: "28px 24px",
-                  border: "1px solid var(--border)",
-                  borderRadius: 12,
-                  background: "rgba(255,255,255,0.02)",
-                }}
-              >
-                <div style={{
-                  fontFamily: "var(--font-mono)", fontSize: 36, fontWeight: 500,
-                  color: "var(--text)", lineHeight: 1, letterSpacing: "-0.03em", marginBottom: 10,
-                }}>
-                  {item.n}
-                </div>
-                <div style={{ fontSize: 12.5, color: "var(--muted)", lineHeight: 1.5 }}>
-                  {item.label}
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
 
           {/* Princípios */}
           <motion.p
@@ -375,7 +333,6 @@ export function Empresa() {
       <style>{`
         @media (max-width: 980px) {
           .empresa-topo { grid-template-columns: 1fr !important; }
-          .empresa-numeros { grid-template-columns: repeat(2, 1fr) !important; }
           .empresa-dados { grid-template-columns: 1fr !important; }
         }
         @media (max-width: 560px) {

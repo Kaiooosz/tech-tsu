@@ -52,20 +52,6 @@ const pecas: Peca[] = [
     gradient: "linear-gradient(145deg, #101426 0%, #24337A 55%, #4B74FF 100%)",
   },
   {
-    src: "/midia/case-landings.png",
-    logo: "/logo-bblaw.svg",
-    logoInvert: true,
-    client: "Bezerra Borges",
-    status: "producao",
-    segment: "Captação por vertical",
-    title: "3 landing pages especializadas",
-    desc: "Holding, offshore e Paraguai com domínio próprio, copy e funil separados. Cada vertical capta sozinha, com a mensagem certa para o público certo.",
-    metric: { n: "03", label: "domínios com funil próprio" },
-    entregue: ["Página por vertical", "Copy e oferta dedicadas", "Captura ligada ao CRM"],
-    stack: ["Next.js", "SEO", "Vercel"],
-    gradient: "linear-gradient(145deg, #0D1018 0%, #1B2A6B 55%, #3A62F0 100%)",
-  },
-  {
     src: "/midia/case-rbmotos.png",
     logo: "/logo-rbmotos.jpg",
     client: "RB Moto Parts",
@@ -182,7 +168,7 @@ export function Vitrine() {
               <span style={{ color: "rgba(245,242,235,0.42)", fontWeight: 300, fontStyle: "italic" }}>não protótipo de portfólio.</span>
             </h2>
             <p style={{ fontSize: 17, color: "var(--muted)", lineHeight: 1.65 }}>
-              Sete entregas — seis com cliente dentro todo dia, uma em desenvolvimento.
+              Seis entregas — cinco com cliente dentro todo dia, uma em desenvolvimento.
               {pinned && " Role para percorrer."}
             </p>
           </motion.div>

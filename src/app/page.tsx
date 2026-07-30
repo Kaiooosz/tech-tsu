@@ -28,7 +28,6 @@ export default function Home() {
         <Solucoes />
         <Segmentos />
         <Processo />
-        <Empresa />
         <Case />
         <Comparativo />
         <Disparos />
@@ -36,6 +35,7 @@ export default function Home() {
         <Seguranca />
         <ContatoLeads />
         <Vitrine />
+        <Empresa />
       </main>
       <Footer />
     </>
