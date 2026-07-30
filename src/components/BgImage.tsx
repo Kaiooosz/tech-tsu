@@ -25,6 +25,8 @@ type Props = {
   veu?: number
   /** Degradê lateral mais leve: a mídia sobrevive mais longe antes de sumir. */
   suave?: boolean
+  /** Recorte da imagem dentro da faixa. Ex.: "50% 80%" puxa a parte de baixo da foto para cima. */
+  foco?: string
 }
 
 const MASCARA: Record<Lado, string> = {
@@ -51,6 +53,7 @@ export function BgImage({
   soDesktop = false,
   veu = 26,
   suave = false,
+  foco = "center",
 }: Props) {
   const mascara = (suave ? MASCARA_SUAVE : MASCARA)[lado]
   const ref = useRef<HTMLDivElement>(null)
@@ -84,14 +87,14 @@ export function BgImage({
           loop
           playsInline
           preload="metadata"
-          style={{ ...midiaStyle(parallax, opacity, mascara), y: parallax ? y : 0 }}
+          style={{ ...midiaStyle(parallax, opacity, mascara, foco), y: parallax ? y : 0 }}
         />
       ) : (
         <motion.img
           src={src}
           alt=""
           loading="lazy"
-          style={{ ...midiaStyle(parallax, opacity, mascara), y: parallax ? y : 0 }}
+          style={{ ...midiaStyle(parallax, opacity, mascara, foco), y: parallax ? y : 0 }}
         />
       )}
       {/* Véu vertical: some no topo e na base para a mídia nunca encostar na borda da seção */}
@@ -107,12 +110,13 @@ export function BgImage({
   )
 }
 
-function midiaStyle(parallax: number, opacity: number, mascara: string) {
+function midiaStyle(parallax: number, opacity: number, mascara: string, foco: string) {
   return {
     position: "absolute" as const,
     top: -parallax, left: 0,
     width: "100%", height: `calc(100% + ${parallax * 2}px)`,
     objectFit: "cover" as const,
+    objectPosition: foco,
     opacity,
     maskImage: mascara,
     WebkitMaskImage: mascara,

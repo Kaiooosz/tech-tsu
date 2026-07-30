@@ -24,16 +24,16 @@ export default function Home() {
         <Hero />
         <Marquee />
         <Clientes />
-        <Case />
         <Oferta />
         <Solucoes />
         <Segmentos />
         <Comparativo />
         <Processo />
         <Vitrine />
-        <Ferramentas />
         <Empresa />
+        <Case />
         <Disparos />
+        <Ferramentas />
         <Seguranca />
         <ContatoLeads />
       </main>

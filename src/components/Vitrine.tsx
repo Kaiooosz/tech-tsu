@@ -2,50 +2,112 @@
 import { useEffect, useRef, useState } from "react"
 import { motion, useScroll, useTransform, useSpring } from "framer-motion"
 import { E } from "@/lib/motion"
-import { MediaFrame } from "./MediaFrame"
+import { MockAgente, MockEcommerce } from "./VitrineMocks"
 
-const pecas = [
+type Peca = {
+  /** Print real. Enquanto não existir, a capa entra no lugar. */
+  src?: string
+  /** Capa desenhada, usada quando não há print. */
+  mock?: "agente" | "ecommerce"
+  logo?: string
+  logoInvert?: boolean
+  client: string
+  segment: string
+  title: string
+  desc: string
+  metric: { n: string; label: string }
+  entregue: string[]
+  stack: string[]
+  gradient: string
+}
+
+const pecas: Peca[] = [
   {
-    src: "/midia/case-bblaw.png",
-    title: "ERP/CRM jurídico",
+    mock: "agente",
+    logo: "/logo-bblaw.svg",
+    logoInvert: true,
     client: "Bezerra Borges",
-    desc: "Processos, clientes, prazos e jurisdições em um sistema só, com 14 agentes de IA especializados por área.",
-    tags: ["CRM", "Agentes IA", "15+ jurisdições"],
+    segment: "Advocacia internacional",
+    title: "ERP/CRM jurídico",
+    desc: "Processos, clientes, prazos e documentos de 15+ jurisdições em um sistema só, com um agente de IA especializado para cada área do escritório.",
+    metric: { n: "14", label: "agentes de IA em operação" },
+    entregue: ["CRM de clientes e processos", "Controle de prazo por jurisdição", "Agentes de IA por área"],
+    stack: ["Next.js", "PostgreSQL", "Claude API"],
+    gradient: "linear-gradient(145deg, #0E1220 0%, #1238C4 60%, #2C55E8 100%)",
   },
   {
     src: "/midia/case-formularios.png",
-    title: "Portal de formulários",
+    logo: "/logo-bblaw.svg",
+    logoInvert: true,
     client: "Bezerra Borges",
-    desc: "Coleta de documento e dado do cliente com validação, status e trilha de auditoria — sem ida e volta por e-mail.",
-    tags: ["Onboarding", "Documentos", "Auditoria"],
+    segment: "Onboarding de cliente",
+    title: "Portal de formulários",
+    desc: "Coleta de documento e dado do cliente com validação, status por etapa e trilha de auditoria. O onboarding parou de circular por e-mail e grupo de WhatsApp.",
+    metric: { n: "100%", label: "do onboarding fora do e-mail" },
+    entregue: ["Formulário por tipo de serviço", "Upload com validação", "Status e trilha de auditoria"],
+    stack: ["Next.js", "Neon", "Resend"],
+    gradient: "linear-gradient(145deg, #101426 0%, #24337A 55%, #4B74FF 100%)",
+  },
+  {
+    src: "/midia/case-landings.png",
+    logo: "/logo-bblaw.svg",
+    logoInvert: true,
+    client: "Bezerra Borges",
+    segment: "Captação por vertical",
+    title: "3 landing pages especializadas",
+    desc: "Holding, offshore e Paraguai com domínio próprio, copy e funil separados. Cada vertical capta sozinha, com a mensagem certa para o público certo.",
+    metric: { n: "03", label: "domínios com funil próprio" },
+    entregue: ["Página por vertical", "Copy e oferta dedicadas", "Captura ligada ao CRM"],
+    stack: ["Next.js", "SEO", "Vercel"],
+    gradient: "linear-gradient(145deg, #0D1018 0%, #1B2A6B 55%, #3A62F0 100%)",
   },
   {
     src: "/midia/case-rbmotos.png",
-    title: "Site com SEO local",
+    logo: "/logo-rbmotos.jpg",
     client: "RB Moto Parts",
-    desc: "Institucional rápido e indexável, desenhado para dominar a busca por motopeças na Zona Oeste de São Paulo.",
-    tags: ["Next.js", "SEO local", "Captação"],
+    segment: "E-commerce · Motopeças",
+    title: "Site com SEO local",
+    desc: "Institucional rápido e indexável, desenhado para dominar a busca por motopeças em Osasco e na Zona Oeste de São Paulo — onde a disputa é por bairro.",
+    metric: { n: "1º", label: "alvo na busca da região" },
+    entregue: ["Site institucional", "SEO local por bairro", "Captação por WhatsApp"],
+    stack: ["Next.js", "SEO local", "Vercel"],
+    gradient: "linear-gradient(145deg, #12141C 0%, #1F3390 55%, #2C55E8 100%)",
   },
   {
-    src: "/midia/case-cicatribem.png",
-    title: "Agente de IA multicanal",
+    mock: "ecommerce",
+    logo: "/logo-cicatribem.png",
+    logoInvert: true,
     client: "Cicatribem",
-    desc: "WhatsApp, site e Instagram no mesmo fluxo: tira dúvida de produto, faz triagem e direciona o pedido.",
-    tags: ["WhatsApp", "Instagram", "Triagem"],
+    segment: "E-commerce · Cosmético dérmico",
+    title: "Painel da operação",
+    desc: "Faturamento, funil, estoque e rastreio de pedido na mesma tela, com agente de IA atendendo em WhatsApp, site e Instagram. A gestão parou de esperar o fechamento do mês para saber onde está a margem.",
+    metric: { n: "R$ 1,84M", label: "faturamento no mês acompanhado ao vivo" },
+    entregue: ["Funil de sessão a pedido pago", "Rastreio e prazo de entrega", "Atendimento por IA em 3 canais"],
+    stack: ["Dashboard", "Integração de estoque", "Claude API"],
+    gradient: "linear-gradient(145deg, #0F1119 0%, #2A3AA8 55%, #5C7FFF 100%)",
   },
   {
     src: "/midia/case-pointify.png",
-    title: "Plataforma de fidelidade",
+    logo: "/logo-pointify.jpg",
     client: "Pointify",
-    desc: "Produto próprio: pontos que viram cripto, com KYC, marketplace e agente de IA no atendimento.",
-    tags: ["Fintech", "KYC", "Marketplace"],
+    segment: "Fintech · Fidelidade",
+    title: "Pontos que viram ativo",
+    desc: "Produto próprio: programa de fidelidade em que ponto vira cripto, com carteira, KYC, marketplace de resgate e agente de IA no atendimento.",
+    metric: { n: "KYC", label: "verificação nativa na conta" },
+    entregue: ["Carteira e extrato", "KYC e antifraude", "Marketplace de resgate"],
+    stack: ["Next.js", "PostgreSQL", "Cripto"],
+    gradient: "linear-gradient(145deg, #0E1018 0%, #16277E 55%, #4169F5 100%)",
   },
   {
     src: "/midia/disparos-notificacoes.jpg",
-    title: "Campanhas multicanal",
     client: "Operação Tech Tsu",
-    desc: "WhatsApp, SMS e e-mail disparados pela API Oficial, com entregues, lidas, respostas e opt-outs em tempo real.",
-    tags: ["API Oficial", "Relatórios", "Escala"],
+    segment: "API Oficial do WhatsApp",
+    title: "Campanhas multicanal",
+    desc: "WhatsApp, SMS e e-mail disparados pela API Oficial, com entregues, lidas, respostas, opt-outs e conversão acompanhados em tempo real.",
+    metric: { n: "82%", label: "taxa de leitura" },
+    entregue: ["Segmentação da base", "Template aprovado na Meta", "Relatório de campanha"],
+    stack: ["API Oficial", "Meta", "Relatórios"],
+    gradient: "linear-gradient(145deg, #101321 0%, #1E3AAE 55%, #4B74FF 100%)",
   },
 ]
 
@@ -85,7 +147,7 @@ export function Vitrine() {
     <>
       <section id="vitrine" style={{ background: "var(--bg)", position: "relative" }}>
         {/* Header */}
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 40px 40px" }} className="vitrine-head">
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "96px 40px 36px" }} className="vitrine-head">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -112,28 +174,26 @@ export function Vitrine() {
               <span style={{ color: "rgba(245,242,235,0.42)", fontWeight: 300, fontStyle: "italic" }}>não protótipo de portfólio.</span>
             </h2>
             <p style={{ fontSize: 17, color: "var(--muted)", lineHeight: 1.65 }}>
-              Telas reais de projetos que já rodam com cliente dentro, todo dia.
+              Sete entregas que rodam com cliente dentro, todo dia.
               {pinned && " Role para percorrer."}
             </p>
           </motion.div>
         </div>
 
         {/* O wrapper existe sempre para o useScroll ter alvo já na hidratação. */}
-        <div ref={wrapRef} style={pinned ? { height: "300vh", position: "relative" } : undefined}>
+        <div ref={wrapRef} style={pinned ? { height: "340vh", position: "relative" } : undefined}>
           {pinned ? (
             <div style={{
               position: "sticky", top: 0, height: "100vh",
               display: "flex", alignItems: "center", overflow: "hidden",
             }}>
-              <motion.div ref={trackRef} style={{ display: "flex", gap: 28, padding: "0 40px", x, willChange: "transform" }}>
-                {pecas.map(p => (
-                  <Card key={p.title} {...p} />
-                ))}
+              <motion.div ref={trackRef} style={{ display: "flex", gap: 24, padding: "0 40px", x, willChange: "transform" }}>
+                {pecas.map(p => <Card key={p.title} peca={p} />)}
               </motion.div>
 
               {/* Barra de progresso da vitrine */}
               <div style={{
-                position: "absolute", bottom: 56, left: 40, right: 40,
+                position: "absolute", bottom: 48, left: 40, right: 40,
                 height: 2, background: "var(--border)", borderRadius: 999,
               }}>
                 <motion.div style={{
@@ -145,12 +205,10 @@ export function Vitrine() {
             </div>
           ) : (
             <div className="vitrine-scroll" style={{
-              display: "flex", gap: 20, overflowX: "auto",
+              display: "flex", gap: 16, overflowX: "auto",
               padding: "0 20px 40px", scrollSnapType: "x mandatory",
             }}>
-              {pecas.map(p => (
-                <Card key={p.title} {...p} compact />
-              ))}
+              {pecas.map(p => <Card key={p.title} peca={p} compact />)}
             </div>
           )}
         </div>
@@ -160,50 +218,120 @@ export function Vitrine() {
         .vitrine-scroll { -webkit-overflow-scrolling: touch; scrollbar-width: none; }
         .vitrine-scroll::-webkit-scrollbar { display: none; }
         @media (max-width: 560px) {
-          .vitrine-head { padding: 64px 20px 32px !important; }
+          .vitrine-head { padding: 64px 20px 28px !important; }
         }
       `}</style>
     </>
   )
 }
 
-function Card({
-  src, title, client, desc, tags, compact = false,
-}: (typeof pecas)[number] & { compact?: boolean }) {
+function Card({ peca, compact = false }: { peca: Peca; compact?: boolean }) {
+  const [semPrint, setSemPrint] = useState(!peca.src)
+
   return (
     <article
       style={{
         flex: "0 0 auto",
-        width: compact ? "min(84vw, 380px)" : 480,
+        width: compact ? "min(86vw, 380px)" : 420,
         scrollSnapAlign: "center",
-        display: "flex", flexDirection: "column", gap: 18,
+        display: "flex", flexDirection: "column",
+        borderRadius: 14, overflow: "hidden",
+        border: "1px solid rgba(255,255,255,0.10)",
+        background: "var(--bg-2)",
+        boxShadow: "0 18px 50px rgba(0,0,0,0.4)",
       }}
     >
-      <MediaFrame
-        src={src}
-        alt={`${title} — ${client}`}
-        label={`Print de ${title} · ${client}`}
-        dark
-        chrome
-        ratio={16 / 10}
-        parallax={0}
-      />
-      <div>
-        <div style={{
-          fontSize: 10, fontFamily: "var(--font-mono)", color: "var(--sky)",
-          letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: 8,
-        }}>
-          {client}
+      {/* Capa */}
+      <div style={{ position: "relative", aspectRatio: "16 / 9", overflow: "hidden", background: peca.gradient }}>
+        {!semPrint && peca.src ? (
+          <img
+            src={peca.src}
+            alt={`${peca.title} — ${peca.client}`}
+            loading="lazy"
+            onError={() => setSemPrint(true)}
+            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+          />
+        ) : (
+          <>
+            <div className="circuit-grid" style={{ position: "absolute", inset: 0, opacity: 0.28 }} />
+            <div style={{
+              position: "absolute", inset: 0,
+              padding: "20px 22px",
+              display: "flex", flexDirection: "column", justifyContent: "space-between",
+            }}>
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
+                {peca.logo ? (
+                  <img
+                    src={peca.logo}
+                    alt=""
+                    style={{
+                      height: 26, maxWidth: 116, objectFit: "contain",
+                      filter: peca.logoInvert
+                        ? "brightness(0) invert(1) opacity(0.9)"
+                        : "grayscale(1) brightness(1.9) opacity(0.9)",
+                    }}
+                  />
+                ) : (
+                  <img src="/mark-white.svg" alt="" width={24} height={24} style={{ opacity: 0.9 }} />
+                )}
+                <span style={{
+                  fontSize: 9, fontFamily: "var(--font-mono)",
+                  letterSpacing: "0.16em", textTransform: "uppercase",
+                  color: "rgba(255,255,255,0.6)", textAlign: "right",
+                }}>
+                  {peca.segment}
+                </span>
+              </div>
+
+              <div>
+                <div style={{
+                  fontFamily: "var(--font-mono)", fontSize: 46, fontWeight: 500,
+                  color: "#fff", lineHeight: 1, letterSpacing: "-0.04em",
+                }}>
+                  {peca.metric.n}
+                </div>
+                <div style={{ fontSize: 11.5, color: "rgba(255,255,255,0.7)", marginTop: 7 }}>
+                  {peca.metric.label}
+                </div>
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+
+      {/* Conteúdo */}
+      <div style={{ padding: "22px 22px 24px", display: "flex", flexDirection: "column", gap: 12, flex: 1 }}>
+        <div>
+          <div style={{
+            fontSize: 10, fontFamily: "var(--font-mono)", color: "var(--sky)",
+            letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: 7,
+          }}>
+            {peca.client}
+          </div>
+          <h3 style={{ fontSize: 20, fontWeight: 700, letterSpacing: "-0.02em", color: "var(--text)" }}>
+            {peca.title}
+          </h3>
         </div>
-        <h3 style={{ fontSize: 20, fontWeight: 700, letterSpacing: "-0.02em", color: "var(--text)", marginBottom: 8 }}>
-          {title}
-        </h3>
-        <p style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.7, marginBottom: 12 }}>
-          {desc}
+
+        <p style={{ fontSize: 13.5, color: "var(--muted)", lineHeight: 1.7 }}>
+          {peca.desc}
         </p>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-          {tags.map(t => (
+
+        <ul style={{ margin: 0, padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 7, flex: 1 }}>
+          {peca.entregue.map(item => (
+            <li key={item} style={{ display: "flex", alignItems: "flex-start", gap: 9 }}>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" style={{ marginTop: 4, flexShrink: 0 }}>
+                <path d="M5 13l4 4L19 7" stroke="var(--sky)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <span style={{ fontSize: 12.5, color: "var(--muted)", lineHeight: 1.5 }}>{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 6, paddingTop: 4, borderTop: "1px solid var(--border)", marginTop: 2 }}>
+          {peca.stack.map(t => (
             <span key={t} style={{
+              marginTop: 10,
               padding: "3px 9px", fontSize: 10,
               fontFamily: "var(--font-mono)", color: "var(--muted-2)",
               border: "1px solid var(--border)", borderRadius: 4,

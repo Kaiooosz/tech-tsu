@@ -92,8 +92,9 @@ export function Disparos() {
           opacity={0.62}
           blend="var(--paper)"
           parallax={70}
-          veu={8}
+          veu={4}
           suave
+          foco="50% 30%"
         />
         <BgImage
           src="/midia/disparos-loop.mp4"
