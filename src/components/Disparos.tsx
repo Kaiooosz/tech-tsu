@@ -86,17 +86,6 @@ export function Disparos() {
     <>
       <section id="disparos" style={{ padding: "96px 40px", background: "var(--paper)", position: "relative", overflow: "hidden" }}>
         <BgImage
-          src="/midia/disparos-predio.jpg"
-          lado="right"
-          width="54%"
-          opacity={0.62}
-          blend="var(--paper)"
-          parallax={70}
-          veu={4}
-          suave
-          foco="50% 30%"
-        />
-        <BgImage
           src="/midia/disparos-loop.mp4"
           kind="video"
           poster="/midia/disparos-loop-poster.jpg"
@@ -449,6 +438,57 @@ export function Disparos() {
             </motion.div>
           </div>
 
+          {/* Faixa do prédio — a base inteira recebendo ao mesmo tempo */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 1.1, ease: "easeOut" }}
+            className="disparos-faixa"
+            style={{
+              position: "relative",
+              height: 300, marginBottom: 72,
+              borderRadius: 14, overflow: "hidden",
+              border: "1px solid var(--border-light)",
+            }}
+          >
+            <img
+              src="/midia/disparos-predio.jpg"
+              alt="Notificações da Tech Tsu chegando em vários apartamentos ao mesmo tempo"
+              loading="lazy"
+              style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "50% 42%" }}
+            />
+            <div style={{
+              position: "absolute", inset: 0,
+              background: "linear-gradient(to right, rgba(248,247,244,0.96) 0%, rgba(248,247,244,0.55) 34%, rgba(248,247,244,0) 62%)",
+            }} />
+            <div style={{
+              position: "absolute", inset: 0,
+              background: "linear-gradient(to bottom, rgba(248,247,244,0.5) 0%, transparent 22%, transparent 78%, rgba(248,247,244,0.6) 100%)",
+            }} />
+            <div style={{
+              position: "absolute", left: 0, top: 0, bottom: 0,
+              display: "flex", flexDirection: "column", justifyContent: "center",
+              padding: "0 40px", maxWidth: 520,
+            }}>
+              <div style={{
+                fontSize: 11, fontFamily: "var(--font-mono)", color: "var(--teal)",
+                letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 12,
+              }}>
+                Escala
+              </div>
+              <p style={{
+                fontSize: "clamp(19px, 2.2vw, 26px)", fontWeight: 700,
+                letterSpacing: "-0.03em", lineHeight: 1.25, color: "var(--ink)",
+              }}>
+                Uma campanha, a base inteira —{" "}
+                <span style={{ color: "var(--muted-ink)", fontWeight: 300, fontStyle: "italic" }}>
+                  no mesmo minuto.
+                </span>
+              </p>
+            </div>
+          </motion.div>
+
           {/* Fluxo de disparo */}
           <motion.p
             initial={{ opacity: 0 }}
@@ -611,6 +651,7 @@ export function Disparos() {
         @media (max-width: 560px) {
           #disparos { padding: 64px 20px !important; }
           .disparos-fluxo { grid-template-columns: 1fr !important; }
+          .disparos-faixa { height: 220px !important; }
         }
       `}</style>
     </>

@@ -70,7 +70,6 @@ export function Clientes() {
 
       <style>{`
         .logos-track { animation: logos-marquee 18s linear infinite; }
-        .logos-viewport:hover .logos-track { animation-play-state: paused; }
 
         .logo-item {
           filter: grayscale(1) brightness(0.35) opacity(0.55);

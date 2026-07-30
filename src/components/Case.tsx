@@ -447,7 +447,7 @@ export function Case() {
               </motion.div>
             </motion.div>
 
-            {/* Dashboard mock — slide from right */}
+            {/* Foto da operação — slide from right */}
             <motion.div
               initial="hidden"
               whileInView="visible"
@@ -456,129 +456,38 @@ export function Case() {
               whileHover={{ scale: 1.015 }}
               transition={{ type: "spring", stiffness: 200, damping: 22 }}
               style={{
-                border: "1px solid var(--border)", borderRadius: 10,
+                position: "relative",
+                border: "1px solid var(--border)", borderRadius: 12,
                 overflow: "hidden", background: "var(--bg-3)",
+                minHeight: 420,
+                boxShadow: "0 20px 60px rgba(0,0,0,0.45)",
               }}
             >
-              {/* Window chrome */}
+              <img
+                src="/midia/equipe-escritorio.jpg"
+                alt="Time da Tech Tsu operando o sistema no escritório"
+                loading="lazy"
+                style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+              />
+              {/* Degradê leve para a legenda respirar */}
               <div style={{
-                display: "flex", alignItems: "center", gap: 6,
-                padding: "12px 16px", borderBottom: "1px solid var(--border)",
-                background: "rgba(255,255,255,0.02)",
+                position: "absolute", inset: 0,
+                background: "linear-gradient(to top, rgba(25,27,33,0.88) 0%, rgba(25,27,33,0.25) 42%, rgba(25,27,33,0) 72%)",
+              }} />
+              <div style={{
+                position: "absolute", left: 0, right: 0, bottom: 0,
+                padding: "22px 24px",
               }}>
-                {["#ff5f57","#ffbd2e","var(--teal)"].map((c, i) => (
-                  <span key={i} style={{ width: 10, height: 10, borderRadius: "50%", background: c, display: "inline-block" }} />
-                ))}
                 <div style={{
-                  flex: 1, marginLeft: 8, height: 20, borderRadius: 3,
-                  background: "rgba(255,255,255,0.04)",
-                  display: "flex", alignItems: "center", padding: "0 8px",
+                  fontSize: 10, fontFamily: "var(--font-mono)", color: "var(--sky)",
+                  letterSpacing: "0.16em", textTransform: "uppercase", marginBottom: 8,
                 }}>
-                  <span style={{ fontSize: 9, fontFamily: "var(--font-mono)", color: "rgba(255,255,255,0.2)" }}>bblaw-api.vercel.app/dashboard</span>
+                  Depois
                 </div>
-              </div>
-
-              {/* App layout */}
-              <div style={{ display: "grid", gridTemplateColumns: "100px 1fr", minHeight: 360 }}>
-                {/* Sidebar */}
-                <div style={{
-                  padding: "20px 12px", borderRight: "1px solid var(--border)",
-                  background: "rgba(255,255,255,0.01)",
-                  display: "flex", flexDirection: "column", gap: 4,
-                }}>
-                  {["Dashboard","Clientes","Pipeline","Tarefas","Documentos","Agenda","Propostas"].map((item, i) => (
-                    <motion.div
-                      key={item}
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.3, delay: i * 0.06, ease: E }}
-                      whileHover={i !== 0 ? { x: 3, color: "rgba(255,255,255,0.6)" } : undefined}
-                      style={{
-                        padding: "6px 8px", borderRadius: 4,
-                        background: i === 0 ? "rgba(44,85,232,0.12)" : "transparent",
-                        fontSize: 9,
-                        color: i === 0 ? "var(--sky)" : "rgba(255,255,255,0.3)",
-                        fontWeight: i === 0 ? 600 : 400,
-                      }}
-                    >
-                      {item}
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* Main content */}
-                <div style={{ padding: 16 }}>
-                  <div style={{ marginBottom: 14 }}>
-                    <div style={{ fontSize: 10, fontWeight: 700, color: "var(--text)", marginBottom: 2 }}>Bom dia, Dr. Marcos</div>
-                    <div style={{ fontSize: 9, color: "var(--muted-2)", fontFamily: "var(--font-mono)" }}>Seg, 19 maio 2025 · 3 tarefas urgentes</div>
-                  </div>
-
-                  {/* KPI mini */}
-                  <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 6, marginBottom: 12 }}>
-                    {[{n:"24",l:"Clientes"},{n:"7",l:"OS abertas"},{n:"R$41k",l:"MRR"}].map((k, i) => (
-                      <motion.div
-                        key={k.l}
-                        initial={{ opacity: 0, y: 8 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.35, delay: 0.2 + i * 0.08, ease: E }}
-                        style={{
-                          padding: "10px", background: "rgba(255,255,255,0.03)",
-                          border: "1px solid var(--border)", borderRadius: 5,
-                        }}
-                      >
-                        <div style={{ fontFamily: "var(--font-mono)", fontSize: 14, fontWeight: 500, color: "var(--text)", lineHeight: 1 }}>{k.n}</div>
-                        <div style={{ fontSize: 9, color: "var(--muted-2)", marginTop: 3 }}>{k.l}</div>
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  {/* OS list */}
-                  <div style={{
-                    padding: "10px 12px",
-                    background: "rgba(255,255,255,0.02)",
-                    border: "1px solid var(--border)", borderRadius: 5, marginBottom: 8,
-                  }}>
-                    <p style={{ fontSize: 8, fontFamily: "var(--font-mono)", color: "var(--muted-2)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8 }}>
-                      Ordens de serviço abertas
-                    </p>
-                    {[
-                      { id: "#312", client: "Empresa Alfa", status: "Em análise",   color: "var(--amber)" },
-                      { id: "#310", client: "João F. Silva", status: "Documentação", color: "var(--sky)"  },
-                      { id: "#308", client: "R. Fernanda",   status: "Concluída",    color: "rgba(255,255,255,0.2)" },
-                    ].map((os, i) => (
-                      <motion.div
-                        key={os.id}
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.3, delay: 0.3 + i * 0.08 }}
-                        style={{
-                          display: "flex", alignItems: "center", gap: 6,
-                          paddingTop: 5, marginTop: 5,
-                          borderTop: "1px solid rgba(255,255,255,0.04)",
-                        }}
-                      >
-                        <span style={{ fontSize: 9, fontFamily: "var(--font-mono)", color: "rgba(255,255,255,0.2)", width: 28, flexShrink: 0 }}>{os.id}</span>
-                        <span style={{ fontSize: 9, color: "rgba(255,255,255,0.5)", flex: 1 }}>{os.client}</span>
-                        <span style={{ fontSize: 8, fontFamily: "var(--font-mono)", color: os.color, flexShrink: 0 }}>{os.status}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  {/* Accent line */}
-                  <motion.div
-                    initial={{ scaleX: 0 }}
-                    whileInView={{ scaleX: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, ease: E }}
-                    style={{
-                      height: 3, borderRadius: 999, transformOrigin: "left",
-                      background: "linear-gradient(90deg, var(--teal) 0%, rgba(44,85,232,0.15) 60%, transparent 100%)",
-                    }}
-                  />
-                </div>
+                <p style={{ fontSize: 15.5, color: "var(--text)", lineHeight: 1.6, maxWidth: 420 }}>
+                  Um sistema só, aberto todo dia pelo time — com cliente, processo, prazo e
+                  documento no mesmo lugar.
+                </p>
               </div>
             </motion.div>
           </div>

@@ -25,16 +25,16 @@ export default function Home() {
         <Marquee />
         <Clientes />
         <Oferta />
+        <Comparativo />
         <Solucoes />
         <Segmentos />
-        <Comparativo />
         <Processo />
-        <Vitrine />
         <Empresa />
         <Case />
         <Disparos />
         <Ferramentas />
         <Seguranca />
+        <Vitrine />
         <ContatoLeads />
       </main>
       <Footer />

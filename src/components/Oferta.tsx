@@ -61,7 +61,7 @@ export function Oferta() {
               fontFamily: "var(--font-mono)",
               background: "rgba(44,85,232,0.06)",
             }}>
-              Como entregamos
+              Como trabalhamos
             </motion.div>
             <div style={{ overflow: "hidden" }}>
               <motion.h2

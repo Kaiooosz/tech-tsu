@@ -201,7 +201,7 @@ export function Empresa() {
               letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 24,
             }}
           >
-            Como trabalhamos
+            Princípios da casa
           </motion.p>
 
           <motion.div
