@@ -69,7 +69,7 @@ export function Clientes() {
       </motion.div>
 
       <style>{`
-        .logos-track { animation: logos-marquee 42s linear infinite; }
+        .logos-track { animation: logos-marquee 18s linear infinite; }
         .logos-viewport:hover .logos-track { animation-play-state: paused; }
 
         .logo-item {
@@ -88,7 +88,7 @@ export function Clientes() {
 
         @media (max-width: 560px) {
           .clientes { padding: 44px 0 !important; }
-          .logos-track { animation-duration: 28s; gap: 48px !important; }
+          .logos-track { animation-duration: 13s; gap: 48px !important; }
           .logo-item { height: 32px !important; }
         }
         @media (prefers-reduced-motion: reduce) {

@@ -42,7 +42,15 @@ export function Processo() {
   return (
     <>
       <section id="processo" style={{ padding: "96px 40px", background: "var(--paper-2)", position: "relative", overflow: "hidden" }}>
-        <BgImage src="/midia/equipe-recepcao.jpg" lado="right" width="48%" opacity={0.24} blend="var(--paper-2)" parallax={60} />
+        <BgImage
+          src="/midia/equipe-recepcao.jpg"
+          lado="full"
+          opacity={0.3}
+          blend="var(--paper-2)"
+          parallax={70}
+          veu={10}
+          suave
+        />
 
         <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
 

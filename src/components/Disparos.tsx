@@ -85,7 +85,27 @@ export function Disparos() {
   return (
     <>
       <section id="disparos" style={{ padding: "96px 40px", background: "var(--paper)", position: "relative", overflow: "hidden" }}>
-        <BgImage src="/midia/disparos-predio.jpg" lado="right" width="56%" opacity={0.2} blend="var(--paper)" parallax={80} />
+        <BgImage
+          src="/midia/disparos-predio.jpg"
+          lado="right"
+          width="54%"
+          opacity={0.62}
+          blend="var(--paper)"
+          parallax={70}
+          veu={8}
+          suave
+        />
+        <BgImage
+          src="/midia/disparos-loop.mp4"
+          kind="video"
+          poster="/midia/disparos-loop-poster.jpg"
+          lado="left"
+          width="38%"
+          opacity={0.28}
+          blend="var(--paper)"
+          parallax={50}
+          soDesktop
+        />
 
         <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
 
