@@ -24,7 +24,7 @@ export function Contato() {
             position: "absolute", bottom: "-25%", left: "50%",
             translateX: "-50%",
             width: 800, height: 500, borderRadius: "50%",
-            background: "radial-gradient(ellipse, rgba(46,196,182,0.06) 0%, transparent 70%)",
+            background: "radial-gradient(ellipse, rgba(44,85,232,0.06) 0%, transparent 70%)",
             pointerEvents: "none",
           }}
         />
@@ -45,7 +45,7 @@ export function Contato() {
               <motion.div variants={childFadeUp} style={{
                 display: "inline-flex", alignItems: "center", gap: 8,
                 marginBottom: 24, padding: "4px 12px",
-                border: "1px solid rgba(46,196,182,0.2)", borderRadius: 999,
+                border: "1px solid rgba(44,85,232,0.2)", borderRadius: 999,
                 fontSize: 11, fontWeight: 600, letterSpacing: "0.2em",
                 textTransform: "uppercase", color: "var(--teal)",
                 fontFamily: "var(--font-mono)",
@@ -87,8 +87,8 @@ export function Contato() {
                       transition={{ type: "spring", stiffness: 400, damping: 15 }}
                       style={{
                         width: 18, height: 18, borderRadius: "50%", flexShrink: 0,
-                        background: "rgba(46,196,182,0.1)",
-                        border: "1px solid rgba(46,196,182,0.2)",
+                        background: "rgba(44,85,232,0.1)",
+                        border: "1px solid rgba(44,85,232,0.2)",
                         display: "flex", alignItems: "center", justifyContent: "center",
                       }}
                     >
@@ -162,7 +162,7 @@ export function Contato() {
                 <motion.a
                   href="https://wa.me/5511952364424"
                   target="_blank" rel="noopener noreferrer"
-                  whileHover={{ borderColor: "rgba(37,211,102,0.35)", color: "rgba(255,255,255,0.85)" }}
+                  whileHover={{ borderColor: "rgba(44,85,232,0.35)", color: "rgba(255,255,255,0.85)" }}
                   transition={{ duration: 0.2 }}
                   style={{
                     display: "flex", alignItems: "center", gap: 10,

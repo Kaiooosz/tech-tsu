@@ -129,7 +129,7 @@ export function Ferramentas() {
                       className={p.ativo ? "pulse-dot" : undefined}
                       style={{
                         width: 5, height: 5, borderRadius: "50%",
-                        background: p.ativo ? "#7FE8A2" : "#f6c85f",
+                        background: p.ativo ? "var(--sky)" : "var(--amber)",
                         display: "inline-block",
                       }}
                     />

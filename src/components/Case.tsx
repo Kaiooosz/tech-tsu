@@ -325,8 +325,8 @@ export function Case() {
               <div style={{
                 display: "flex", alignItems: "center", justifyContent: "space-between",
                 padding: "12px 20px",
-                background: "rgba(46,196,182,0.06)",
-                borderBottom: "1px solid rgba(46,196,182,0.12)",
+                background: "rgba(44,85,232,0.06)",
+                borderBottom: "1px solid rgba(44,85,232,0.12)",
               }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                   <span className="pulse-dot" style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--teal)", display: "inline-block" }} />
@@ -429,12 +429,12 @@ export function Case() {
                   <motion.span
                     key={m}
                     variants={tagPop}
-                    whileHover={{ scale: 1.06, borderColor: "rgba(46,196,182,0.4)" }}
+                    whileHover={{ scale: 1.06, borderColor: "rgba(44,85,232,0.4)" }}
                     transition={{ type: "spring", stiffness: 380, damping: 18 }}
                     style={{
                       padding: "4px 10px",
-                      background: "rgba(46,196,182,0.06)",
-                      border: "1px solid rgba(46,196,182,0.15)",
+                      background: "rgba(44,85,232,0.06)",
+                      border: "1px solid rgba(44,85,232,0.15)",
                       borderRadius: 4,
                       fontSize: 11, fontFamily: "var(--font-mono)",
                       color: "var(--teal)",
@@ -496,7 +496,7 @@ export function Case() {
                       whileHover={i !== 0 ? { x: 3, color: "rgba(255,255,255,0.6)" } : undefined}
                       style={{
                         padding: "6px 8px", borderRadius: 4,
-                        background: i === 0 ? "rgba(46,196,182,0.12)" : "transparent",
+                        background: i === 0 ? "rgba(44,85,232,0.12)" : "transparent",
                         fontSize: 9,
                         color: i === 0 ? "var(--teal)" : "rgba(255,255,255,0.3)",
                         fontWeight: i === 0 ? 600 : 400,
@@ -575,7 +575,7 @@ export function Case() {
                     transition={{ duration: 1, ease: E }}
                     style={{
                       height: 3, borderRadius: 999, transformOrigin: "left",
-                      background: "linear-gradient(90deg, var(--teal) 0%, rgba(46,196,182,0.15) 60%, transparent 100%)",
+                      background: "linear-gradient(90deg, var(--teal) 0%, rgba(44,85,232,0.15) 60%, transparent 100%)",
                     }}
                   />
                 </div>
@@ -635,7 +635,7 @@ export function Case() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: idx * 0.08, ease: E }}
-                whileHover={{ background: "rgba(46,196,182,0.03)" }}
+                whileHover={{ background: "rgba(44,85,232,0.03)" }}
                 style={{
                   padding: "30px 28px",
                   background: "var(--bg-2)",
@@ -654,8 +654,8 @@ export function Case() {
                   </span>
                   <span style={{
                     fontSize: 9, padding: "2px 8px", borderRadius: 999,
-                    background: c.status === "Em produção" ? "rgba(46,196,182,0.08)" : "rgba(255,255,255,0.04)",
-                    border: c.status === "Em produção" ? "1px solid rgba(46,196,182,0.2)" : "1px solid var(--border-m)",
+                    background: c.status === "Em produção" ? "rgba(44,85,232,0.08)" : "rgba(255,255,255,0.04)",
+                    border: c.status === "Em produção" ? "1px solid rgba(44,85,232,0.2)" : "1px solid var(--border-m)",
                     color: c.status === "Em produção" ? "var(--teal)" : "var(--muted-2)",
                     fontFamily: "var(--font-mono)", letterSpacing: "0.05em",
                     whiteSpace: "nowrap",

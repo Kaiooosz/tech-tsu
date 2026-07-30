@@ -2,39 +2,14 @@
 import { motion } from "framer-motion"
 
 const clients = [
-  {
-    name: "Bezerra Borges",
-    segment: "Escritório Jurídico",
-    src: "/logo-bblaw.svg",
-    filter: "brightness(0) opacity(0.65)",
-  },
-  {
-    name: "RB Motos",
-    segment: "Concessionária",
-    src: "/logo-rbmotos.jpg",
-    filter: "grayscale(1) opacity(0.5)",
-  },
-  {
-    name: "Zap Empréstimos",
-    segment: "Fintech",
-    src: "/logo-zap.png",
-    filter: "brightness(0) opacity(0.55)",
-  },
-  {
-    name: "Cicatribem",
-    segment: "Saúde & Estética",
-    src: "/logo-cicatribem.png",
-    filter: "brightness(0) opacity(0.55)",
-  },
-  {
-    name: "Pointify",
-    segment: "SaaS / Fidelidade",
-    src: "/logo-pointify.jpg",
-    filter: "grayscale(1) opacity(0.5)",
-  },
+  { name: "Bezerra Borges", src: "/logo-bblaw.svg",      h: 40 },
+  { name: "RB Motos",       src: "/logo-rbmotos.jpg",    h: 46 },
+  { name: "Zap Empréstimos",src: "/logo-zap.png",        h: 38 },
+  { name: "Cicatribem",     src: "/logo-cicatribem.png", h: 40 },
+  { name: "Pointify",       src: "/logo-pointify.jpg",   h: 44 },
 ]
 
-// 4 cópias: a faixa anda 25% e reinicia sem emenda visível.
+// 4 cópias idênticas: a faixa anda 25% e reinicia sem emenda visível.
 const COPIAS = 4
 
 export function Clientes() {
@@ -43,13 +18,13 @@ export function Clientes() {
       background: "var(--paper-2)",
       borderTop: "1px solid var(--border-light)",
       borderBottom: "1px solid var(--border-light)",
-      padding: "64px 0",
+      padding: "56px 0",
       overflow: "hidden",
     }}>
       <p style={{
         fontSize: 11, fontWeight: 600, letterSpacing: "0.12em",
         color: "var(--muted-ink)", textTransform: "uppercase",
-        textAlign: "center", marginBottom: 40, padding: "0 20px",
+        textAlign: "center", marginBottom: 36, padding: "0 20px",
       }}>
         Empresas que confiam na Tech Tsu
       </p>
@@ -64,68 +39,57 @@ export function Clientes() {
       >
         {/* Máscaras laterais */}
         <div style={{
-          position: "absolute", left: 0, top: 0, bottom: 0, width: 140,
-          background: "linear-gradient(90deg, var(--paper-2) 0%, transparent 100%)",
+          position: "absolute", left: 0, top: 0, bottom: 0, width: 160,
+          background: "linear-gradient(90deg, var(--paper-2) 15%, transparent 100%)",
           zIndex: 2, pointerEvents: "none",
         }} />
         <div style={{
-          position: "absolute", right: 0, top: 0, bottom: 0, width: 140,
-          background: "linear-gradient(270deg, var(--paper-2) 0%, transparent 100%)",
+          position: "absolute", right: 0, top: 0, bottom: 0, width: 160,
+          background: "linear-gradient(270deg, var(--paper-2) 15%, transparent 100%)",
           zIndex: 2, pointerEvents: "none",
         }} />
 
-        <div className="logos-track" style={{ display: "flex", gap: 16, width: "max-content", padding: "6px 8px" }}>
+        <div className="logos-track" style={{ display: "flex", alignItems: "center", gap: 76, width: "max-content" }}>
           {Array.from({ length: COPIAS }).flatMap((_, copia) =>
             clients.map(c => (
-              <div
+              <img
                 key={`${copia}-${c.name}`}
-                className="logo-card"
+                className="logo-item"
+                src={c.src}
+                alt={copia === 0 ? c.name : ""}
                 aria-hidden={copia > 0}
                 style={{
-                  display: "flex", flexDirection: "column",
-                  alignItems: "center", justifyContent: "center",
-                  gap: 8, width: 160, height: 88, flexShrink: 0,
-                  borderRadius: 10, padding: "16px 20px",
-                  background: "#fff",
-                  boxShadow: "var(--shadow-sm)",
-                  transition: "box-shadow 0.2s ease, transform 0.2s ease",
+                  height: c.h, width: "auto", maxWidth: 150,
+                  objectFit: "contain", flexShrink: 0,
                 }}
-              >
-                <img
-                  src={c.src}
-                  alt={copia === 0 ? c.name : ""}
-                  style={{
-                    maxWidth: 110, maxHeight: 40,
-                    objectFit: "contain",
-                    filter: c.filter,
-                  }}
-                />
-                <span style={{
-                  fontSize: 9, fontWeight: 600, letterSpacing: "0.08em",
-                  color: "var(--muted-ink-2)", textTransform: "uppercase",
-                  whiteSpace: "nowrap",
-                }}>
-                  {c.segment}
-                </span>
-              </div>
+              />
             ))
           )}
         </div>
       </motion.div>
 
       <style>{`
-        .logos-track {
-          animation: logos-marquee 38s linear infinite;
-        }
+        .logos-track { animation: logos-marquee 42s linear infinite; }
         .logos-viewport:hover .logos-track { animation-play-state: paused; }
-        .logo-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+
+        .logo-item {
+          filter: grayscale(1) brightness(0.35) opacity(0.55);
+          transition: filter 0.3s ease, transform 0.3s ease;
+        }
+        .logo-item:hover {
+          filter: grayscale(0) brightness(1) opacity(1);
+          transform: scale(1.06);
+        }
+
         @keyframes logos-marquee {
           from { transform: translateX(0); }
           to   { transform: translateX(-25%); }
         }
+
         @media (max-width: 560px) {
-          .clientes { padding: 48px 0 !important; }
-          .logos-track { animation-duration: 26s; }
+          .clientes { padding: 44px 0 !important; }
+          .logos-track { animation-duration: 28s; gap: 48px !important; }
+          .logo-item { height: 32px !important; }
         }
         @media (prefers-reduced-motion: reduce) {
           .logos-track { animation: none !important; }

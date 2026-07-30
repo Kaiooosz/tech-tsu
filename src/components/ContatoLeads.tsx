@@ -24,7 +24,7 @@ export function ContatoLeads() {
             position: "absolute", bottom: "-25%", left: "50%",
             translateX: "-50%",
             width: 800, height: 500, borderRadius: "50%",
-            background: "radial-gradient(ellipse, rgba(46,196,182,0.06) 0%, transparent 70%)",
+            background: "radial-gradient(ellipse, rgba(44,85,232,0.06) 0%, transparent 70%)",
             pointerEvents: "none",
           }}
         />
@@ -42,7 +42,7 @@ export function ContatoLeads() {
             <motion.div variants={childFadeUp} style={{
               display: "inline-flex", alignItems: "center", gap: 8,
               marginBottom: 22, padding: "4px 12px",
-              border: "1px solid rgba(46,196,182,0.25)", borderRadius: 999,
+              border: "1px solid rgba(44,85,232,0.25)", borderRadius: 999,
               fontSize: 11, fontWeight: 600, letterSpacing: "0.2em",
               textTransform: "uppercase", color: "var(--teal)",
               fontFamily: "var(--font-mono)",
@@ -81,8 +81,8 @@ export function ContatoLeads() {
                 >
                   <div style={{
                     width: 16, height: 16, borderRadius: "50%", flexShrink: 0,
-                    background: "rgba(46,196,182,0.1)",
-                    border: "1px solid rgba(46,196,182,0.2)",
+                    background: "rgba(44,85,232,0.1)",
+                    border: "1px solid rgba(44,85,232,0.2)",
                     display: "flex", alignItems: "center", justifyContent: "center",
                   }}>
                     <svg width="8" height="8" fill="none" viewBox="0 0 24 24">
@@ -113,7 +113,7 @@ export function ContatoLeads() {
             {/* Top accent line */}
             <div style={{
               position: "absolute", top: 0, left: 0, right: 0, height: 1,
-              background: "linear-gradient(90deg, transparent, rgba(46,196,182,0.4), transparent)",
+              background: "linear-gradient(90deg, transparent, rgba(44,85,232,0.4), transparent)",
             }} />
             <Quiz />
           </motion.div>
@@ -133,7 +133,7 @@ export function ContatoLeads() {
               {/* WhatsApp */}
               <a href="https://wa.me/5511952364424" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
                 style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 40, height: 40, borderRadius: 8, border: "1px solid var(--border)", textDecoration: "none", transition: "border-color 0.2s, background 0.2s" }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(37,211,102,0.4)"; (e.currentTarget as HTMLElement).style.background = "rgba(37,211,102,0.06)" }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(44,85,232,0.4)"; (e.currentTarget as HTMLElement).style.background = "rgba(44,85,232,0.06)" }}
                 onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--border)"; (e.currentTarget as HTMLElement).style.background = "transparent" }}>
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="rgba(255,255,255,0.5)"/>

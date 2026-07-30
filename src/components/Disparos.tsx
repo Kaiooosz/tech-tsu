@@ -3,6 +3,8 @@ import { useState } from "react"
 import { motion } from "framer-motion"
 import { E, staggerContainer, childFadeUp, tagPop } from "@/lib/motion"
 import { WA } from "@/lib/site"
+import { BgImage } from "./BgImage"
+import { MediaFrame } from "./MediaFrame"
 
 const WA_LINK = WA.disparos
 
@@ -82,8 +84,10 @@ export function Disparos() {
 
   return (
     <>
-      <section id="disparos" style={{ padding: "96px 40px", background: "var(--paper)" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+      <section id="disparos" style={{ padding: "96px 40px", background: "var(--paper)", position: "relative", overflow: "hidden" }}>
+        <BgImage src="/midia/disparos-predio.jpg" lado="right" width="56%" opacity={0.2} blend="var(--paper)" parallax={80} />
+
+        <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
 
           {/* Header */}
           <motion.div
@@ -357,6 +361,73 @@ export function Disparos() {
             </motion.div>
           </div>
 
+          {/* Como chega no celular */}
+          <div style={{
+            display: "grid", gridTemplateColumns: "1.15fr 0.85fr",
+            gap: 48, alignItems: "center", marginBottom: 72,
+          }} className="disparos-video">
+
+            <MediaFrame
+              src="/midia/disparos-loop.mp4"
+              kind="video"
+              poster="/midia/disparos-loop-poster.jpg"
+              alt="Notificações da Tech Tsu chegando no celular por SMS, e-mail e WhatsApp"
+              ratio={16 / 9}
+              parallax={0}
+            />
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+              variants={staggerContainer(0.09)}
+            >
+              <motion.p variants={childFadeUp} style={{
+                fontSize: 11, fontFamily: "var(--font-mono)",
+                color: "var(--muted-ink-2)", letterSpacing: "0.15em",
+                textTransform: "uppercase", marginBottom: 16,
+              }}>
+                Como chega no celular
+              </motion.p>
+
+              <motion.h3 variants={childFadeUp} style={{
+                fontSize: "clamp(22px, 2.6vw, 30px)", fontWeight: 700,
+                letterSpacing: "-0.03em", lineHeight: 1.15,
+                color: "var(--ink)", marginBottom: 14,
+              }}>
+                A sua marca na tela de bloqueio,<br />
+                <span style={{ color: "var(--muted-ink)", fontWeight: 300, fontStyle: "italic" }}>não na aba de promoções.</span>
+              </motion.h3>
+
+              <motion.p variants={childFadeUp} style={{ fontSize: 15, color: "var(--muted-ink)", lineHeight: 1.75, marginBottom: 24 }}>
+                Notificação com o seu nome, o seu ícone e a oferta legível antes de o cliente desbloquear
+                o aparelho. É a diferença entre ser lido em minutos e apodrecer numa caixa de entrada.
+              </motion.p>
+
+              <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                {[
+                  "Identidade verificada na Meta — sem número desconhecido",
+                  "Mesma campanha em WhatsApp, SMS e e-mail",
+                  "Opt-out registrado em cada envio",
+                ].map(item => (
+                  <motion.div key={item} variants={childFadeUp} style={{ display: "flex", alignItems: "flex-start", gap: 11 }}>
+                    <div style={{
+                      width: 18, height: 18, borderRadius: "50%", flexShrink: 0, marginTop: 2,
+                      background: "rgba(44,85,232,0.08)",
+                      border: "1px solid rgba(44,85,232,0.2)",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                    }}>
+                      <svg width="8" height="8" fill="none" viewBox="0 0 24 24">
+                        <path d="M5 13l4 4L19 7" stroke="var(--teal)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+                    <span style={{ fontSize: 14, color: "var(--ink)", lineHeight: 1.5 }}>{item}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+
           {/* Fluxo de disparo */}
           <motion.p
             initial={{ opacity: 0 }}
@@ -513,6 +584,7 @@ export function Disparos() {
       <style>{`
         @media (max-width: 980px) {
           .disparos-grid { grid-template-columns: 1fr !important; }
+          .disparos-video { grid-template-columns: 1fr !important; }
           .disparos-fluxo { grid-template-columns: repeat(2, 1fr) !important; }
         }
         @media (max-width: 560px) {

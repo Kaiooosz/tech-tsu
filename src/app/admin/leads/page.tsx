@@ -83,7 +83,7 @@ const lbl = (key: string | null | undefined) => key ? (L[key] ?? key) : "—"
 
 const SCORE_LABEL: Record<string, string> = { hot: "Quente", warm: "Promissor", cold: "Nutrição" }
 const SCORE_COLOR: Record<string, string> = {
-  hot: "var(--teal)", warm: "rgba(46,196,182,0.7)", cold: "rgba(255,255,255,0.35)",
+  hot: "var(--teal)", warm: "rgba(44,85,232,0.7)", cold: "rgba(255,255,255,0.35)",
 }
 
 export default async function LeadsPage({
@@ -130,9 +130,9 @@ export default async function LeadsPage({
             return (
               <Link key={f.id} href={href} style={{
                 padding: "7px 13px", borderRadius: 6, fontSize: 12, fontWeight: 500,
-                border: active ? "1px solid #2ec4b6" : "1px solid rgba(255,255,255,0.12)",
-                background: active ? "rgba(46,196,182,0.08)" : "rgba(255,255,255,0.02)",
-                color: active ? "#2ec4b6" : "rgba(255,255,255,0.6)",
+                border: active ? "1px solid #2C55E8" : "1px solid rgba(255,255,255,0.12)",
+                background: active ? "rgba(44,85,232,0.08)" : "rgba(255,255,255,0.02)",
+                color: active ? "#2C55E8" : "rgba(255,255,255,0.6)",
                 textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 6,
               }}>
                 {f.label} <span style={{ opacity: 0.6 }}>({f.count})</span>
@@ -168,9 +168,9 @@ export default async function LeadsPage({
                     <td style={{ padding: "10px 12px", whiteSpace: "nowrap" }}>
                       <span style={{
                         padding: "2px 9px", borderRadius: 999, fontSize: 11, fontWeight: 600,
-                        background: l.score ? `rgba(46,196,182,${l.score === "hot" ? 0.14 : l.score === "warm" ? 0.08 : 0.04})` : "rgba(255,255,255,0.05)",
+                        background: l.score ? `rgba(44,85,232,${l.score === "hot" ? 0.14 : l.score === "warm" ? 0.08 : 0.04})` : "rgba(255,255,255,0.05)",
                         color: l.score ? SCORE_COLOR[l.score] : "rgba(255,255,255,0.4)",
-                        border: l.score ? `1px solid rgba(46,196,182,${l.score === "hot" ? 0.3 : l.score === "warm" ? 0.2 : 0.1})` : "1px solid rgba(255,255,255,0.08)",
+                        border: l.score ? `1px solid rgba(44,85,232,${l.score === "hot" ? 0.3 : l.score === "warm" ? 0.2 : 0.1})` : "1px solid rgba(255,255,255,0.08)",
                       }}>
                         {l.score ? SCORE_LABEL[l.score] ?? l.score : "—"}
                         {l.score_pts !== null && l.score_pts !== undefined && <span style={{ opacity: 0.5, marginLeft: 4 }}>·{l.score_pts}</span>}
@@ -198,7 +198,7 @@ export default async function LeadsPage({
                     <td style={{ padding: "10px 12px", color: "rgba(255,255,255,0.6)", whiteSpace: "nowrap" }}>{lbl(l.faturamento)}</td>
                     <td style={{ padding: "10px 12px", whiteSpace: "nowrap" }}>
                       <a href={`https://wa.me/55${l.whatsapp.replace(/\D/g, "")}`} target="_blank" rel="noopener noreferrer"
-                        style={{ color: "#2ec4b6", textDecoration: "none" }}>
+                        style={{ color: "#2C55E8", textDecoration: "none" }}>
                         {l.whatsapp}
                       </a>
                     </td>

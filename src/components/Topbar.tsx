@@ -76,7 +76,7 @@ export function Topbar() {
               border: "1px solid var(--border-m)",
               transition: "border-color 0.2s, background 0.2s",
             }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(31,168,85,0.5)"; e.currentTarget.style.background = "rgba(31,168,85,0.10)" }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(44,85,232,0.5)"; e.currentTarget.style.background = "rgba(44,85,232,0.10)" }}
             onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--border-m)"; e.currentTarget.style.background = "transparent" }}
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--text)">
@@ -158,7 +158,7 @@ export function Topbar() {
               style={{
                 marginTop: 24, height: 50,
                 display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 10,
-                background: "#1FA855", color: "#fff",
+                background: "var(--teal)", color: "#fff",
                 fontSize: 15, fontWeight: 700, borderRadius: 8,
               }}
             >

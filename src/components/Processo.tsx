@@ -1,6 +1,7 @@
 "use client"
 import { motion } from "framer-motion"
 import { E, staggerContainer, childFadeUp } from "@/lib/motion"
+import { BgImage } from "./BgImage"
 
 const steps = [
   {
@@ -40,8 +41,10 @@ const stepVariant = {
 export function Processo() {
   return (
     <>
-      <section id="processo" style={{ padding: "96px 40px", background: "var(--paper-2)" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+      <section id="processo" style={{ padding: "96px 40px", background: "var(--paper-2)", position: "relative", overflow: "hidden" }}>
+        <BgImage src="/midia/equipe-recepcao.jpg" lado="right" width="48%" opacity={0.24} blend="var(--paper-2)" parallax={60} />
+
+        <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
 
           {/* Header */}
           <motion.div

@@ -41,10 +41,10 @@ const pecas = [
     tags: ["Fintech", "KYC", "Marketplace"],
   },
   {
-    src: "/midia/case-disparos.png",
-    title: "Painel de disparos",
+    src: "/midia/disparos-notificacoes.jpg",
+    title: "Campanhas multicanal",
     client: "Operação Tech Tsu",
-    desc: "Campanhas pela API Oficial do WhatsApp com entregues, lidas, respostas, opt-outs e conversão em tempo real.",
+    desc: "WhatsApp, SMS e e-mail disparados pela API Oficial, com entregues, lidas, respostas e opt-outs em tempo real.",
     tags: ["API Oficial", "Relatórios", "Escala"],
   },
 ]

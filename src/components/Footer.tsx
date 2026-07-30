@@ -124,7 +124,7 @@ export function Footer() {
               style={{
                 display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 9,
                 height: 42, padding: "0 18px", marginBottom: 16,
-                background: "#1FA855", color: "#fff",
+                background: "var(--teal)", color: "#fff",
                 fontSize: 13.5, fontWeight: 700, borderRadius: 6,
                 transition: "opacity 0.2s",
               }}

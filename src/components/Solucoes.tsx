@@ -255,11 +255,9 @@ export function Solucoes() {
               </div>
 
               <MediaFrame
-                src="/midia/agente-ia.png"
-                alt="Agente de IA de atendimento da Tech Tsu"
-                label="Vídeo ou print do agente de IA em atendimento"
+                src="/midia/equipe-dashboard.jpg"
+                alt="Time da Tech Tsu acompanhando o painel de atendimento por IA"
                 dark
-                chrome
                 ratio={4 / 3}
                 parallax={26}
               />

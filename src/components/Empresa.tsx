@@ -145,12 +145,11 @@ export function Empresa() {
             </motion.div>
 
             <MediaFrame
-              src="/midia/empresa-bastidores.jpg"
-              alt="Bastidores da operação Tech Tsu"
-              label="Foto ou vídeo do time · bastidores · escritório"
+              src="/midia/equipe-escritorio.jpg"
+              alt="Escritório da Tech Tsu em Alphaville"
               caption={`${EMPRESA.praca} — atendimento remoto para todo o Brasil.`}
               dark
-              ratio={4 / 5}
+              ratio={3 / 2}
               parallax={40}
             />
           </div>

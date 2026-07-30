@@ -2,6 +2,7 @@
 import { motion } from "framer-motion"
 import { E, staggerContainer, childFadeUp } from "@/lib/motion"
 import { WA } from "@/lib/site"
+import { BgImage } from "./BgImage"
 
 const colunas = [
   {
@@ -50,8 +51,10 @@ const mudancas = [
 export function Comparativo() {
   return (
     <>
-      <section id="comparativo" style={{ padding: "96px 40px", background: "var(--paper)" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+      <section id="comparativo" style={{ padding: "96px 40px", background: "var(--paper)", position: "relative", overflow: "hidden" }}>
+        <BgImage src="/midia/equipe-reuniao.jpg" lado="right" width="52%" opacity={0.26} blend="var(--paper)" parallax={70} />
+
+        <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
 
           <motion.div
             initial="hidden"

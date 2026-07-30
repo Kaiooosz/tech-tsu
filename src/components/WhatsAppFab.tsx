@@ -35,9 +35,9 @@ export function WhatsAppFab() {
             display: "inline-flex", alignItems: "center", gap: 10,
             height: 52, padding: hover ? "0 20px 0 16px" : "0 15px",
             borderRadius: 999,
-            background: "#1FA855",
+            background: "var(--teal)",
             color: "#fff", fontWeight: 700, fontSize: 14,
-            boxShadow: "0 10px 30px rgba(31,168,85,0.35), 0 2px 8px rgba(0,0,0,0.25)",
+            boxShadow: "0 10px 30px rgba(44,85,232,0.35), 0 2px 8px rgba(0,0,0,0.25)",
             transition: "padding 0.25s ease",
             whiteSpace: "nowrap",
           }}
@@ -64,7 +64,7 @@ export function WhatsAppFab() {
             style={{
               position: "absolute", top: 6, right: 6,
               width: 8, height: 8, borderRadius: "50%",
-              background: "#7FE8A2", border: "2px solid #1FA855",
+              background: "var(--sky)", border: "2px solid var(--teal)",
             }}
           />
         </motion.a>

@@ -243,7 +243,7 @@ export function Segmentos() {
             <motion.div variants={childFadeUp} style={{
               display: "inline-flex", alignItems: "center", gap: 8,
               marginBottom: 20, padding: "4px 12px",
-              border: "1px solid rgba(46,196,182,0.25)", borderRadius: 999,
+              border: "1px solid rgba(44,85,232,0.25)", borderRadius: 999,
               fontSize: 11, fontWeight: 600, letterSpacing: "0.2em",
               textTransform: "uppercase", color: "var(--teal)",
               fontFamily: "var(--font-mono)",
@@ -278,7 +278,7 @@ export function Segmentos() {
                 style={{
                   padding: "8px 14px", borderRadius: 6,
                   border: active === s.id ? "1px solid var(--teal)" : "1px solid var(--border-m)",
-                  background: active === s.id ? "rgba(46,196,182,0.08)" : "rgba(255,255,255,0.02)",
+                  background: active === s.id ? "rgba(44,85,232,0.08)" : "rgba(255,255,255,0.02)",
                   color: active === s.id ? "var(--teal)" : "var(--muted)",
                   fontSize: 12, fontWeight: active === s.id ? 600 : 400,
                   cursor: "pointer", fontFamily: "inherit",
@@ -390,14 +390,14 @@ export function Segmentos() {
               <div style={{
                 display: "flex", alignItems: "flex-start", gap: 14,
                 padding: "16px 18px",
-                background: "rgba(46,196,182,0.04)",
-                border: "1px solid rgba(46,196,182,0.14)",
+                background: "rgba(44,85,232,0.04)",
+                border: "1px solid rgba(44,85,232,0.14)",
                 borderRadius: 8, marginBottom: 1,
               }}>
                 <div style={{
                   width: 30, height: 30, borderRadius: 6, flexShrink: 0,
-                  background: "rgba(46,196,182,0.1)",
-                  border: "1px solid rgba(46,196,182,0.2)",
+                  background: "rgba(44,85,232,0.1)",
+                  border: "1px solid rgba(44,85,232,0.2)",
                   display: "flex", alignItems: "center", justifyContent: "center",
                 }}>
                   <svg width="13" height="13" fill="none" viewBox="0 0 24 24">
@@ -413,7 +413,7 @@ export function Segmentos() {
                     <span style={{
                       fontSize: 10, fontFamily: "var(--font-mono)", color: "var(--teal)",
                       padding: "2px 8px", borderRadius: 999,
-                      border: "1px solid rgba(46,196,182,0.2)",
+                      border: "1px solid rgba(44,85,232,0.2)",
                       fontWeight: 600, letterSpacing: "0.08em",
                     }}>
                       {seg.mvp}

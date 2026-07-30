@@ -343,7 +343,7 @@ function ProgressBar({ step }: { step: number }) {
       {STEPS.map((_, i) => (
         <div key={i} style={{
           flex: 1, height: 3, borderRadius: 3,
-          background: i < step ? "var(--teal)" : i === step ? "rgba(46,196,182,0.5)" : "rgba(255,255,255,0.08)",
+          background: i < step ? "var(--teal)" : i === step ? "rgba(44,85,232,0.5)" : "rgba(255,255,255,0.08)",
           transition: "background 0.35s",
         }} />
       ))}
@@ -369,7 +369,7 @@ function OptionCard({
         border: dashed
           ? `1.5px dashed ${selected ? "var(--teal)" : "var(--border-m)"}`
           : `1px solid ${selected ? "var(--teal)" : "var(--border-m)"}`,
-        background: selected ? "rgba(46,196,182,0.06)" : "var(--bg-3)",
+        background: selected ? "rgba(44,85,232,0.06)" : "var(--bg-3)",
         cursor: "pointer", fontFamily: "inherit", textAlign: "left",
         transition: "border 0.15s, background 0.15s",
         width: "100%",
@@ -400,7 +400,7 @@ function Chip({ selected, onClick, label }: { selected: boolean; onClick: () => 
       style={{
         padding: "7px 13px", borderRadius: 20,
         border: `1px solid ${selected ? "var(--teal)" : "var(--border-m)"}`,
-        background: selected ? "rgba(46,196,182,0.07)" : "var(--bg-3)",
+        background: selected ? "rgba(44,85,232,0.07)" : "var(--bg-3)",
         color: selected ? "var(--teal)" : "var(--muted)",
         fontSize: 12, fontWeight: selected ? 500 : 400,
         cursor: "pointer", fontFamily: "inherit", transition: "all 0.15s",
@@ -421,7 +421,7 @@ function UrgencyCard({
       type="button"
       onClick={onClick}
       style={{
-        background: selected ? "rgba(46,196,182,0.07)" : "var(--bg-3)",
+        background: selected ? "rgba(44,85,232,0.07)" : "var(--bg-3)",
         border: `1px solid ${selected ? "var(--teal)" : "var(--border-m)"}`,
         borderRadius: 10, padding: "12px 8px",
         cursor: "pointer", textAlign: "center",
@@ -928,9 +928,9 @@ function SuccessScreen({
     <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} style={{ textAlign: "center", padding: "8px 0" }}>
       <div style={{
         width: 64, height: 64, borderRadius: "50%",
-        background: "rgba(46,196,182,0.1)", border: "2px solid var(--teal)",
+        background: "rgba(44,85,232,0.1)", border: "2px solid var(--teal)",
         display: "flex", alignItems: "center", justifyContent: "center",
-        margin: "0 auto 16px", boxShadow: "0 0 32px rgba(46,196,182,0.15)",
+        margin: "0 auto 16px", boxShadow: "0 0 32px rgba(44,85,232,0.15)",
       }}>
         <Check size={28} strokeWidth={2.5} color="var(--teal)" />
       </div>
