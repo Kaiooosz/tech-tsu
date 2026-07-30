@@ -44,7 +44,7 @@ export function ContatoLeads() {
               marginBottom: 22, padding: "4px 12px",
               border: "1px solid rgba(44,85,232,0.25)", borderRadius: 999,
               fontSize: 11, fontWeight: 600, letterSpacing: "0.2em",
-              textTransform: "uppercase", color: "var(--teal)",
+              textTransform: "uppercase", color: "var(--sky)",
               fontFamily: "var(--font-mono)",
             }}>
               <span className="pulse-dot" style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--teal)", display: "inline-block" }} />
@@ -86,7 +86,7 @@ export function ContatoLeads() {
                     display: "flex", alignItems: "center", justifyContent: "center",
                   }}>
                     <svg width="8" height="8" fill="none" viewBox="0 0 24 24">
-                      <path d="M5 13l4 4L19 7" stroke="var(--teal)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M5 13l4 4L19 7" stroke="var(--sky)" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </div>
                   <span style={{ fontSize: 12, color: "var(--muted)" }}>{pt}</span>

@@ -68,7 +68,7 @@ export function Hero() {
             border: "1px solid rgba(44,85,232,0.28)",
             borderRadius: 999, fontSize: 12, fontWeight: 500,
             fontFamily: "var(--font-mono)",
-            color: "var(--teal)",
+            color: "var(--sky)",
           }}
         >
           <span className="pulse-dot" style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--teal)", display: "inline-block" }} />

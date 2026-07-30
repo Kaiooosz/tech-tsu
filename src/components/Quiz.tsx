@@ -381,9 +381,9 @@ function OptionCard({
         if (!selected) (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border-m)"
       }}
     >
-      {Icon && <Icon size={compact ? 16 : 18} strokeWidth={1.6} color={selected ? "var(--teal)" : "var(--muted)"} />}
+      {Icon && <Icon size={compact ? 16 : 18} strokeWidth={1.6} color={selected ? "var(--sky)" : "var(--muted)"} />}
       <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ fontSize: compact ? 12 : 12.5, fontWeight: 600, color: selected ? "var(--teal)" : "var(--text)", lineHeight: 1.3 }}>
+        <div style={{ fontSize: compact ? 12 : 12.5, fontWeight: 600, color: selected ? "var(--sky)" : "var(--text)", lineHeight: 1.3 }}>
           {label}
         </div>
         {desc && <div style={{ fontSize: 10.5, color: "var(--muted)", marginTop: 3, lineHeight: 1.4 }}>{desc}</div>}
@@ -401,7 +401,7 @@ function Chip({ selected, onClick, label }: { selected: boolean; onClick: () => 
         padding: "7px 13px", borderRadius: 20,
         border: `1px solid ${selected ? "var(--teal)" : "var(--border-m)"}`,
         background: selected ? "rgba(44,85,232,0.07)" : "var(--bg-3)",
-        color: selected ? "var(--teal)" : "var(--muted)",
+        color: selected ? "var(--sky)" : "var(--muted)",
         fontSize: 12, fontWeight: selected ? 500 : 400,
         cursor: "pointer", fontFamily: "inherit", transition: "all 0.15s",
       }}
@@ -428,8 +428,8 @@ function UrgencyCard({
         fontFamily: "inherit", transition: "all 0.15s",
       }}
     >
-      <Icon size={20} strokeWidth={1.6} color={selected ? "var(--teal)" : "var(--muted)"} />
-      <div style={{ fontSize: 11.5, fontWeight: 600, color: selected ? "var(--teal)" : "var(--text)", marginTop: 5, marginBottom: 2 }}>
+      <Icon size={20} strokeWidth={1.6} color={selected ? "var(--sky)" : "var(--muted)"} />
+      <div style={{ fontSize: 11.5, fontWeight: 600, color: selected ? "var(--sky)" : "var(--text)", marginTop: 5, marginBottom: 2 }}>
         {label}
       </div>
       <div style={{ fontSize: 10, color: "var(--muted)", lineHeight: 1.4 }}>{desc}</div>
@@ -548,7 +548,7 @@ export function Quiz() {
           {current.id === "svc" && (
             <>
               <div style={{ fontSize: 11, color: "var(--muted)", display: "flex", alignItems: "center", gap: 5, marginBottom: 12 }}>
-                <Info size={13} color="var(--teal)" /> Selecione todos os que se aplicam
+                <Info size={13} color="var(--sky)" /> Selecione todos os que se aplicam
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 8 }} className="quiz-grid-3">
                 {SERVICOS.map(o => (
@@ -570,7 +570,7 @@ export function Quiz() {
             <>
               <div style={{ marginBottom: 22 }}>
                 <div style={sectionLabelStyle}>
-                  <Laptop size={13} color="var(--teal)" /> Ferramenta principal hoje <span style={{ color: "var(--teal)" }}>*</span>
+                  <Laptop size={13} color="var(--sky)" /> Ferramenta principal hoje <span style={{ color: "var(--sky)" }}>*</span>
                 </div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                   {FERRAMENTAS.map(f => (
@@ -588,7 +588,7 @@ export function Quiz() {
 
               <div style={{ marginBottom: 22 }}>
                 <div style={sectionLabelStyle}>
-                  <AlertCircle size={13} color="var(--teal)" /> Maiores gargalos atuais
+                  <AlertCircle size={13} color="var(--sky)" /> Maiores gargalos atuais
                   <span style={{ color: "var(--muted)", fontWeight: 400, fontSize: 10, textTransform: "none", letterSpacing: 0 }}>— marque todos</span>
                 </div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
@@ -600,7 +600,7 @@ export function Quiz() {
 
               <div>
                 <div style={sectionLabelStyle}>
-                  <Clock size={13} color="var(--teal)" /> Urgência do projeto <span style={{ color: "var(--teal)" }}>*</span>
+                  <Clock size={13} color="var(--sky)" /> Urgência do projeto <span style={{ color: "var(--sky)" }}>*</span>
                 </div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 7 }} className="quiz-grid-4">
                   {URGENCIAS.map(u => (
@@ -615,7 +615,7 @@ export function Quiz() {
           {current.id === "stk" && (
             <>
               <div style={{ fontSize: 11, color: "var(--muted)", display: "flex", alignItems: "center", gap: 5, marginBottom: 12 }}>
-                <Info size={13} color="var(--teal)" /> Marque todas as ferramentas que você usa hoje
+                <Info size={13} color="var(--sky)" /> Marque todas as ferramentas que você usa hoje
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                 {STACK.map(s => (
@@ -636,7 +636,7 @@ export function Quiz() {
           {current.id === "vol" && (
             <>
               <div style={{ marginBottom: 22 }}>
-                <div style={sectionLabelStyle}><Users size={13} color="var(--teal)" /> Clientes ativos</div>
+                <div style={sectionLabelStyle}><Users size={13} color="var(--sky)" /> Clientes ativos</div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                   {CLIENTES_ATIVOS.map(c => (
                     <Chip key={c.id} selected={data.clientesAtivos === c.id} onClick={() => set("clientesAtivos", c.id)} label={c.label} />
@@ -644,7 +644,7 @@ export function Quiz() {
                 </div>
               </div>
               <div style={{ marginBottom: 22 }}>
-                <div style={sectionLabelStyle}><Target size={13} color="var(--teal)" /> Leads gerados por mês</div>
+                <div style={sectionLabelStyle}><Target size={13} color="var(--sky)" /> Leads gerados por mês</div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                   {LEADS_MES.map(c => (
                     <Chip key={c.id} selected={data.leadsMes === c.id} onClick={() => set("leadsMes", c.id)} label={c.label} />
@@ -653,7 +653,7 @@ export function Quiz() {
               </div>
               <div style={{ marginBottom: 22 }}>
                 <div style={sectionLabelStyle}>
-                  <Gauge size={13} color="var(--teal)" /> Maturidade tecnológica <span style={{ color: "var(--teal)" }}>*</span>
+                  <Gauge size={13} color="var(--sky)" /> Maturidade tecnológica <span style={{ color: "var(--sky)" }}>*</span>
                 </div>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }} className="quiz-grid-2">
                   {MATURIDADE.map(m => (
@@ -662,7 +662,7 @@ export function Quiz() {
                 </div>
               </div>
               <div>
-                <div style={sectionLabelStyle}><Workflow size={13} color="var(--teal)" /> Automações já implementadas</div>
+                <div style={sectionLabelStyle}><Workflow size={13} color="var(--sky)" /> Automações já implementadas</div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                   {AUTOMACOES.map(a => (
                     <Chip key={a.id} selected={data.automacoesAtuais === a.id} onClick={() => set("automacoesAtuais", a.id)} label={a.label} />
@@ -677,7 +677,7 @@ export function Quiz() {
             <>
               <div style={{ marginBottom: 24 }}>
                 <div style={sectionLabelStyle}>
-                  <BrainCircuit size={13} color="var(--teal)" /> Onde você quer aplicar IA
+                  <BrainCircuit size={13} color="var(--sky)" /> Onde você quer aplicar IA
                   <span style={{ color: "var(--muted)", fontWeight: 400, fontSize: 10, textTransform: "none", letterSpacing: 0 }}>— marque todos</span>
                 </div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 7 }} className="quiz-grid-2">
@@ -695,7 +695,7 @@ export function Quiz() {
               </div>
               <div>
                 <div style={sectionLabelStyle}>
-                  <Target size={13} color="var(--teal)" /> Resultados que você espera <span style={{ color: "var(--teal)" }}>*</span>
+                  <Target size={13} color="var(--sky)" /> Resultados que você espera <span style={{ color: "var(--sky)" }}>*</span>
                 </div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                   {RESULTADOS.map(r => (
@@ -711,7 +711,7 @@ export function Quiz() {
             <>
               <div style={{ marginBottom: 22 }}>
                 <div style={sectionLabelStyle}>
-                  <Wallet size={13} color="var(--teal)" /> Investimento estimado <span style={{ color: "var(--teal)" }}>*</span>
+                  <Wallet size={13} color="var(--sky)" /> Investimento estimado <span style={{ color: "var(--sky)" }}>*</span>
                 </div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 7 }} className="quiz-grid-3">
                   {INVESTIMENTOS.map(i => (
@@ -721,7 +721,7 @@ export function Quiz() {
               </div>
               <div style={{ marginBottom: 22 }}>
                 <div style={sectionLabelStyle}>
-                  <Clock size={13} color="var(--teal)" /> Prazo desejado <span style={{ color: "var(--teal)" }}>*</span>
+                  <Clock size={13} color="var(--sky)" /> Prazo desejado <span style={{ color: "var(--sky)" }}>*</span>
                 </div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 7 }} className="quiz-grid-4">
                   {PRAZOS.map(p => (
@@ -730,7 +730,7 @@ export function Quiz() {
                 </div>
               </div>
               <div style={{ marginBottom: 22 }}>
-                <div style={sectionLabelStyle}><Handshake size={13} color="var(--teal)" /> Modelo de contratação</div>
+                <div style={sectionLabelStyle}><Handshake size={13} color="var(--sky)" /> Modelo de contratação</div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                   {MODELOS.map(m => (
                     <Chip key={m.id} selected={data.modeloContratacao === m.id} onClick={() => set("modeloContratacao", m.id)} label={m.label} />
@@ -738,7 +738,7 @@ export function Quiz() {
                 </div>
               </div>
               <div>
-                <div style={sectionLabelStyle}><Cpu size={13} color="var(--teal)" /> Time de TI/Dev interno</div>
+                <div style={sectionLabelStyle}><Cpu size={13} color="var(--sky)" /> Time de TI/Dev interno</div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                   {TIMES_TI.map(t => (
                     <Chip key={t.id} selected={data.timeTi === t.id} onClick={() => set("timeTi", t.id)} label={t.label} />
@@ -753,21 +753,21 @@ export function Quiz() {
             <>
               <div style={{ marginBottom: 22 }}>
                 <div style={sectionLabelStyle}>
-                  <Users size={13} color="var(--teal)" /> Tamanho da equipe <span style={{ color: "var(--teal)" }}>*</span>
+                  <Users size={13} color="var(--sky)" /> Tamanho da equipe <span style={{ color: "var(--sky)" }}>*</span>
                 </div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                   {TAMANHOS.map(t => <Chip key={t.id} selected={data.tamanho === t.id} onClick={() => set("tamanho", t.id)} label={t.label} />)}
                 </div>
               </div>
               <div style={{ marginBottom: 22 }}>
-                <div style={sectionLabelStyle}><TrendingUp size={13} color="var(--teal)" /> Faturamento mensal aproximado</div>
+                <div style={sectionLabelStyle}><TrendingUp size={13} color="var(--sky)" /> Faturamento mensal aproximado</div>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                   {FATURAMENTOS.map(f => <Chip key={f.id} selected={data.faturamento === f.id} onClick={() => set("faturamento", f.id)} label={f.label} />)}
                 </div>
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 11 }} className="quiz-grid-2">
                 <div>
-                  <label style={labelStyle}>Seu cargo <span style={{ color: "var(--teal)" }}>*</span></label>
+                  <label style={labelStyle}>Seu cargo <span style={{ color: "var(--sky)" }}>*</span></label>
                   <select value={data.cargo} onChange={e => set("cargo", e.target.value)} style={inputStyle}>
                     <option value="">Selecione...</option>
                     {CARGOS.map(c => <option key={c} value={c}>{c}</option>)}
@@ -789,7 +789,7 @@ export function Quiz() {
             <>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 11, marginBottom: 11 }} className="quiz-grid-2">
                 <div>
-                  <label style={labelStyle}>Nome completo <span style={{ color: "var(--teal)" }}>*</span></label>
+                  <label style={labelStyle}>Nome completo <span style={{ color: "var(--sky)" }}>*</span></label>
                   <input type="text" placeholder="João Silva" value={data.nome} onChange={e => set("nome", e.target.value)} style={inputStyle} />
                 </div>
                 <div>
@@ -799,11 +799,11 @@ export function Quiz() {
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 11, marginBottom: 11 }} className="quiz-grid-2">
                 <div>
-                  <label style={labelStyle}>E-mail <span style={{ color: "var(--teal)" }}>*</span></label>
+                  <label style={labelStyle}>E-mail <span style={{ color: "var(--sky)" }}>*</span></label>
                   <input type="email" placeholder="joao@empresa.com" value={data.email} onChange={e => set("email", e.target.value)} style={inputStyle} />
                 </div>
                 <div>
-                  <label style={labelStyle}>WhatsApp <span style={{ color: "var(--teal)" }}>*</span></label>
+                  <label style={labelStyle}>WhatsApp <span style={{ color: "var(--sky)" }}>*</span></label>
                   <input type="tel" placeholder="(11) 99999-9999" value={data.whatsapp} onChange={e => set("whatsapp", e.target.value)} style={inputStyle} />
                 </div>
               </div>
@@ -932,7 +932,7 @@ function SuccessScreen({
         display: "flex", alignItems: "center", justifyContent: "center",
         margin: "0 auto 16px", boxShadow: "0 0 32px rgba(44,85,232,0.15)",
       }}>
-        <Check size={28} strokeWidth={2.5} color="var(--teal)" />
+        <Check size={28} strokeWidth={2.5} color="var(--sky)" />
       </div>
 
       <h3 style={{ fontSize: 22, fontWeight: 700, marginBottom: 10 }}>Solicitação recebida.</h3>

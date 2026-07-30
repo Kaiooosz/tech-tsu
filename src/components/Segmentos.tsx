@@ -16,26 +16,26 @@ type Segment = {
 
 /* ── SVG icon map ────────────────────────────────────────────── */
 const ICONS: Record<string, React.ReactNode> = {
-  clock: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="var(--teal)" strokeWidth="1.5"/><path d="M12 7v5l3 3" stroke="var(--teal)" strokeWidth="1.5" strokeLinecap="round"/></svg>,
-  doc: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="var(--teal)" strokeWidth="1.5"/><path d="M14 2v6h6M9 13h6M9 17h4" stroke="var(--teal)" strokeWidth="1.5" strokeLinecap="round"/></svg>,
-  users: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="var(--teal)" strokeWidth="1.5" strokeLinecap="round"/></svg>,
-  chart: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6" stroke="var(--teal)" strokeWidth="1.5" strokeLinecap="round"/></svg>,
-  calendar: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke="var(--teal)" strokeWidth="1.5"/><path d="M16 2v4M8 2v4M3 10h18" stroke="var(--teal)" strokeWidth="1.5" strokeLinecap="round"/></svg>,
-  zap: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="var(--teal)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>,
-  trend: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M23 6l-9.5 9.5-5-5L1 18M17 6h6v6" stroke="var(--teal)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>,
-  mail: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="var(--teal)" strokeWidth="1.5"/><path d="M22 6l-10 7L2 6" stroke="var(--teal)" strokeWidth="1.5" strokeLinecap="round"/></svg>,
-  eye: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="var(--teal)" strokeWidth="1.5"/><circle cx="12" cy="12" r="3" stroke="var(--teal)" strokeWidth="1.5"/></svg>,
-  tool: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke="var(--teal)" strokeWidth="1.5" strokeLinecap="round"/></svg>,
-  map: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="var(--teal)" strokeWidth="1.5"/><circle cx="12" cy="10" r="3" stroke="var(--teal)" strokeWidth="1.5"/></svg>,
-  brain: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 017 4.5v0A2.5 2.5 0 014.5 7H4a2 2 0 00-2 2v6a2 2 0 002 2h.5A2.5 2.5 0 017 19.5v0A2.5 2.5 0 019.5 22h5a2.5 2.5 0 002.5-2.5v0a2.5 2.5 0 012.5-2.5H20a2 2 0 002-2V9a2 2 0 00-2-2h-.5A2.5 2.5 0 0117 4.5v0A2.5 2.5 0 0114.5 2h-5z" stroke="var(--teal)" strokeWidth="1.5"/></svg>,
-  link: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" stroke="var(--teal)" strokeWidth="1.5" strokeLinecap="round"/></svg>,
-  package: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke="var(--teal)" strokeWidth="1.5"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12" stroke="var(--teal)" strokeWidth="1.5" strokeLinecap="round"/></svg>,
-  repeat: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M17 1l4 4-4 4M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4M21 13v2a4 4 0 01-4 4H3" stroke="var(--teal)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>,
-  award: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6" stroke="var(--teal)" strokeWidth="1.5"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" stroke="var(--teal)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>,
-  truck: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" stroke="var(--teal)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M16 8h4l3 3v5h-7V8zM5.5 21a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM18.5 21a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" stroke="var(--teal)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>,
-  home: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="var(--teal)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M9 22V12h6v10" stroke="var(--teal)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>,
-  grad: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z" stroke="var(--teal)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M6 12v5c3.333 2 8.667 2 12 0v-5" stroke="var(--teal)" strokeWidth="1.5" strokeLinecap="round"/></svg>,
-  hierarchy: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><rect x="2" y="2" width="6" height="5" rx="1" stroke="var(--teal)" strokeWidth="1.5"/><rect x="16" y="9" width="6" height="5" rx="1" stroke="var(--teal)" strokeWidth="1.5"/><rect x="16" y="17" width="6" height="5" rx="1" stroke="var(--teal)" strokeWidth="1.5"/><path d="M8 4.5h4a2 2 0 012 2v10a2 2 0 01-2 2H8" stroke="var(--teal)" strokeWidth="1.5" strokeLinecap="round"/><path d="M16 11.5h-4M16 19.5h-4" stroke="var(--teal)" strokeWidth="1.5" strokeLinecap="round"/></svg>,
+  clock: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="var(--sky)" strokeWidth="1.5"/><path d="M12 7v5l3 3" stroke="var(--sky)" strokeWidth="1.5" strokeLinecap="round"/></svg>,
+  doc: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="var(--sky)" strokeWidth="1.5"/><path d="M14 2v6h6M9 13h6M9 17h4" stroke="var(--sky)" strokeWidth="1.5" strokeLinecap="round"/></svg>,
+  users: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="var(--sky)" strokeWidth="1.5" strokeLinecap="round"/></svg>,
+  chart: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6" stroke="var(--sky)" strokeWidth="1.5" strokeLinecap="round"/></svg>,
+  calendar: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" stroke="var(--sky)" strokeWidth="1.5"/><path d="M16 2v4M8 2v4M3 10h18" stroke="var(--sky)" strokeWidth="1.5" strokeLinecap="round"/></svg>,
+  zap: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="var(--sky)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>,
+  trend: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M23 6l-9.5 9.5-5-5L1 18M17 6h6v6" stroke="var(--sky)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>,
+  mail: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="var(--sky)" strokeWidth="1.5"/><path d="M22 6l-10 7L2 6" stroke="var(--sky)" strokeWidth="1.5" strokeLinecap="round"/></svg>,
+  eye: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="var(--sky)" strokeWidth="1.5"/><circle cx="12" cy="12" r="3" stroke="var(--sky)" strokeWidth="1.5"/></svg>,
+  tool: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" stroke="var(--sky)" strokeWidth="1.5" strokeLinecap="round"/></svg>,
+  map: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" stroke="var(--sky)" strokeWidth="1.5"/><circle cx="12" cy="10" r="3" stroke="var(--sky)" strokeWidth="1.5"/></svg>,
+  brain: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 017 4.5v0A2.5 2.5 0 014.5 7H4a2 2 0 00-2 2v6a2 2 0 002 2h.5A2.5 2.5 0 017 19.5v0A2.5 2.5 0 019.5 22h5a2.5 2.5 0 002.5-2.5v0a2.5 2.5 0 012.5-2.5H20a2 2 0 002-2V9a2 2 0 00-2-2h-.5A2.5 2.5 0 0117 4.5v0A2.5 2.5 0 0114.5 2h-5z" stroke="var(--sky)" strokeWidth="1.5"/></svg>,
+  link: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" stroke="var(--sky)" strokeWidth="1.5" strokeLinecap="round"/></svg>,
+  package: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke="var(--sky)" strokeWidth="1.5"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12" stroke="var(--sky)" strokeWidth="1.5" strokeLinecap="round"/></svg>,
+  repeat: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M17 1l4 4-4 4M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4M21 13v2a4 4 0 01-4 4H3" stroke="var(--sky)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>,
+  award: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6" stroke="var(--sky)" strokeWidth="1.5"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" stroke="var(--sky)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>,
+  truck: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" stroke="var(--sky)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M16 8h4l3 3v5h-7V8zM5.5 21a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM18.5 21a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" stroke="var(--sky)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>,
+  home: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="var(--sky)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M9 22V12h6v10" stroke="var(--sky)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>,
+  grad: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z" stroke="var(--sky)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M6 12v5c3.333 2 8.667 2 12 0v-5" stroke="var(--sky)" strokeWidth="1.5" strokeLinecap="round"/></svg>,
+  hierarchy: <svg width="13" height="13" fill="none" viewBox="0 0 24 24"><rect x="2" y="2" width="6" height="5" rx="1" stroke="var(--sky)" strokeWidth="1.5"/><rect x="16" y="9" width="6" height="5" rx="1" stroke="var(--sky)" strokeWidth="1.5"/><rect x="16" y="17" width="6" height="5" rx="1" stroke="var(--sky)" strokeWidth="1.5"/><path d="M8 4.5h4a2 2 0 012 2v10a2 2 0 01-2 2H8" stroke="var(--sky)" strokeWidth="1.5" strokeLinecap="round"/><path d="M16 11.5h-4M16 19.5h-4" stroke="var(--sky)" strokeWidth="1.5" strokeLinecap="round"/></svg>,
 }
 
 /* ── Segment data ────────────────────────────────────────────── */
@@ -245,7 +245,7 @@ export function Segmentos() {
               marginBottom: 20, padding: "4px 12px",
               border: "1px solid rgba(44,85,232,0.25)", borderRadius: 999,
               fontSize: 11, fontWeight: 600, letterSpacing: "0.2em",
-              textTransform: "uppercase", color: "var(--teal)",
+              textTransform: "uppercase", color: "var(--sky)",
               fontFamily: "var(--font-mono)",
             }}>
               <span className="pulse-dot" style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--teal)", display: "inline-block" }} />
@@ -279,7 +279,7 @@ export function Segmentos() {
                   padding: "8px 14px", borderRadius: 6,
                   border: active === s.id ? "1px solid var(--teal)" : "1px solid var(--border-m)",
                   background: active === s.id ? "rgba(44,85,232,0.08)" : "rgba(255,255,255,0.02)",
-                  color: active === s.id ? "var(--teal)" : "var(--muted)",
+                  color: active === s.id ? "var(--sky)" : "var(--muted)",
                   fontSize: 12, fontWeight: active === s.id ? 600 : 400,
                   cursor: "pointer", fontFamily: "inherit",
                   transition: "all 0.18s", letterSpacing: "0.01em",
@@ -302,7 +302,7 @@ export function Segmentos() {
               {/* Eyebrow + Headline */}
               <div style={{ marginBottom: 28 }}>
                 <p style={{
-                  fontSize: 10, fontFamily: "var(--font-mono)", color: "var(--teal)",
+                  fontSize: 10, fontFamily: "var(--font-mono)", color: "var(--sky)",
                   letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: 12, fontWeight: 600,
                 }}>
                   {seg.sub}
@@ -333,7 +333,7 @@ export function Segmentos() {
                       fontFamily: "var(--font-mono)",
                       fontSize: "clamp(22px, 3.5vw, 34px)",
                       fontWeight: 700, lineHeight: 1, marginBottom: 8,
-                      color: st.color === "result" ? "var(--teal)" : "var(--text)",
+                      color: st.color === "result" ? "var(--sky)" : "var(--text)",
                     }}>
                       {st.value}
                     </p>
@@ -361,7 +361,7 @@ export function Segmentos() {
                     <div style={{ display: "flex", alignItems: "center", gap: 7, marginBottom: 12 }}>
                       {ICONS[p.icon]}
                       <span style={{
-                        fontSize: 9, fontFamily: "var(--font-mono)", color: "var(--teal)",
+                        fontSize: 9, fontFamily: "var(--font-mono)", color: "var(--sky)",
                         fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase",
                       }}>
                         {p.category}
@@ -401,8 +401,8 @@ export function Segmentos() {
                   display: "flex", alignItems: "center", justifyContent: "center",
                 }}>
                   <svg width="13" height="13" fill="none" viewBox="0 0 24 24">
-                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke="var(--teal)" strokeWidth="2" strokeLinecap="round"/>
-                    <path d="M22 4L12 14.01l-3-3" stroke="var(--teal)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke="var(--sky)" strokeWidth="2" strokeLinecap="round"/>
+                    <path d="M22 4L12 14.01l-3-3" stroke="var(--sky)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
                 <div style={{ flex: 1 }}>
@@ -411,7 +411,7 @@ export function Segmentos() {
                       O que a Tech TSU entrega
                     </p>
                     <span style={{
-                      fontSize: 10, fontFamily: "var(--font-mono)", color: "var(--teal)",
+                      fontSize: 10, fontFamily: "var(--font-mono)", color: "var(--sky)",
                       padding: "2px 8px", borderRadius: 999,
                       border: "1px solid rgba(44,85,232,0.2)",
                       fontWeight: 600, letterSpacing: "0.08em",
@@ -438,7 +438,7 @@ export function Segmentos() {
               <p style={{ fontSize: 15, fontWeight: 600, color: "var(--text)", marginBottom: 4 }}>
                 Reconheceu alguma dessas dores?
               </p>
-              <p style={{ fontSize: 13, color: "var(--teal)", lineHeight: 1.5 }}>
+              <p style={{ fontSize: 13, color: "var(--sky)", lineHeight: 1.5 }}>
                 A Tech TSU transforma isso em sistema funcional em 3 a 6 semanas.
               </p>
             </div>
@@ -447,7 +447,7 @@ export function Segmentos() {
               style={{
                 display: "inline-flex", alignItems: "center", gap: 8,
                 padding: "11px 22px", borderRadius: 6,
-                background: "var(--teal)", color: "#070809",
+                background: "var(--teal)", color: "#fff",
                 fontSize: 13, fontWeight: 700,
                 transition: "opacity 0.18s", whiteSpace: "nowrap",
               }}

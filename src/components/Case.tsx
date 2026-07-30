@@ -129,7 +129,7 @@ function ResultTabs() {
               cursor: "pointer",
               fontSize: 10, fontWeight: active === i ? 700 : 500,
               fontFamily: "var(--font-mono)", letterSpacing: "0.08em",
-              color: active === i ? "var(--teal)" : "rgba(255,255,255,0.28)",
+              color: active === i ? "var(--sky)" : "rgba(255,255,255,0.28)",
               transition: "color 0.15s, border-color 0.15s",
             }}
           >
@@ -156,10 +156,10 @@ function ResultTabs() {
         display: "flex", alignItems: "center", gap: 8,
       }}>
         <svg width="10" height="10" fill="none" viewBox="0 0 24 24">
-          <path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke="var(--teal)" strokeWidth="2" strokeLinecap="round"/>
-          <path d="M22 4L12 14.01l-3-3" stroke="var(--teal)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke="var(--sky)" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M22 4L12 14.01l-3-3" stroke="var(--sky)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
-        <span style={{ fontSize: 10, color: "var(--teal)", fontFamily: "var(--font-mono)", letterSpacing: "0.04em" }}>
+        <span style={{ fontSize: 10, color: "var(--sky)", fontFamily: "var(--font-mono)", letterSpacing: "0.04em" }}>
           {resultTabs[active].caption}
         </span>
       </div>
@@ -330,7 +330,7 @@ export function Case() {
               }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                   <span className="pulse-dot" style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--teal)", display: "inline-block" }} />
-                  <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--teal)", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                  <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--sky)", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase" }}>
                     Com sistema
                   </span>
                 </div>
@@ -381,7 +381,7 @@ export function Case() {
                   }}
                 >
                   Bezerra Borges —<br />
-                  <span style={{ color: "var(--teal)" }}>Ecossistema digital</span><br />
+                  <span style={{ color: "var(--sky)" }}>Ecossistema digital</span><br />
                   <span style={{ color: "rgba(255,255,255,0.3)", fontWeight: 300, fontStyle: "italic" }}>para advocacia internacional.</span>
                 </motion.h2>
               </div>
@@ -437,7 +437,7 @@ export function Case() {
                       border: "1px solid rgba(44,85,232,0.15)",
                       borderRadius: 4,
                       fontSize: 11, fontFamily: "var(--font-mono)",
-                      color: "var(--teal)",
+                      color: "var(--sky)",
                       display: "inline-block",
                     }}
                   >
@@ -498,7 +498,7 @@ export function Case() {
                         padding: "6px 8px", borderRadius: 4,
                         background: i === 0 ? "rgba(44,85,232,0.12)" : "transparent",
                         fontSize: 9,
-                        color: i === 0 ? "var(--teal)" : "rgba(255,255,255,0.3)",
+                        color: i === 0 ? "var(--sky)" : "rgba(255,255,255,0.3)",
                         fontWeight: i === 0 ? 600 : 400,
                       }}
                     >
@@ -545,7 +545,7 @@ export function Case() {
                     </p>
                     {[
                       { id: "#312", client: "Empresa Alfa", status: "Em análise",   color: "var(--amber)" },
-                      { id: "#310", client: "João F. Silva", status: "Documentação", color: "var(--teal)"  },
+                      { id: "#310", client: "João F. Silva", status: "Documentação", color: "var(--sky)"  },
                       { id: "#308", client: "R. Fernanda",   status: "Concluída",    color: "rgba(255,255,255,0.2)" },
                     ].map((os, i) => (
                       <motion.div
@@ -647,7 +647,7 @@ export function Case() {
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10 }}>
                   <span style={{
                     fontSize: 10, fontFamily: "var(--font-mono)",
-                    color: "var(--teal)", letterSpacing: "0.15em",
+                    color: "var(--sky)", letterSpacing: "0.15em",
                     textTransform: "uppercase", fontWeight: 600,
                   }}>
                     {c.segmento}
@@ -656,7 +656,7 @@ export function Case() {
                     fontSize: 9, padding: "2px 8px", borderRadius: 999,
                     background: c.status === "Em produção" ? "rgba(44,85,232,0.08)" : "rgba(255,255,255,0.04)",
                     border: c.status === "Em produção" ? "1px solid rgba(44,85,232,0.2)" : "1px solid var(--border-m)",
-                    color: c.status === "Em produção" ? "var(--teal)" : "var(--muted-2)",
+                    color: c.status === "Em produção" ? "var(--sky)" : "var(--muted-2)",
                     fontFamily: "var(--font-mono)", letterSpacing: "0.05em",
                     whiteSpace: "nowrap",
                   }}>

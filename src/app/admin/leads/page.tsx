@@ -83,7 +83,7 @@ const lbl = (key: string | null | undefined) => key ? (L[key] ?? key) : "—"
 
 const SCORE_LABEL: Record<string, string> = { hot: "Quente", warm: "Promissor", cold: "Nutrição" }
 const SCORE_COLOR: Record<string, string> = {
-  hot: "var(--teal)", warm: "rgba(44,85,232,0.7)", cold: "rgba(255,255,255,0.35)",
+  hot: "var(--sky)", warm: "rgba(44,85,232,0.7)", cold: "rgba(255,255,255,0.35)",
 }
 
 export default async function LeadsPage({
@@ -228,23 +228,23 @@ function LeadDetail({ lead }: { lead: Lead }) {
       fontWeight: 400, fontSize: 11, lineHeight: 1.7, color: "rgba(255,255,255,0.75)",
       whiteSpace: "normal", maxWidth: 420,
     }}>
-      <div><strong style={{ color: "var(--teal)" }}>E-mail:</strong> {lead.email ?? "—"}</div>
-      {lead.cargo && <div><strong style={{ color: "var(--teal)" }}>Cargo:</strong> {lead.cargo}</div>}
-      {servicos && <div><strong style={{ color: "var(--teal)" }}>Serviços:</strong> {servicos}</div>}
-      {stack && <div><strong style={{ color: "var(--teal)" }}>Stack atual:</strong> {stack}</div>}
-      {casosIa && <div><strong style={{ color: "var(--teal)" }}>Casos IA:</strong> {casosIa}</div>}
-      {resultados && <div><strong style={{ color: "var(--teal)" }}>Resultados:</strong> {resultados}</div>}
-      {ferr !== "—" && <div><strong style={{ color: "var(--teal)" }}>Ferramenta:</strong> {ferr}</div>}
-      {gargalos && <div><strong style={{ color: "var(--teal)" }}>Gargalos:</strong> {gargalos}</div>}
-      {lead.clientes_ativos && <div><strong style={{ color: "var(--teal)" }}>Clientes:</strong> {lbl(lead.clientes_ativos)}</div>}
-      {lead.leads_mes && <div><strong style={{ color: "var(--teal)" }}>Leads/mês:</strong> {lbl(lead.leads_mes)}</div>}
-      {lead.modelo_contratacao && <div><strong style={{ color: "var(--teal)" }}>Modelo:</strong> {lbl(lead.modelo_contratacao)}</div>}
-      {lead.time_ti && <div><strong style={{ color: "var(--teal)" }}>Time TI:</strong> {lbl(lead.time_ti)}</div>}
-      {lead.automacoes_atuais && <div><strong style={{ color: "var(--teal)" }}>Automações:</strong> {lbl(lead.automacoes_atuais)}</div>}
-      {lead.setor && <div><strong style={{ color: "var(--teal)" }}>Setor:</strong> {lead.setor}</div>}
-      {lead.site && <div><strong style={{ color: "var(--teal)" }}>Site:</strong> <a href={lead.site} target="_blank" rel="noopener noreferrer" style={{ color: "rgba(255,255,255,0.8)" }}>{lead.site}</a></div>}
-      {lead.fonte && <div><strong style={{ color: "var(--teal)" }}>Fonte:</strong> {lead.fonte}</div>}
-      {lead.mensagem && <div style={{ marginTop: 6, paddingTop: 6, borderTop: "1px solid rgba(255,255,255,0.05)" }}><strong style={{ color: "var(--teal)" }}>Mensagem:</strong> <em>&quot;{lead.mensagem}&quot;</em></div>}
+      <div><strong style={{ color: "var(--sky)" }}>E-mail:</strong> {lead.email ?? "—"}</div>
+      {lead.cargo && <div><strong style={{ color: "var(--sky)" }}>Cargo:</strong> {lead.cargo}</div>}
+      {servicos && <div><strong style={{ color: "var(--sky)" }}>Serviços:</strong> {servicos}</div>}
+      {stack && <div><strong style={{ color: "var(--sky)" }}>Stack atual:</strong> {stack}</div>}
+      {casosIa && <div><strong style={{ color: "var(--sky)" }}>Casos IA:</strong> {casosIa}</div>}
+      {resultados && <div><strong style={{ color: "var(--sky)" }}>Resultados:</strong> {resultados}</div>}
+      {ferr !== "—" && <div><strong style={{ color: "var(--sky)" }}>Ferramenta:</strong> {ferr}</div>}
+      {gargalos && <div><strong style={{ color: "var(--sky)" }}>Gargalos:</strong> {gargalos}</div>}
+      {lead.clientes_ativos && <div><strong style={{ color: "var(--sky)" }}>Clientes:</strong> {lbl(lead.clientes_ativos)}</div>}
+      {lead.leads_mes && <div><strong style={{ color: "var(--sky)" }}>Leads/mês:</strong> {lbl(lead.leads_mes)}</div>}
+      {lead.modelo_contratacao && <div><strong style={{ color: "var(--sky)" }}>Modelo:</strong> {lbl(lead.modelo_contratacao)}</div>}
+      {lead.time_ti && <div><strong style={{ color: "var(--sky)" }}>Time TI:</strong> {lbl(lead.time_ti)}</div>}
+      {lead.automacoes_atuais && <div><strong style={{ color: "var(--sky)" }}>Automações:</strong> {lbl(lead.automacoes_atuais)}</div>}
+      {lead.setor && <div><strong style={{ color: "var(--sky)" }}>Setor:</strong> {lead.setor}</div>}
+      {lead.site && <div><strong style={{ color: "var(--sky)" }}>Site:</strong> <a href={lead.site} target="_blank" rel="noopener noreferrer" style={{ color: "rgba(255,255,255,0.8)" }}>{lead.site}</a></div>}
+      {lead.fonte && <div><strong style={{ color: "var(--sky)" }}>Fonte:</strong> {lead.fonte}</div>}
+      {lead.mensagem && <div style={{ marginTop: 6, paddingTop: 6, borderTop: "1px solid rgba(255,255,255,0.05)" }}><strong style={{ color: "var(--sky)" }}>Mensagem:</strong> <em>&quot;{lead.mensagem}&quot;</em></div>}
     </div>
   )
 }
