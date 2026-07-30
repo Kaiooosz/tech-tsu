@@ -3,7 +3,6 @@ import { useState } from "react"
 import { motion } from "framer-motion"
 import { E, staggerContainer, childFadeUp, tagPop } from "@/lib/motion"
 import { WA } from "@/lib/site"
-import { BgImage } from "./BgImage"
 import { MediaFrame } from "./MediaFrame"
 
 const WA_LINK = WA.disparos
@@ -85,18 +84,6 @@ export function Disparos() {
   return (
     <>
       <section id="disparos" style={{ padding: "96px 40px", background: "var(--paper)", position: "relative", overflow: "hidden" }}>
-        <BgImage
-          src="/midia/disparos-loop.mp4"
-          kind="video"
-          poster="/midia/disparos-loop-poster.jpg"
-          lado="left"
-          width="38%"
-          opacity={0.28}
-          blend="var(--paper)"
-          parallax={50}
-          soDesktop
-        />
-
         <div style={{ maxWidth: 1200, margin: "0 auto", position: "relative", zIndex: 1 }}>
 
           {/* Header */}
